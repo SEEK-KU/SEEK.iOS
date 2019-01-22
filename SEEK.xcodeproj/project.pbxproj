@@ -20,6 +20,7 @@
 		12D6C25C21F1D8F7000B499B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D6C25A21F1D8F7000B499B /* Main.storyboard */; };
 		12D6C25E21F1D8F8000B499B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D6C25D21F1D8F8000B499B /* Assets.xcassets */; };
 		12D6C26121F1D8F8000B499B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D6C25F21F1D8F8000B499B /* LaunchScreen.storyboard */; };
+		858B813B2DE41AECD130EBE3 /* Pods_SEEK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78333F333032D3EF4BE0CB2F /* Pods_SEEK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		12D6C25D21F1D8F8000B499B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12D6C26021F1D8F8000B499B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12D6C26221F1D8F8000B499B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78333F333032D3EF4BE0CB2F /* Pods_SEEK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEEK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8664942FBEF39DFCF67E5C17 /* Pods-SEEK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEEK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SEEK/Pods-SEEK.debug.xcconfig"; sourceTree = "<group>"; };
+		E7B4E61FE322983E3890894E /* Pods-SEEK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEEK.release.xcconfig"; path = "Pods/Target Support Files/Pods-SEEK/Pods-SEEK.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				858B813B2DE41AECD130EBE3 /* Pods_SEEK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +165,8 @@
 			children = (
 				12D6C25521F1D8F7000B499B /* SEEK */,
 				12D6C25421F1D8F7000B499B /* Products */,
+				1EE8913805A2F81D17CB7477 /* Pods */,
+				89B0F7BFC3B049329793223A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,6 +191,23 @@
 			path = SEEK;
 			sourceTree = "<group>";
 		};
+		1EE8913805A2F81D17CB7477 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8664942FBEF39DFCF67E5C17 /* Pods-SEEK.debug.xcconfig */,
+				E7B4E61FE322983E3890894E /* Pods-SEEK.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		89B0F7BFC3B049329793223A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78333F333032D3EF4BE0CB2F /* Pods_SEEK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,9 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12D6C26521F1D8F8000B499B /* Build configuration list for PBXNativeTarget "SEEK" */;
 			buildPhases = (
+				83F9321D0F01CFD0A6F96016 /* [CP] Check Pods Manifest.lock */,
 				12D6C24F21F1D8F7000B499B /* Sources */,
 				12D6C25021F1D8F7000B499B /* Frameworks */,
 				12D6C25121F1D8F7000B499B /* Resources */,
+				91281695A62876C5AB2703AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -249,6 +275,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83F9321D0F01CFD0A6F96016 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SEEK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91281695A62876C5AB2703AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SEEK/Pods-SEEK-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SEEK/Pods-SEEK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		12D6C24F21F1D8F7000B499B /* Sources */ = {
@@ -408,6 +491,7 @@
 		};
 		12D6C26621F1D8F8000B499B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8664942FBEF39DFCF67E5C17 /* Pods-SEEK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -426,6 +510,7 @@
 		};
 		12D6C26721F1D8F8000B499B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7B4E61FE322983E3890894E /* Pods-SEEK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
