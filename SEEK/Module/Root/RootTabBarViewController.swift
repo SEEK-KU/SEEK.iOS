@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RootTabBarViewController.swift
 //  SEEK
 //
 //  Created by oatThanut on 18/1/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RootTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
