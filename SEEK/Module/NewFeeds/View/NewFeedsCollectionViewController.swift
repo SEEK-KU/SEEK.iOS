@@ -6,12 +6,13 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 class NewFeedsCollectionView: UICollectionView
 {
-    
-    let data = ["Title-1", "Title-2", "Title-3"]
+    public let postsBehaviorRelay = BehaviorRelay<[Post?]>(value: [])
     
     // MARK: - Initializer
     
@@ -44,14 +45,14 @@ extension NewFeedsCollectionView: UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return data.count
+        return postsBehaviorRelay.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell: PostCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewFeedsCollectionViewCell", for: indexPath) as! PostCollectionViewCell
         
-        cell.title = data[indexPath.item]
+        cell.title = postsBehaviorRelay.value[indexPath.item]?.title ?? ""
         
         return cell
     }
@@ -65,4 +66,9 @@ extension NewFeedsCollectionView: UICollectionViewDelegateFlowLayout
     {
         return CGSize(width: collectionView.bounds.width - ( 16.0 * 2 ), height: 100.0)
     }
+}
+
+extension Reactive where Base: NewFeedsCollectionView
+{
+    var postsBehaviorRelay: BehaviorRelay<[Post?]> { return base.postsBehaviorRelay }
 }

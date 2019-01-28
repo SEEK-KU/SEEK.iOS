@@ -38,21 +38,21 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rH5-9I-nDJ">
-                                    <size key="itemSize" width="375" height="73"/>
+                                    <size key="itemSize" width="375" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewFeedsCollectionViewCell" id="LQ8-UY-pR1" customClass="PostCollectionViewCell" customModule="SEEK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hog-WJ-Hot">
-                                                    <rect key="frame" x="24" y="36" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hog-WJ-Hot">
+                                                    <rect key="frame" x="24" y="8" width="34" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -60,8 +60,8 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="Hog-WJ-Hot" firstAttribute="leading" secondItem="LQ8-UY-pR1" secondAttribute="leadingMargin" constant="16" id="ELs-5f-Zd3"/>
-                                            <constraint firstItem="Hog-WJ-Hot" firstAttribute="top" secondItem="LQ8-UY-pR1" secondAttribute="topMargin" constant="8" id="pXw-62-Nvd"/>
+                                            <constraint firstItem="Hog-WJ-Hot" firstAttribute="top" secondItem="LQ8-UY-pR1" secondAttribute="firstBaseline" constant="8" id="3WO-oD-jaL"/>
+                                            <constraint firstItem="Hog-WJ-Hot" firstAttribute="leading" secondItem="LQ8-UY-pR1" secondAttribute="leadingMargin" constant="16" id="mXs-Jt-uAZ"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="TitleLabel" destination="Hog-WJ-Hot" id="bpx-Wx-MKM"/>
@@ -84,6 +84,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="FilterButton" destination="8UO-u0-dzW" id="9Cd-8P-Cgi"/>
+                        <outlet property="collectionView" destination="6mc-S9-6pa" id="b2D-Xv-Rwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1s-MZ-2Ed" userLabel="First Responder" sceneMemberID="firstResponder"/>
