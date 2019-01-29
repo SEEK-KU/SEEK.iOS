@@ -21,12 +21,12 @@
 		1214142A21FC0C2200EBAA3A /* DictionaryDecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142921FC0C2200EBAA3A /* DictionaryDecodableType.swift */; };
 		1214142D21FC371B00EBAA3A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142C21FC371B00EBAA3A /* Post.swift */; };
 		1281FA5C21F5C51A00D54C3E /* NewFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA5B21F5C51A00D54C3E /* NewFeedsViewController.swift */; };
-		1281FA6721F5D80100D54C3E /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA6621F5D80100D54C3E /* NewPostViewController.swift */; };
+		1281FA6721F5D80100D54C3E /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA6621F5D80100D54C3E /* CreatePostViewController.swift */; };
 		1281FA6921F5D81600D54C3E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA6821F5D81600D54C3E /* ProfileViewController.swift */; };
 		1281FA6B21F5DE2700D54C3E /* NewFeedsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA6A21F5DE2700D54C3E /* NewFeedsCollectionViewController.swift */; };
 		1281FA7121F5ECE000D54C3E /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA7021F5ECE000D54C3E /* PostCollectionViewCell.swift */; };
 		1281FA7621F5FDBA00D54C3E /* NewFeedsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA7521F5FDBA00D54C3E /* NewFeedsPresenter.swift */; };
-		1281FA7821F5FDCD00D54C3E /* NewPostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA7721F5FDCD00D54C3E /* NewPostPresenter.swift */; };
+		1281FA7821F5FDCD00D54C3E /* CreatePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA7721F5FDCD00D54C3E /* CreatePostPresenter.swift */; };
 		1281FA7A21F5FDE100D54C3E /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA7921F5FDE100D54C3E /* ProfilePresenter.swift */; };
 		12D6C25721F1D8F7000B499B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D6C25621F1D8F7000B499B /* AppDelegate.swift */; };
 		12D6C25921F1D8F7000B499B /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D6C25821F1D8F7000B499B /* RootTabBarViewController.swift */; };
@@ -75,12 +75,12 @@
 		1214142921FC0C2200EBAA3A /* DictionaryDecodableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryDecodableType.swift; sourceTree = "<group>"; };
 		1214142C21FC371B00EBAA3A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1281FA5B21F5C51A00D54C3E /* NewFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsViewController.swift; sourceTree = "<group>"; };
-		1281FA6621F5D80100D54C3E /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		1281FA6621F5D80100D54C3E /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		1281FA6821F5D81600D54C3E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1281FA6A21F5DE2700D54C3E /* NewFeedsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsCollectionViewController.swift; sourceTree = "<group>"; };
 		1281FA7021F5ECE000D54C3E /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		1281FA7521F5FDBA00D54C3E /* NewFeedsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsPresenter.swift; sourceTree = "<group>"; };
-		1281FA7721F5FDCD00D54C3E /* NewPostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPresenter.swift; sourceTree = "<group>"; };
+		1281FA7721F5FDCD00D54C3E /* CreatePostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostPresenter.swift; sourceTree = "<group>"; };
 		1281FA7921F5FDE100D54C3E /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		12D6C25321F1D8F7000B499B /* SEEK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEEK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D6C25621F1D8F7000B499B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				1281FA5821F5C4CC00D54C3E /* NewFeeds */,
-				1281FA5A21F5C4DF00D54C3E /* NewPost */,
+				1281FA5A21F5C4DF00D54C3E /* CreatePost */,
 				1281FA5921F5C4D700D54C3E /* Profile */,
 				1281FA6F21F5EC9100D54C3E /* Root */,
 			);
@@ -199,13 +199,13 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		1281FA5A21F5C4DF00D54C3E /* NewPost */ = {
+		1281FA5A21F5C4DF00D54C3E /* CreatePost */ = {
 			isa = PBXGroup;
 			children = (
 				1281FA7321F5FD9F00D54C3E /* Presenter */,
 				1281FA6D21F5EC2A00D54C3E /* View */,
 			);
-			path = NewPost;
+			path = CreatePost;
 			sourceTree = "<group>";
 		};
 		1281FA6C21F5EC1E00D54C3E /* View */ = {
@@ -221,7 +221,7 @@
 		1281FA6D21F5EC2A00D54C3E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1281FA6621F5D80100D54C3E /* NewPostViewController.swift */,
+				1281FA6621F5D80100D54C3E /* CreatePostViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 		1281FA7321F5FD9F00D54C3E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				1281FA7721F5FDCD00D54C3E /* NewPostPresenter.swift */,
+				1281FA7721F5FDCD00D54C3E /* CreatePostPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -505,12 +505,12 @@
 			files = (
 				12D6C25921F1D8F7000B499B /* RootTabBarViewController.swift in Sources */,
 				1214142421F9978A00EBAA3A /* NewFeedsPresenterType.swift in Sources */,
-				1281FA6721F5D80100D54C3E /* NewPostViewController.swift in Sources */,
+				1281FA6721F5D80100D54C3E /* CreatePostViewController.swift in Sources */,
 				1281FA6921F5D81600D54C3E /* ProfileViewController.swift in Sources */,
 				1281FA7621F5FDBA00D54C3E /* NewFeedsPresenter.swift in Sources */,
 				12D6C25721F1D8F7000B499B /* AppDelegate.swift in Sources */,
 				1214142121F81E9400EBAA3A /* Ineractor.swift in Sources */,
-				1281FA7821F5FDCD00D54C3E /* NewPostPresenter.swift in Sources */,
+				1281FA7821F5FDCD00D54C3E /* CreatePostPresenter.swift in Sources */,
 				1281FA5C21F5C51A00D54C3E /* NewFeedsViewController.swift in Sources */,
 				1214142D21FC371B00EBAA3A /* Post.swift in Sources */,
 				1214142621F997D700EBAA3A /* NewFeedsViewType.swift in Sources */,

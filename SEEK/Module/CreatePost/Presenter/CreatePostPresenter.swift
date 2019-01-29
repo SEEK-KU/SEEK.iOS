@@ -1,5 +1,5 @@
 //
-//  NewPostPresenter.swift
+//  CreatePostPresenter.swift
 //  SEEK
 //
 //  Created by oatThanut on 21/1/19.

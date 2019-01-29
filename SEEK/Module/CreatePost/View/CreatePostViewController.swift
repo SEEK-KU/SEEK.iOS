@@ -1,5 +1,5 @@
 //
-//  NewPostViewController.swift
+//  CreatePostViewController.swift
 //  SEEK
 //
 //  Created by oatThanut on 21/1/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewPostViewController: UIViewController {
+class CreatePostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
