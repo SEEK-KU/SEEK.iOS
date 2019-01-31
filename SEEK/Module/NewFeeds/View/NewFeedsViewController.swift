@@ -60,7 +60,8 @@ class NewFeedsViewController: UIViewController, NewFeedsViewType
     {
         presenter
             .postsObservable
-            .do( onNext: { [unowned self] in self.collectionView.postsBehaviorRelay.accept($0) })
+            .do(onNext: { [unowned self] in self.postsBehaviorRelay.accept($0) })
+            .do( onNext: { [unowned self] in self.collectionView.rx.postsBehaviorRelay.accept($0) })
             .subscribe(
                 onNext: { [weak self] _ in
                     self?.collectionView.reloadData() })
@@ -87,14 +88,17 @@ class NewFeedsViewController: UIViewController, NewFeedsViewType
         collectionView.refreshControl = refreshControl
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "navigateToPost"
+        {
+            guard let postViewController:UIViewController = segue.destination as? PostViewController else { return }
+            guard let cell = sender as? PostCollectionViewCell else { return }
+            guard let indexPath = self.collectionView!.indexPath(for: cell)?.item else { return }
+            postViewController.title = self.postsBehaviorRelay.value[indexPath]?.title
+//            postViewController.presenter = 
+        }
+        
     }
-    */
 
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
-import RxSwift
 import RxCocoa
+import RxSwift
 import Moya
 import UIKit
 

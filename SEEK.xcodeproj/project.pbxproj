@@ -20,6 +20,11 @@
 		1214142621F997D700EBAA3A /* NewFeedsViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142521F997D700EBAA3A /* NewFeedsViewType.swift */; };
 		1214142A21FC0C2200EBAA3A /* DictionaryDecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142921FC0C2200EBAA3A /* DictionaryDecodableType.swift */; };
 		1214142D21FC371B00EBAA3A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142C21FC371B00EBAA3A /* Post.swift */; };
+		1214143322004EAF00EBAA3A /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214143222004EAF00EBAA3A /* PostViewController.swift */; };
+		121414352200902200EBAA3A /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121414342200902200EBAA3A /* OrderListView.swift */; };
+		1214143A2201E5AA00EBAA3A /* PostViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121414392201E5AA00EBAA3A /* PostViewType.swift */; };
+		1214143C2201E5BD00EBAA3A /* PostPresenterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214143B2201E5BD00EBAA3A /* PostPresenterType.swift */; };
+		1214143F2201E5D300EBAA3A /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214143E2201E5D300EBAA3A /* PostPresenter.swift */; };
 		1281FA5C21F5C51A00D54C3E /* NewFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA5B21F5C51A00D54C3E /* NewFeedsViewController.swift */; };
 		1281FA6721F5D80100D54C3E /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA6621F5D80100D54C3E /* CreatePostViewController.swift */; };
 		1281FA6921F5D81600D54C3E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA6821F5D81600D54C3E /* ProfileViewController.swift */; };
@@ -74,6 +79,11 @@
 		1214142521F997D700EBAA3A /* NewFeedsViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsViewType.swift; sourceTree = "<group>"; };
 		1214142921FC0C2200EBAA3A /* DictionaryDecodableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryDecodableType.swift; sourceTree = "<group>"; };
 		1214142C21FC371B00EBAA3A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		1214143222004EAF00EBAA3A /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		121414342200902200EBAA3A /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
+		121414392201E5AA00EBAA3A /* PostViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewType.swift; sourceTree = "<group>"; };
+		1214143B2201E5BD00EBAA3A /* PostPresenterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenterType.swift; sourceTree = "<group>"; };
+		1214143E2201E5D300EBAA3A /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
 		1281FA5B21F5C51A00D54C3E /* NewFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsViewController.swift; sourceTree = "<group>"; };
 		1281FA6621F5D80100D54C3E /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		1281FA6821F5D81600D54C3E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +100,7 @@
 		12D6C26021F1D8F8000B499B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12D6C26221F1D8F8000B499B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78333F333032D3EF4BE0CB2F /* Pods_SEEK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEEK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C2FBDFFACE2C7BFD43C4866 /* Pods_Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8664942FBEF39DFCF67E5C17 /* Pods-SEEK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEEK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SEEK/Pods-SEEK.debug.xcconfig"; sourceTree = "<group>"; };
 		E7B4E61FE322983E3890894E /* Pods-SEEK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEEK.release.xcconfig"; path = "Pods/Target Support Files/Pods-SEEK/Pods-SEEK.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,9 +172,46 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		1214142E220046BD00EBAA3A /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				1214143D2201E5C300EBAA3A /* Presenter */,
+				121414382201E59600EBAA3A /* Protocol */,
+				1214142F22004E7B00EBAA3A /* View */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		1214142F22004E7B00EBAA3A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1214143222004EAF00EBAA3A /* PostViewController.swift */,
+				121414342200902200EBAA3A /* OrderListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		121414382201E59600EBAA3A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1214143B2201E5BD00EBAA3A /* PostPresenterType.swift */,
+				121414392201E5AA00EBAA3A /* PostViewType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		1214143D2201E5C300EBAA3A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1214143E2201E5D300EBAA3A /* PostPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		1281FA4F21F55F8F00D54C3E /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				1214142E220046BD00EBAA3A /* Post */,
 				1281FA5821F5C4CC00D54C3E /* NewFeeds */,
 				1281FA5A21F5C4DF00D54C3E /* CreatePost */,
 				1281FA5921F5C4D700D54C3E /* Profile */,
@@ -315,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				78333F333032D3EF4BE0CB2F /* Pods_SEEK.framework */,
+				7C2FBDFFACE2C7BFD43C4866 /* Pods_Shared.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -507,14 +556,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1214143F2201E5D300EBAA3A /* PostPresenter.swift in Sources */,
 				12D6C25921F1D8F7000B499B /* RootTabBarViewController.swift in Sources */,
 				1214142421F9978A00EBAA3A /* NewFeedsPresenterType.swift in Sources */,
 				1281FA6721F5D80100D54C3E /* CreatePostViewController.swift in Sources */,
 				1281FA6921F5D81600D54C3E /* ProfileViewController.swift in Sources */,
+				121414352200902200EBAA3A /* OrderListView.swift in Sources */,
 				1281FA7621F5FDBA00D54C3E /* NewFeedsPresenter.swift in Sources */,
+				1214143A2201E5AA00EBAA3A /* PostViewType.swift in Sources */,
 				12D6C25721F1D8F7000B499B /* AppDelegate.swift in Sources */,
+				1214143C2201E5BD00EBAA3A /* PostPresenterType.swift in Sources */,
 				1214142121F81E9400EBAA3A /* Ineractor.swift in Sources */,
 				1281FA7821F5FDCD00D54C3E /* CreatePostPresenter.swift in Sources */,
+				1214143322004EAF00EBAA3A /* PostViewController.swift in Sources */,
 				1281FA5C21F5C51A00D54C3E /* NewFeedsViewController.swift in Sources */,
 				1214142D21FC371B00EBAA3A /* Post.swift in Sources */,
 				1214142621F997D700EBAA3A /* NewFeedsViewType.swift in Sources */,

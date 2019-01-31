@@ -12,7 +12,7 @@ import UIKit
 
 class NewFeedsCollectionView: UICollectionView
 {
-    public let postsBehaviorRelay = BehaviorRelay<[Post?]>(value: [])
+    fileprivate let postsBehaviorRelay = BehaviorRelay<[Post?]>(value: [])
     
     // MARK: - Initializer
     

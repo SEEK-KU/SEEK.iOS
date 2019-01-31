@@ -12,6 +12,7 @@ import Foundation
 public enum Interactor
 {
     case feeds
+    case order
 }
 
 extension Interactor: TargetType
@@ -26,6 +27,7 @@ extension Interactor: TargetType
         switch self
         {
             case .feeds: return "/feeds"
+            case .order: return "/order"
         }
     }
     
@@ -34,6 +36,7 @@ extension Interactor: TargetType
         switch self
         {
             case .feeds: return .get
+            case .order: return .get
         }
     }
     
@@ -47,6 +50,7 @@ extension Interactor: TargetType
         switch self
         {
             case .feeds: return .requestPlain
+            case .order: return .requestPlain
         }
     }
     
