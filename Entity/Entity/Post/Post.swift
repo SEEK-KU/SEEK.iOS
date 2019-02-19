@@ -1,6 +1,6 @@
 //
 //  Post.swift
-//  SEEK
+//  Entity
 //
 //  Created by oatThanut on 26/1/19.
 //  Copyright © 2019 oatThanut. All rights reserved.

@@ -7,4 +7,10 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:APIGatewayService/APIGatewayService.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Interactor/Interactor.xcodeproj">
+   </FileRef>
 </Workspace>

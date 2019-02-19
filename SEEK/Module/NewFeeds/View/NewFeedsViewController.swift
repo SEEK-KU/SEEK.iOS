@@ -6,6 +6,7 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
 import RxSwift
 import RxCocoa
 import UIKit
@@ -78,8 +79,7 @@ class NewFeedsViewController: UIViewController, NewFeedsViewType
             .flatMap { [unowned self] in
                 self.presenter
                     .loadNewFeeds()
-                    .asObservable()
-                    .catchErrorJustReturn(()) }
+                    .catchErrorJustReturn([]) }
             .subscribe(
                 onNext: { _ in refreshControl.endRefreshing() },
                 onError: { _ in refreshControl.endRefreshing() })
@@ -92,13 +92,17 @@ class NewFeedsViewController: UIViewController, NewFeedsViewType
     {
         if segue.identifier == "navigateToPost"
         {
-            guard let postViewController:UIViewController = segue.destination as? PostViewController else { return }
+            guard let postViewController:PostViewController = segue.destination as? PostViewController else { return }
+            
             guard let cell = sender as? PostCollectionViewCell else { return }
+            
             guard let indexPath = self.collectionView!.indexPath(for: cell)?.item else { return }
-            postViewController.title = self.postsBehaviorRelay.value[indexPath]?.title
-//            postViewController.presenter = 
+            
+            let post = self.postsBehaviorRelay.value[indexPath]
+            
+            postViewController.title = post?.title
+            postViewController.presenter = PostPresenter(postId: post?.postId ?? "")
         }
-        
     }
 
 }

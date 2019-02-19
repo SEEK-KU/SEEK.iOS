@@ -15,11 +15,8 @@
 		1214141921F6F4C200EBAA3A /* BuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214141521F6F4C200EBAA3A /* BuilderType.swift */; };
 		1214141A21F6F4C200EBAA3A /* RouterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214141621F6F4C200EBAA3A /* RouterType.swift */; };
 		1214141E21F6F58900EBAA3A /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214141D21F6F58900EBAA3A /* Shared.swift */; };
-		1214142121F81E9400EBAA3A /* Ineractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142021F81E9400EBAA3A /* Ineractor.swift */; };
 		1214142421F9978A00EBAA3A /* NewFeedsPresenterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142321F9978A00EBAA3A /* NewFeedsPresenterType.swift */; };
 		1214142621F997D700EBAA3A /* NewFeedsViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142521F997D700EBAA3A /* NewFeedsViewType.swift */; };
-		1214142A21FC0C2200EBAA3A /* DictionaryDecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142921FC0C2200EBAA3A /* DictionaryDecodableType.swift */; };
-		1214142D21FC371B00EBAA3A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214142C21FC371B00EBAA3A /* Post.swift */; };
 		1214143322004EAF00EBAA3A /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214143222004EAF00EBAA3A /* PostViewController.swift */; };
 		121414352200902200EBAA3A /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121414342200902200EBAA3A /* OrderListView.swift */; };
 		1214143A2201E5AA00EBAA3A /* PostViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121414392201E5AA00EBAA3A /* PostViewType.swift */; };
@@ -33,6 +30,12 @@
 		1281FA7621F5FDBA00D54C3E /* NewFeedsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA7521F5FDBA00D54C3E /* NewFeedsPresenter.swift */; };
 		1281FA7821F5FDCD00D54C3E /* CreatePostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA7721F5FDCD00D54C3E /* CreatePostPresenter.swift */; };
 		1281FA7A21F5FDE100D54C3E /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA7921F5FDE100D54C3E /* ProfilePresenter.swift */; };
+		12D58DF5221BE9FE003827BA /* APIGatewayService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F9CA4D221818D8002E94B0 /* APIGatewayService.framework */; };
+		12D58DF6221BEA03003827BA /* Interactor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F9CA6D2218276D002E94B0 /* Interactor.framework */; };
+		12D58DF7221BEA0A003827BA /* Entity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D58DE8221BCDB2003827BA /* Entity.framework */; };
+		12D58DF8221BEA51003827BA /* APIGatewayService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12F9CA4D221818D8002E94B0 /* APIGatewayService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		12D58DF9221BEA51003827BA /* Entity.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12D58DE8221BCDB2003827BA /* Entity.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		12D58DFA221BEA51003827BA /* Interactor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12F9CA6D2218276D002E94B0 /* Interactor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		12D6C25721F1D8F7000B499B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D6C25621F1D8F7000B499B /* AppDelegate.swift */; };
 		12D6C25921F1D8F7000B499B /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D6C25821F1D8F7000B499B /* RootTabBarViewController.swift */; };
 		12D6C25C21F1D8F7000B499B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D6C25A21F1D8F7000B499B /* Main.storyboard */; };
@@ -49,6 +52,48 @@
 			remoteGlobalIDString = 1214140421F6F48100EBAA3A;
 			remoteInfo = Shared;
 		};
+		12D58DE7221BCDB2003827BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12D58DE3221BCDB1003827BA /* Entity.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 12D58DD8221BCDB1003827BA;
+			remoteInfo = Entity;
+		};
+		12D58DEE221BD547003827BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12F9CA682218276C002E94B0 /* Interactor.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 12F9CA5C2218276C002E94B0;
+			remoteInfo = Interactor;
+		};
+		12D58DF0221BD584003827BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12D58DE3221BCDB1003827BA /* Entity.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 12D58DD7221BCDB1003827BA;
+			remoteInfo = Entity;
+		};
+		12F9CA4C221818D8002E94B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12F9CA48221818D6002E94B0 /* APIGatewayService.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 12F9CA3D221818D6002E94B0;
+			remoteInfo = APIGatewayService;
+		};
+		12F9CA4E221818E5002E94B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12F9CA48221818D6002E94B0 /* APIGatewayService.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 12F9CA3C221818D6002E94B0;
+			remoteInfo = APIGatewayService;
+		};
+		12F9CA6C2218276D002E94B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12F9CA682218276C002E94B0 /* Interactor.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 12F9CA5D2218276C002E94B0;
+			remoteInfo = Interactor;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +103,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				12D58DF8221BEA51003827BA /* APIGatewayService.framework in Embed Frameworks */,
+				12D58DF9221BEA51003827BA /* Entity.framework in Embed Frameworks */,
+				12D58DFA221BEA51003827BA /* Interactor.framework in Embed Frameworks */,
 				1214140D21F6F48100EBAA3A /* Shared.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -74,11 +122,8 @@
 		1214141521F6F4C200EBAA3A /* BuilderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuilderType.swift; sourceTree = "<group>"; };
 		1214141621F6F4C200EBAA3A /* RouterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterType.swift; sourceTree = "<group>"; };
 		1214141D21F6F58900EBAA3A /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
-		1214142021F81E9400EBAA3A /* Ineractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ineractor.swift; sourceTree = "<group>"; };
 		1214142321F9978A00EBAA3A /* NewFeedsPresenterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsPresenterType.swift; sourceTree = "<group>"; };
 		1214142521F997D700EBAA3A /* NewFeedsViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsViewType.swift; sourceTree = "<group>"; };
-		1214142921FC0C2200EBAA3A /* DictionaryDecodableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryDecodableType.swift; sourceTree = "<group>"; };
-		1214142C21FC371B00EBAA3A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1214143222004EAF00EBAA3A /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		121414342200902200EBAA3A /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		121414392201E5AA00EBAA3A /* PostViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewType.swift; sourceTree = "<group>"; };
@@ -92,6 +137,7 @@
 		1281FA7521F5FDBA00D54C3E /* NewFeedsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsPresenter.swift; sourceTree = "<group>"; };
 		1281FA7721F5FDCD00D54C3E /* CreatePostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostPresenter.swift; sourceTree = "<group>"; };
 		1281FA7921F5FDE100D54C3E /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		12D58DE3221BCDB1003827BA /* Entity.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Entity.xcodeproj; path = Entity/Entity.xcodeproj; sourceTree = "<group>"; };
 		12D6C25321F1D8F7000B499B /* SEEK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEEK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D6C25621F1D8F7000B499B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12D6C25821F1D8F7000B499B /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +145,8 @@
 		12D6C25D21F1D8F8000B499B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12D6C26021F1D8F8000B499B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12D6C26221F1D8F8000B499B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12F9CA48221818D6002E94B0 /* APIGatewayService.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APIGatewayService.xcodeproj; path = APIGatewayService/APIGatewayService.xcodeproj; sourceTree = "<group>"; };
+		12F9CA682218276C002E94B0 /* Interactor.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Interactor.xcodeproj; path = Interactor/Interactor.xcodeproj; sourceTree = "<group>"; };
 		78333F333032D3EF4BE0CB2F /* Pods_SEEK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEEK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2FBDFFACE2C7BFD43C4866 /* Pods_Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8664942FBEF39DFCF67E5C17 /* Pods-SEEK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEEK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SEEK/Pods-SEEK.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +165,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12D58DF7221BEA0A003827BA /* Entity.framework in Frameworks */,
+				12D58DF6221BEA03003827BA /* Interactor.framework in Frameworks */,
+				12D58DF5221BE9FE003827BA /* APIGatewayService.framework in Frameworks */,
 				858B813B2DE41AECD130EBE3 /* Pods_SEEK.framework in Frameworks */,
 				1214140C21F6F48100EBAA3A /* Shared.framework in Frameworks */,
 			);
@@ -139,20 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				1214141521F6F4C200EBAA3A /* BuilderType.swift */,
-				1214142921FC0C2200EBAA3A /* DictionaryDecodableType.swift */,
 				1214141421F6F4C200EBAA3A /* PresenterType.swift */,
 				1214141621F6F4C200EBAA3A /* RouterType.swift */,
 				1214141321F6F4C200EBAA3A /* ViewType.swift */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		1214141F21F81E0900EBAA3A /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				1214142021F81E9400EBAA3A /* Ineractor.swift */,
-			);
-			path = Interactor;
 			sourceTree = "<group>";
 		};
 		1214142221F995F000EBAA3A /* Protocol */ = {
@@ -162,14 +204,6 @@
 				1214142521F997D700EBAA3A /* NewFeedsViewType.swift */,
 			);
 			path = Protocol;
-			sourceTree = "<group>";
-		};
-		1214142B21FC36E900EBAA3A /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				1214142C21FC371B00EBAA3A /* Post.swift */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		1214142E220046BD00EBAA3A /* Post */ = {
@@ -314,9 +348,20 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		12D58DE4221BCDB1003827BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12D58DE8221BCDB2003827BA /* Entity.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		12D6C24A21F1D8F7000B499B = {
 			isa = PBXGroup;
 			children = (
+				12F9CA48221818D6002E94B0 /* APIGatewayService.xcodeproj */,
+				12D58DE3221BCDB1003827BA /* Entity.xcodeproj */,
+				12F9CA682218276C002E94B0 /* Interactor.xcodeproj */,
 				12D6C25521F1D8F7000B499B /* SEEK */,
 				1214140621F6F48100EBAA3A /* Shared */,
 				12D6C25421F1D8F7000B499B /* Products */,
@@ -341,13 +386,27 @@
 				12D6C25621F1D8F7000B499B /* AppDelegate.swift */,
 				1214141D21F6F58900EBAA3A /* Shared.swift */,
 				12D6C25D21F1D8F8000B499B /* Assets.xcassets */,
-				1214142B21FC36E900EBAA3A /* Entity */,
-				1214141F21F81E0900EBAA3A /* Interactor */,
 				1281FA5021F55F9D00D54C3E /* LaunchScreen */,
 				12D6C25A21F1D8F7000B499B /* Main.storyboard */,
 				1281FA4F21F55F8F00D54C3E /* Module */,
 			);
 			path = SEEK;
+			sourceTree = "<group>";
+		};
+		12F9CA49221818D6002E94B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12F9CA4D221818D8002E94B0 /* APIGatewayService.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		12F9CA692218276C002E94B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12F9CA6D2218276D002E94B0 /* Interactor.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		1EE8913805A2F81D17CB7477 /* Pods */ = {
@@ -414,6 +473,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				12D58DF1221BD584003827BA /* PBXTargetDependency */,
+				12D58DEF221BD547003827BA /* PBXTargetDependency */,
+				12F9CA4F221818E5002E94B0 /* PBXTargetDependency */,
 				1214140B21F6F48100EBAA3A /* PBXTargetDependency */,
 			);
 			name = SEEK;
@@ -450,6 +512,20 @@
 			mainGroup = 12D6C24A21F1D8F7000B499B;
 			productRefGroup = 12D6C25421F1D8F7000B499B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 12F9CA49221818D6002E94B0 /* Products */;
+					ProjectRef = 12F9CA48221818D6002E94B0 /* APIGatewayService.xcodeproj */;
+				},
+				{
+					ProductGroup = 12D58DE4221BCDB1003827BA /* Products */;
+					ProjectRef = 12D58DE3221BCDB1003827BA /* Entity.xcodeproj */;
+				},
+				{
+					ProductGroup = 12F9CA692218276C002E94B0 /* Products */;
+					ProjectRef = 12F9CA682218276C002E94B0 /* Interactor.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				12D6C25221F1D8F7000B499B /* SEEK */,
@@ -457,6 +533,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		12D58DE8221BCDB2003827BA /* Entity.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Entity.framework;
+			remoteRef = 12D58DE7221BCDB2003827BA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		12F9CA4D221818D8002E94B0 /* APIGatewayService.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = APIGatewayService.framework;
+			remoteRef = 12F9CA4C221818D8002E94B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		12F9CA6D2218276D002E94B0 /* Interactor.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Interactor.framework;
+			remoteRef = 12F9CA6C2218276D002E94B0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1214140321F6F48100EBAA3A /* Resources */ = {
@@ -509,7 +609,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SEEK/Pods-SEEK-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SEEK/Pods-SEEK-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -534,7 +634,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SEEK/Pods-SEEK-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SEEK/Pods-SEEK-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -548,7 +648,6 @@
 				1214141921F6F4C200EBAA3A /* BuilderType.swift in Sources */,
 				1214141A21F6F4C200EBAA3A /* RouterType.swift in Sources */,
 				1214141721F6F4C200EBAA3A /* ViewType.swift in Sources */,
-				1214142A21FC0C2200EBAA3A /* DictionaryDecodableType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,11 +665,9 @@
 				1214143A2201E5AA00EBAA3A /* PostViewType.swift in Sources */,
 				12D6C25721F1D8F7000B499B /* AppDelegate.swift in Sources */,
 				1214143C2201E5BD00EBAA3A /* PostPresenterType.swift in Sources */,
-				1214142121F81E9400EBAA3A /* Ineractor.swift in Sources */,
 				1281FA7821F5FDCD00D54C3E /* CreatePostPresenter.swift in Sources */,
 				1214143322004EAF00EBAA3A /* PostViewController.swift in Sources */,
 				1281FA5C21F5C51A00D54C3E /* NewFeedsViewController.swift in Sources */,
-				1214142D21FC371B00EBAA3A /* Post.swift in Sources */,
 				1214142621F997D700EBAA3A /* NewFeedsViewType.swift in Sources */,
 				1281FA7121F5ECE000D54C3E /* PostCollectionViewCell.swift in Sources */,
 				1281FA7A21F5FDE100D54C3E /* ProfilePresenter.swift in Sources */,
@@ -586,6 +683,21 @@
 			isa = PBXTargetDependency;
 			target = 1214140421F6F48100EBAA3A /* Shared */;
 			targetProxy = 1214140A21F6F48100EBAA3A /* PBXContainerItemProxy */;
+		};
+		12D58DEF221BD547003827BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Interactor;
+			targetProxy = 12D58DEE221BD547003827BA /* PBXContainerItemProxy */;
+		};
+		12D58DF1221BD584003827BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Entity;
+			targetProxy = 12D58DF0221BD584003827BA /* PBXContainerItemProxy */;
+		};
+		12F9CA4F221818E5002E94B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = APIGatewayService;
+			targetProxy = 12F9CA4E221818E5002E94B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -6,6 +6,8 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
+import Interactor
 import RxCocoa
 import RxSwift
 import Moya
@@ -13,65 +15,29 @@ import UIKit
 
 class NewFeedsPresenter: NewFeedsPresenterType
 {
-    let postsBehaviorRelay = BehaviorRelay<[Post?]>(value: [])
+    let postsBehaviorRelay = BehaviorRelay<[Entity.Post?]>(value: [])
     
-    var postsObservable: Observable<[Post?]> {
+    var postsObservable: Observable<[Entity.Post?]> {
         return postsBehaviorRelay.asObservable()
     }
     
     // MARK: - Interactor
     
-    let provider = MoyaProvider<Interactor>()
+    let postInteractor = Interactor.Post()
     
     // MARK: - Disposed Bag
     
     let disposeBag = DisposeBag()
     
-    func loadNewFeeds() -> Observable<Void>
+    func loadNewFeeds() -> Observable<[Entity.Post?]>
     {
-        return provider
+        return postInteractor
             .rx
-            .request(.feeds)
-            .mapJSON()
-            .asObservable()
+            .loadNewFeeds()
             .do(
-                onNext: { [unowned self] response in
-                    guard let response = (response as? [[String: Any]])?.map(Post.init) else
-                    {
-                        return
-                    }
-                    
-                    self.postsBehaviorRelay.accept(response) })
-            .map { _ in }
+                onSuccess: { [weak self] in
+                    self?.postsBehaviorRelay.accept($0) })
+            .asObservable()
     }
     
-}
-
-struct Starwar: DictionaryDecodableType, Codable, Equatable
-{
-    public let name: String?
-    
-    init?(data: [String : Any]?)
-    {
-        guard let data = data else
-        {
-            return nil
-        }
-        
-        guard data.isEmpty == false else
-        {
-            return nil
-        }
-        
-        let name = data["name"] as? String
-        
-        self.init(
-            name: name)
-    }
-    
-    public init(
-        name: String? = nil)
-    {
-        self.name = name
-    }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
 import RxCocoa
 import RxSwift
 import UIKit
@@ -21,7 +22,8 @@ class PostViewController: UIViewController, PostViewType
     @IBOutlet weak var storeNameLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     
-    public let postsBehaviorRelay = BehaviorRelay<Post?>(value: nil)
+    let postsBehaviorRelay = BehaviorRelay<Post?>(value: nil)
+    let requesterBehaviorRelay = BehaviorRelay<User?>(value: nil)
     
     // MARK: - Disposed Bag
     
@@ -29,17 +31,10 @@ class PostViewController: UIViewController, PostViewType
     
     // MARK: - Presenter
     
-    var presenter: PostPresenterType
+    var presenter: PostPresenterType? = nil
     
     required init?(coder aDecoder: NSCoder)
     {
-        self.presenter = PostPresenter()
-        
-        presenter
-            .loadPostDetail()
-            .subscribe()
-            .disposed(by: disposeBag)
-        
         super.init(coder: aDecoder)
     }
     
@@ -49,13 +44,18 @@ class PostViewController: UIViewController, PostViewType
     {
         super.viewDidLoad()
         
+        presenter?
+            .loadPostDetail()
+            .subscribe()
+            .disposed(by: disposeBag)
+        
         bindingDataWithPresenter()
         viewConfiguration()
     }
     
     func bindingDataWithPresenter()
     {
-        presenter
+        presenter?
             .postsObservable
             .filter { $0 != nil }
             .do(
@@ -65,17 +65,29 @@ class PostViewController: UIViewController, PostViewType
                 onNext: { [weak self] _ in
                      self?.viewConfiguration() })
             .disposed(by: disposeBag)
+        
+        presenter?
+            .requesterObservable
+            .filter { $0 != nil }
+            .do(
+                onNext: { [weak self] in
+                    self?.requesterBehaviorRelay.accept($0) })
+            .subscribe(
+                onNext: { [weak self] _ in
+                    self?.viewConfiguration() })
+            .disposed(by: disposeBag)
     }
     
     func viewConfiguration()
     {
-        guard let post = postsBehaviorRelay.value else
+        guard let post = postsBehaviorRelay.value,
+            let requester = requesterBehaviorRelay.value else
         {
             return
         }
         
-        print(">> \(post)")
-        nameLabel.text = post.postId
+        nameLabel.text = requester.firstname
+        
         locationLabel.text = post.location
         destinationLabel.text = post.destination
         noteLabel.text = post.note

@@ -13,5 +13,3 @@ typealias BuilderType = Shared.BuilderType
 typealias PresenterType = Shared.PresenterType
 typealias RouterType = Shared.RouterType
 typealias ViewType = Shared.ViewType
-
-typealias DictionaryDecodableType = Shared.DictionaryDecodableType

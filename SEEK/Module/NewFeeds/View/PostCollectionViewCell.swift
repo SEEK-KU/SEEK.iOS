@@ -15,7 +15,22 @@ class PostCollectionViewCell: UICollectionViewCell
         get { return TitleLabel.text ?? "" }
         set { TitleLabel.text = newValue } }
     
+    var location: String {
+        get { return locationLabel.text ?? "" }
+        set { locationLabel.text = newValue } }
+    
+    var destination: String {
+        get { return destinationLabel.text ?? "" }
+        set { destinationLabel.text = newValue } }
+    
+    var tip: String {
+        get { return tipLabel.text ?? "" }
+        set { tipLabel.text = newValue } }
+    
     @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var destinationLabel: UILabel!
+    @IBOutlet weak var tipLabel: UILabel!
     
     required public init?(coder aDecoder: NSCoder)
     {
@@ -36,5 +51,7 @@ class PostCollectionViewCell: UICollectionViewCell
         super.prepareForReuse()
         
         TitleLabel.text = ""
+        locationLabel.text = ""
+        destinationLabel.text = ""
     }
 }

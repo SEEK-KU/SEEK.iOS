@@ -6,6 +6,7 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
 import RxCocoa
 import RxSwift
 import UIKit
@@ -52,8 +53,14 @@ extension NewFeedsCollectionView: UICollectionViewDataSource
     {
         let cell: PostCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewFeedsCollectionViewCell", for: indexPath) as! PostCollectionViewCell
         
-        cell.title = postsBehaviorRelay.value[indexPath.item]?.title ?? ""
-        
+        if let post = postsBehaviorRelay.value[indexPath.item]
+        {
+            cell.title = post.title ?? ""
+            cell.location = post.location ?? ""
+            cell.destination = post.destination ?? ""
+            cell.tip = "\(post.tip ?? 0)"
+        }
+            
         return cell
     }
     
@@ -62,9 +69,11 @@ extension NewFeedsCollectionView: UICollectionViewDataSource
 
 extension NewFeedsCollectionView: UICollectionViewDelegateFlowLayout
 {
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize(width: collectionView.bounds.width - ( 16.0 * 2 ), height: 100.0)
+        return CGSize(width: collectionView.bounds.width - ( 16.0 * 2 ), height: 160)
     }
 }
 

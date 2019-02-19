@@ -10,5 +10,5 @@ import UIKit
 
 protocol PostViewType: ViewType
 {
-    var presenter: PostPresenterType { get }
+    var presenter: PostPresenterType? { get }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
 import RxSwift
 import UIKit
 
@@ -13,5 +14,5 @@ protocol NewFeedsPresenterType: PresenterType
 {
     var postsObservable: Observable<[Post?]> { get }
     
-    func loadNewFeeds() -> Observable<Void>
+    func loadNewFeeds() -> Observable<[Post?]>
 }

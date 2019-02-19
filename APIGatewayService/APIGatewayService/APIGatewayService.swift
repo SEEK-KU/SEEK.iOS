@@ -1,33 +1,34 @@
 //
-//  Ineractor.swift
-//  SEEK
+//  APIGatewayService.swift
+//  APIGatewayService
 //
-//  Created by oatThanut on 23/1/19.
+//  Created by oatThanut on 13/2/19.
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
 import Moya
 import Foundation
 
-public enum Interactor
+public enum APIGatewayService
 {
     case feeds
-    case order
+    case order(orderId: String)
 }
 
-extension Interactor: TargetType
+extension APIGatewayService: TargetType
 {
     public var baseURL: URL
     {
         return URL(string: "https://private-029336-seek3.apiary-mock.com")!
+        //        return URL(string: "http://localhost:3000")!
     }
     
     public var path: String
     {
         switch self
         {
-            case .feeds: return "/feeds"
-            case .order: return "/order"
+        case .feeds: return "/feeds"
+        case .order(let orderId): return "/order/info/\(orderId)"
         }
     }
     
@@ -35,8 +36,8 @@ extension Interactor: TargetType
     {
         switch self
         {
-            case .feeds: return .get
-            case .order: return .get
+        case .feeds: return .get
+        case .order: return .get
         }
     }
     
@@ -49,8 +50,8 @@ extension Interactor: TargetType
     {
         switch self
         {
-            case .feeds: return .requestPlain
-            case .order: return .requestPlain
+        case .feeds: return .requestPlain
+        case .order: return .requestPlain
         }
     }
     

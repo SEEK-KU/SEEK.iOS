@@ -6,6 +6,8 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
+import Interactor
 import RxCocoa
 import RxSwift
 import Moya
@@ -13,34 +15,43 @@ import UIKit
 
 class PostPresenter: PostPresenterType
 {
-    let postsBehaviorRelay = BehaviorRelay<Post?>(value: nil)
+    let postsBehaviorRelay = BehaviorRelay<Entity.Post?>(value: nil)
+    let requesterBehaviorRelay = BehaviorRelay<Entity.User?>(value: nil)
     
-    var postsObservable: Observable<Post?> {
+    var postsObservable: Observable<Entity.Post?> {
         return postsBehaviorRelay.asObservable()
     }
     
+    var requesterObservable: Observable<Entity.User?> {
+        return requesterBehaviorRelay.asObservable()
+    }
+    
+    var postId = ""
+    
     // MARK: - Interactor
     
-    let provider = MoyaProvider<Interactor>()
+    let postInteractor = Interactor.Post()
     
     // MARK: - Disposed Bag
     
     let disposeBag = DisposeBag()
     
+    required init(
+        postId: String)
+    {
+        self.postId = postId
+    }
+    
     func loadPostDetail() -> Observable<Void>
     {
-        return provider
+        return postInteractor
             .rx
-            .request(.order)
-            .mapJSON()
-            .asObservable()
-            .do(onNext: { [unowned self] response in
-                guard let response = (response as? [String: Any]).map(Post.init) else
-                {
-                    return
-                }
-                
-                self.postsBehaviorRelay.accept(response) })
+            .viewPost(orderId: postId)
+            .do(
+                onSuccess: { [weak self] in
+                    self?.postsBehaviorRelay.accept($0?.post)
+                    self?.requesterBehaviorRelay.accept($0?.requester) })
             .map { _ in }
+            .asObservable()
     }
 }

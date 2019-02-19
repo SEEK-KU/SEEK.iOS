@@ -20,3 +20,22 @@ target 'SEEK' do
   pod 'SnapKit', '~> 4.0'
 
 end
+
+target 'APIGatewayService' do
+
+  project 'APIGatewayService/APIGatewayService.xcodeproj'
+
+  pod 'Moya', '~> 10.0'
+  pod 'Moya/RxSwift', '~> 10.0'
+
+end
+
+target 'Interactor' do
+
+  project 'Interactor/Interactor.xcodeproj'
+
+  pod 'Moya', '~> 10.0'
+  pod 'Moya/RxSwift', '~> 10.0'
+  pod 'RxSwift',    '~> 4.0'
+
+end
