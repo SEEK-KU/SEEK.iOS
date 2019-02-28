@@ -628,7 +628,7 @@
         <!--Add New Post-->
         <scene sceneID="6Dp-Ge-Rge">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2d0-O5-cdV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CreatePost" automaticallyAdjustsScrollViewInsets="NO" id="2d0-O5-cdV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Add New Post" id="uBx-Id-0ht"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hs7-ja-U1T">

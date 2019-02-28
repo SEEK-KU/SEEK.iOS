@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12E0C0AD22210CF500DA21FF /* APIGatewayService.Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0C0AC22210CF500DA21FF /* APIGatewayService.Target.swift */; };
 		12F9CA42221818D6002E94B0 /* APIGatewayService.h in Headers */ = {isa = PBXBuildFile; fileRef = 12F9CA40221818D6002E94B0 /* APIGatewayService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12F9CA51221818FB002E94B0 /* APIGatewayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9CA50221818FB002E94B0 /* APIGatewayService.swift */; };
 		A0964706D40273199A3BC895 /* Pods_APIGatewayService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C62EE4004FB45571D5CF59B9 /* Pods_APIGatewayService.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12E0C0AC22210CF500DA21FF /* APIGatewayService.Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGatewayService.Target.swift; sourceTree = "<group>"; };
 		12F9CA3D221818D6002E94B0 /* APIGatewayService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APIGatewayService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F9CA40221818D6002E94B0 /* APIGatewayService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIGatewayService.h; sourceTree = "<group>"; };
 		12F9CA41221818D6002E94B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				12F9CA40221818D6002E94B0 /* APIGatewayService.h */,
 				12F9CA50221818FB002E94B0 /* APIGatewayService.swift */,
+				12E0C0AC22210CF500DA21FF /* APIGatewayService.Target.swift */,
 				12F9CA41221818D6002E94B0 /* Info.plist */,
 			);
 			path = APIGatewayService;
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12F9CA51221818FB002E94B0 /* APIGatewayService.swift in Sources */,
+				12E0C0AD22210CF500DA21FF /* APIGatewayService.Target.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

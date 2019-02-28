@@ -9,14 +9,11 @@
 import APIGatewayService
 import Entity
 import Foundation
-import Moya
 import RxSwift
 
 public class Post
 {
-    // MARK: - Provider
-    
-    let provider = MoyaProvider<APIGatewayService>()
+    let apiGatewayService = APIGatewayService()
     
     public init()
     {
@@ -31,10 +28,9 @@ extension Reactive where Base: Post
     public func loadNewFeeds() -> Single<[Entity.Post?]>
     {
         return base
-            .provider
+            .apiGatewayService
             .rx
-            .request(.feeds)
-            .mapJSON()
+            .loadNewFeeds()
             .map { ($0 as! [[String: Any]]) }
             .map { $0.map(Entity.Post.init) }
     }
@@ -42,11 +38,9 @@ extension Reactive where Base: Post
     public func viewPost(orderId: String) -> Single<PostDetail?>
     {
         return base
-            .provider
+            .apiGatewayService
             .rx
-            .request(
-                .order(orderId: orderId))
-            .mapJSON()
+            .viewPost(orderId: orderId)
             .map { $0 as? [String: Any] ?? [:] }
             .map { Entity.PostDetail.init(data: $0)  }
     }

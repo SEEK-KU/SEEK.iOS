@@ -6,57 +6,41 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
-import Moya
 import Foundation
+import Moya
+import RxSwift
 
-public enum APIGatewayService
+public class APIGatewayService
 {
-    case feeds
-    case order(orderId: String)
+    fileprivate let provider: MoyaProvider<Target>
+    
+    public init()
+    {
+        self.provider = MoyaProvider<Target>()
+    }
 }
 
-extension APIGatewayService: TargetType
+
+extension APIGatewayService: ReactiveCompatible { }
+
+public extension Reactive where Base: APIGatewayService
 {
-    public var baseURL: URL
+    public func loadNewFeeds() -> Single<Any>
     {
-        return URL(string: "https://private-029336-seek3.apiary-mock.com")!
-        //        return URL(string: "http://localhost:3000")!
+        return base
+            .provider
+            .rx
+            .request(.feeds)
+            .mapJSON()
     }
     
-    public var path: String
+    public func viewPost(orderId: String) -> Single<Any>
     {
-        switch self
-        {
-        case .feeds: return "/feeds"
-        case .order(let orderId): return "/order/info/\(orderId)"
-        }
-    }
-    
-    public var method: Moya.Method
-    {
-        switch self
-        {
-        case .feeds: return .get
-        case .order: return .get
-        }
-    }
-    
-    public var sampleData: Data
-    {
-        return Data()
-    }
-    
-    public var task: Task
-    {
-        switch self
-        {
-        case .feeds: return .requestPlain
-        case .order: return .requestPlain
-        }
-    }
-    
-    public var headers: [String : String]?
-    {
-        return nil
+        return base
+            .provider
+            .rx
+            .request(
+                .order(orderId: orderId))
+            .mapJSON()
     }
 }

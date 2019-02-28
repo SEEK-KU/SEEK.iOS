@@ -6,14 +6,31 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 class CreatePostViewController: UIViewController {
 
+//    @IBOutlet weak var closeBarButtonItem: UIBarButtonItem!
+    
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        title = "Post"
+        
+//        closeBarButtonItem
+//            .rx
+//            .tap
+//            .subscribe(
+//                onNext: { [weak self] in
+//                    self?.dismiss(animated: true, completion: nil)
+//            } )
+//            .disposed(by: disposeBag)
     }
     
 
