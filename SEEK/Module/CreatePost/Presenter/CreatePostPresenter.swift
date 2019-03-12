@@ -6,4 +6,22 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
-import Foundation
+import Interactor
+import UIKit
+
+class CreatePostPresenter: CreatePostPresenterType
+{
+    // MARK: - Interactor
+    
+    let postInteractor = Interactor.Post()
+    
+    required init()
+    {
+        
+    }
+    
+    func createNewPost()
+    {
+//        postInteractor.rx.
+    }
+}

@@ -9,16 +9,30 @@ inhibit_all_warnings!
 
 workspace 'SEEK.xcworkspace'
 
-target 'SEEK' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+abstract_target 'App' do
 
-  pod 'IQKeyboardManager'
-  pod 'Moya', '~> 10.0'
-  pod 'Moya/RxSwift', '~> 10.0'
   pod 'RxCocoa',    '~> 4.0'
   pod 'RxSwift',    '~> 4.0'
-  pod 'SnapKit', '~> 4.0'
 
+  target 'SEEK' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+
+    project 'SEEK.xcodeproj'
+
+    pod 'ActionSheetPicker-3.0'
+    pod 'IQKeyboardManager'
+    pod 'Moya', '~> 10.0'
+    pod 'Moya/RxSwift', '~> 10.0'
+    pod 'SnapKit', '~> 4.0'
+    
+  end
+
+  target 'Shared' do
+
+    project 'SEEK.xcodeproj'
+
+    pod 'SnapKit', '~> 4.0'
+  end
 end
 
 target 'APIGatewayService' do
