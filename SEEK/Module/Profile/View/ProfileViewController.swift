@@ -21,21 +21,21 @@ class ProfileViewController: UIViewController
     
     private let facultyDetailLabel = TitleWithDisclosureView(
         title: "วิศวกรรมคอมพิวเตอร์",
-        icon: #imageLiteral(resourceName: "icon-close"),
+        icon: #imageLiteral(resourceName: "icon-faculty"),
         shouldShowDisclosureIcon: false)
     private let phoneNumberLabel = TitleWithDisclosureView(
         title: "088-888-8888",
-        icon: #imageLiteral(resourceName: "icon-close"),
+        icon: #imageLiteral(resourceName: "icon-telephone"),
         shouldShowDisclosureIcon: false)
     private let transactionDetailLabel = TitleWithDisclosureView(
         title: "ข้อมูลการเงิน",
-        icon: #imageLiteral(resourceName: "icon-close") )
+        icon: #imageLiteral(resourceName: "icon-payment") )
     private let myOrderLabel = TitleWithDisclosureView(
         title: "คำขอของฉัน",
-        icon: #imageLiteral(resourceName: "icon-close") )
+        icon: #imageLiteral(resourceName: "icon-my-request") )
     private let myDeliverLabel = TitleWithDisclosureView(
         title: "การส่งของฉัน",
-        icon: #imageLiteral(resourceName: "icon-close") )
+        icon: #imageLiteral(resourceName: "icon-my-deliver") )
     
     // MARK: - Disposed bag
     

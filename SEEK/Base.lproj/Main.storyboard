@@ -928,7 +928,7 @@
         <scene sceneID="Sqp-j6-f9w">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ePy-b7-AHV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="NewFeeds" id="r4F-kR-0ff"/>
+                    <tabBarItem key="tabBarItem" title="NewFeeds" image="icon-feeds" id="r4F-kR-0ff"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WwJ-78-Eo8">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -947,7 +947,7 @@
         <scene sceneID="6Dp-Ge-Rge">
             <objects>
                 <navigationController storyboardIdentifier="CreatePost" automaticallyAdjustsScrollViewInsets="NO" id="2d0-O5-cdV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Add New Post" id="uBx-Id-0ht"/>
+                    <tabBarItem key="tabBarItem" title="Add New Post" image="icon-add-post" id="uBx-Id-0ht"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hs7-ja-U1T">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -966,7 +966,7 @@
         <scene sceneID="4T0-ee-8r5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mia-mL-kKk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="RHh-11-ksu"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="icon-profile" id="RHh-11-ksu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uup-ob-1a0">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -983,6 +983,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon-add-post" width="27" height="27"/>
         <image name="icon-close" width="24" height="24"/>
+        <image name="icon-feeds" width="27" height="27"/>
+        <image name="icon-profile" width="27" height="27"/>
     </resources>
 </document>
