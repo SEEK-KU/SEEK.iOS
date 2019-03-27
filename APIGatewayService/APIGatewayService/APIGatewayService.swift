@@ -16,7 +16,7 @@ public class APIGatewayService
     
     public init()
     {
-        self.provider = MoyaProvider<Target>()
+        self.provider = MoyaProvider<Target>(plugins: [NetworkLoggerPlugin(verbose: true)])
     }
 }
 
@@ -41,6 +41,20 @@ public extension Reactive where Base: APIGatewayService
             .rx
             .request(
                 .order(orderId: orderId))
+            .mapJSON()
+    }
+}
+
+public extension Reactive where Base: APIGatewayService
+{
+    public func loadUserProfile() -> Single<Any>
+    {
+        let userId = "5810545947"
+        
+        return base
+            .provider
+            .rx
+            .request(.user(userId: userId))
             .mapJSON()
     }
 }

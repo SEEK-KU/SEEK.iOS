@@ -96,7 +96,7 @@ class NewFeedsViewController: UIViewController, NewFeedsViewType
             
             guard let cell = sender as? PostCollectionViewCell else { return }
             
-            guard let indexPath = self.collectionView!.indexPath(for: cell)?.item else { return }
+            guard let indexPath = self.collectionView?.indexPathsForSelectedItems?.first?.item else { return }
             
             let post = self.postsBehaviorRelay.value[indexPath]
             

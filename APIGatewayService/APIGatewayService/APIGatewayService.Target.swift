@@ -15,6 +15,7 @@ extension APIGatewayService
     {
         case feeds
         case order(orderId: String)
+        case user(userId: String)
     }
 }
 
@@ -22,16 +23,17 @@ extension APIGatewayService.Target: TargetType
 {
     public var baseURL: URL
     {
-        return URL(string: "https://private-029336-seek3.apiary-mock.com")!
-        //        return URL(string: "http://localhost:3000")!
+//        return URL(string: "https://private-029336-seek3.apiary-mock.com")!
+            return URL(string: "http://localhost:3000")!
     }
     
     public var path: String
     {
         switch self
         {
-        case .feeds: return "/feeds"
-        case .order(let orderId): return "/order/info/\(orderId)"
+            case .feeds: return "/feed"
+            case .order(let orderId): return "/order/info/\(orderId)"
+            case .user(let userId): return "/user/\(userId)"
         }
     }
     
@@ -39,8 +41,9 @@ extension APIGatewayService.Target: TargetType
     {
         switch self
         {
-        case .feeds: return .get
-        case .order: return .get
+            case .feeds,
+                 .order,
+                 .user: return .get
         }
     }
     
@@ -53,8 +56,9 @@ extension APIGatewayService.Target: TargetType
     {
         switch self
         {
-        case .feeds: return .requestPlain
-        case .order: return .requestPlain
+            case .feeds,
+                 .order,
+                 .user: return .requestPlain
         }
     }
     

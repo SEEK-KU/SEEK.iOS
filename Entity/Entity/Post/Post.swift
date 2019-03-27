@@ -77,9 +77,9 @@ extension String
     static var postId: String { return "postId" }
     static var title: String { return "title" }
     static var location: String { return "location" }
-    static var destination: String { return "destination" }
+    static var destination: String { return "shippingPoint" }
     static var note: String { return "note" }
-    static var storeName: String { return "place" }
+    static var storeName: String { return "storeName" }
     static var status: String { return "status" }
     static var tip: String { return "tip" }
 }

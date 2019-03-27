@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1257E3712240D2B100CBE0E6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1257E3702240D2B100CBE0E6 /* Profile.swift */; };
 		12D58DFD221BEB10003827BA /* APIGatewayService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D58DFC221BEB10003827BA /* APIGatewayService.framework */; };
 		12D58DFF221BEB10003827BA /* Entity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D58DFE221BEB10003827BA /* Entity.framework */; };
 		12F9CA622218276C002E94B0 /* Interactor.h in Headers */ = {isa = PBXBuildFile; fileRef = 12F9CA602218276C002E94B0 /* Interactor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		1253C6066689831ABAB64196 /* Pods-Interactor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Interactor.debug.xcconfig"; path = "Target Support Files/Pods-Interactor/Pods-Interactor.debug.xcconfig"; sourceTree = "<group>"; };
+		1257E3702240D2B100CBE0E6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		12D58DFC221BEB10003827BA /* APIGatewayService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APIGatewayService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D58DFE221BEB10003827BA /* Entity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Entity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F9CA5D2218276C002E94B0 /* Interactor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interactor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				12F9CA6F22182AE4002E94B0 /* Post.swift */,
+				1257E3702240D2B100CBE0E6 /* Profile.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12F9CA7022182AE4002E94B0 /* Post.swift in Sources */,
+				1257E3712240D2B100CBE0E6 /* Profile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,10 +64,10 @@ public struct User: DictionaryDecodableType, Codable, Equatable
 
 extension String
 {
-    static var userId: String { return "userId" }
+    static var userId: String { return "stdId" }
     static var firstname: String { return "firstname" }
     static var lastname: String { return "lastname" }
     static var faculty: String { return "faculty" }
-    static var telphone: String { return "telphone" }
+    static var telphone: String { return "telephone" }
     static var image: String { return "image" }
 }

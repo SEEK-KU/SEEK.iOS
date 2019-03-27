@@ -22,6 +22,8 @@
 		1214143A2201E5AA00EBAA3A /* PostViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121414392201E5AA00EBAA3A /* PostViewType.swift */; };
 		1214143C2201E5BD00EBAA3A /* PostPresenterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214143B2201E5BD00EBAA3A /* PostPresenterType.swift */; };
 		1214143F2201E5D300EBAA3A /* PostPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1214143E2201E5D300EBAA3A /* PostPresenter.swift */; };
+		1257E33B2237C35500CBE0E6 /* TitleWithDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1257E33A2237C35500CBE0E6 /* TitleWithDisclosureView.swift */; };
+		1257E36F2240CC4600CBE0E6 /* ProfilePresenterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1257E36E2240CC4600CBE0E6 /* ProfilePresenterType.swift */; };
 		1281FA5C21F5C51A00D54C3E /* NewFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA5B21F5C51A00D54C3E /* NewFeedsViewController.swift */; };
 		1281FA6721F5D80100D54C3E /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA6621F5D80100D54C3E /* CreatePostViewController.swift */; };
 		1281FA6921F5D81600D54C3E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281FA6821F5D81600D54C3E /* ProfileViewController.swift */; };
@@ -133,6 +135,8 @@
 		121414392201E5AA00EBAA3A /* PostViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewType.swift; sourceTree = "<group>"; };
 		1214143B2201E5BD00EBAA3A /* PostPresenterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenterType.swift; sourceTree = "<group>"; };
 		1214143E2201E5D300EBAA3A /* PostPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPresenter.swift; sourceTree = "<group>"; };
+		1257E33A2237C35500CBE0E6 /* TitleWithDisclosureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithDisclosureView.swift; sourceTree = "<group>"; };
+		1257E36E2240CC4600CBE0E6 /* ProfilePresenterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenterType.swift; sourceTree = "<group>"; };
 		1281FA5B21F5C51A00D54C3E /* NewFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsViewController.swift; sourceTree = "<group>"; };
 		1281FA6621F5D80100D54C3E /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		1281FA6821F5D81600D54C3E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				1214140821F6F48100EBAA3A /* Info.plist */,
 				1214141221F6F4C200EBAA3A /* Protocol */,
 				1214140721F6F48100EBAA3A /* Shared.h */,
+				1257E3392237C30400CBE0E6 /* UI */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -251,6 +256,22 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		1257E3392237C30400CBE0E6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1257E33A2237C35500CBE0E6 /* TitleWithDisclosureView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1257E36D2240C60E00CBE0E6 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1257E36E2240CC4600CBE0E6 /* ProfilePresenterType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		1281FA4F21F55F8F00D54C3E /* Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				1281FA7421F5FDA700D54C3E /* Presenter */,
+				1257E36D2240C60E00CBE0E6 /* Protocol */,
 				1281FA6E21F5EC3100D54C3E /* View */,
 			);
 			path = Profile;
@@ -691,6 +713,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1257E33B2237C35500CBE0E6 /* TitleWithDisclosureView.swift in Sources */,
 				1214141821F6F4C200EBAA3A /* PresenterType.swift in Sources */,
 				1214141921F6F4C200EBAA3A /* BuilderType.swift in Sources */,
 				1214141A21F6F4C200EBAA3A /* RouterType.swift in Sources */,
@@ -707,6 +730,7 @@
 				1214142421F9978A00EBAA3A /* NewFeedsPresenterType.swift in Sources */,
 				1281FA6721F5D80100D54C3E /* CreatePostViewController.swift in Sources */,
 				1281FA6921F5D81600D54C3E /* ProfileViewController.swift in Sources */,
+				1257E36F2240CC4600CBE0E6 /* ProfilePresenterType.swift in Sources */,
 				121414352200902200EBAA3A /* OrderListView.swift in Sources */,
 				1281FA7621F5FDBA00D54C3E /* NewFeedsPresenter.swift in Sources */,
 				1214143A2201E5AA00EBAA3A /* PostViewType.swift in Sources */,
