@@ -57,7 +57,7 @@ extension NewFeedsCollectionView: UICollectionViewDataSource
         {
             cell.title = post.title ?? ""
             cell.location = post.location ?? ""
-            cell.destination = post.destination ?? ""
+            cell.destination = post.shippingPoint ?? ""
             cell.tip = "\(post.tip ?? 0)"
         }
             

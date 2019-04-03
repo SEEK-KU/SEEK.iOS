@@ -10,5 +10,12 @@ import UIKit
 
 protocol CreatePostPresenterType
 {
-    
+    func createNewPost(
+        title: String,
+        location: String,
+        storeName: String,
+        shippingPoint: String,
+        itemQty: Double,
+        tip: Double,
+        note: String)
 }

@@ -20,16 +20,21 @@ class CreatePostViewController: UIViewController, CreatePostViewType
     
     @IBOutlet weak var postTitleTextField: UITextField!
     @IBOutlet weak var locationDropdown: UITextField!
-    @IBOutlet weak var destinationDropdown: UITextField!
+    @IBOutlet weak var shippingPointDropdown: UITextField!
     @IBOutlet weak var noteTextField: UITextField!
     @IBOutlet weak var storeNameTextField: UITextField!
-    @IBOutlet weak var TipsTextField: UITextField!
+    @IBOutlet weak var tipsTextField: UITextField!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var closeBarButtonItem: UIBarButtonItem!
     
-    
-    
-    private let items = ["AA", "BB", "CC"]
+    private let items = [
+        "โรงอาหารกลาง1(บาร์ใหม่)",
+        "โรงอาหารกลาง2(บาร์ใหม่กว่า)",
+        "โรงอาหารคณะวิศวกรรมศาสตร์(บาร์วิศวะ)",
+        "โรงอาหารคณะวิทยาศาสตร์(บาร์วิทย์)",
+        "โรงอาหารคณะบริหาร(บาร์บริหาร)",
+        "โรงอาหารคณะเศรษฐศาสตร์(บาร์เศรษฐศาสตร์)",
+        "อาคสรจอดรถประตูงามวงศ์วาน1" ]
     
     // MARK: - Disposed Bag
     
@@ -39,6 +44,13 @@ class CreatePostViewController: UIViewController, CreatePostViewType
     
     var presenter: CreatePostPresenterType? = nil
     
+    required init?(coder aDecoder: NSCoder)
+    {
+        self.presenter = CreatePostPresenter()
+        
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,7 +59,7 @@ class CreatePostViewController: UIViewController, CreatePostViewType
         title = "Post"
         
         locationDropdown.delegate = self
-        destinationDropdown.delegate = self
+        shippingPointDropdown.delegate = self
         
         viewConfiguration()
         bindingData()
@@ -55,7 +67,32 @@ class CreatePostViewController: UIViewController, CreatePostViewType
     
     func bindingData()
     {
-        
+        createButton
+            .rx
+            .tap
+            .do(
+                onNext: { [unowned self] in
+                    let title = self.postTitleTextField.text ?? ""
+                    let location = self.locationDropdown.text ?? ""
+                    let storeName = self.storeNameTextField.text ?? ""
+                    let shippingPoint = self.shippingPointDropdown.text ?? ""
+                    let itemQty = 0.0
+                    let tip = Double(self.tipsTextField.text ?? "") ?? 0.0
+                    let note = self.noteTextField.text ?? ""
+                    
+                    self.presenter?
+                        .createNewPost(
+                            title: title,
+                            location: location,
+                            storeName: storeName,
+                            shippingPoint: shippingPoint,
+                            itemQty: itemQty,
+                            tip: tip,
+                            note: note) })
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.dismiss(animated: true, completion: nil) })
+            .disposed(by: disposeBag)
         
         closeBarButtonItem
             .rx
@@ -73,24 +110,16 @@ class CreatePostViewController: UIViewController, CreatePostViewType
         createButton.layer.cornerRadius = 8.0
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension CreatePostViewController: UITextFieldDelegate
 {
-    func textFieldDidBeginEditing(_ textField: UITextField)
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
         if textField == self.locationDropdown
         {
+            view.endEditing(true)
+            
             ActionSheetStringPicker.show(
                 withTitle: "Select location",
                 rows: items,
@@ -105,10 +134,14 @@ extension CreatePostViewController: UITextFieldDelegate
             },
                 cancel: { _ in },
                 origin: self.locationDropdown)
-            textField.endEditing(true)
+            
+            return false
         }
-        else if textField == self.destinationDropdown
+        
+        if textField == self.shippingPointDropdown
         {
+            view.endEditing(true)
+            
             ActionSheetStringPicker.show(
                 withTitle: "Select destination",
                 rows: items,
@@ -119,12 +152,14 @@ extension CreatePostViewController: UITextFieldDelegate
                         return
                     }
                     
-                    self.destinationDropdown.text = self.items[index]
+                    self.shippingPointDropdown.text = self.items[index]
             },
                 cancel: { _ in },
-                origin: self.destinationDropdown)
-            textField.endEditing(true)
+                origin: self.shippingPointDropdown)
+            
+            return false
         }
         
+        return true
     }
 }

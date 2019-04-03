@@ -86,10 +86,11 @@ class PostViewController: UIViewController, PostViewType
             return
         }
         
-        nameLabel.text = requester.firstname
+        let requesterName = "\(requester.firstname ?? "") \(requester.lastname ?? "")"
+        nameLabel.text = requesterName
         
         locationLabel.text = post.location
-        destinationLabel.text = post.destination
+        destinationLabel.text = post.shippingPoint
         noteLabel.text = post.note
         storeNameLabel.text = post.storeName
         tipLabel.text = "\(post.tip ?? 0.0)"

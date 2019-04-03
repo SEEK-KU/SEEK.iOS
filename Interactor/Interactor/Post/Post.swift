@@ -44,4 +44,13 @@ extension Reactive where Base: Post
             .map { $0 as? [String: Any] ?? [:] }
             .map { Entity.PostDetail.init(data: $0)  }
     }
+    
+    public func createNewPost(order: Entity.Post) -> Single<Void>
+    {
+        return base
+            .apiGatewayService
+            .rx
+            .createNewPost(order: order)
+            .map { _ in }
+    }
 }

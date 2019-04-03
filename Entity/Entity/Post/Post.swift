@@ -8,16 +8,20 @@
 
 import Foundation
 
-public struct Post: DictionaryDecodableType, Codable, Equatable
+public struct Post: DictionaryDecodableType, Codable, Hashable
 {
     public let postId: String?
     public let title: String?
+    public let requesterId: String?
+    public let delivererId: String?
     public let location: String?
-    public let destination: String?
-    public let note: String?
     public let storeName: String?
-    public let status: String?
+    public let shippingPoint: String?
+    public let itemList: [ItemList]?
+    public let itemQty: Double?
     public let tip: Double?
+    public let note: String?
+    public let status: String?
     
     public init?(data: [String : Any]?)
     {
@@ -33,53 +37,73 @@ public struct Post: DictionaryDecodableType, Codable, Equatable
         
         let postId = data[.postId] as? String
         let title = data[.title] as? String
+        let requesterId = data[.requesterId] as? String
+        let delivererId = data[.delivererId] as? String
         let location = data[.location] as? String
-        let destination = data[.destination] as? String
-        let note = data[.note] as? String
         let storeName = data[.storeName] as? String
-        let status = data[.status] as? String
+        let shippingPoint = data[.shippingPoint] as? String
+        let itemList = (data[.itemList] as? [[String: Any]])?.compactMap(ItemList.init)
+        let itemQty = data[.itemQty] as? Double
         let tip = data[.tip] as? Double
+        let note = data[.note] as? String
+        let status = data[.status] as? String
         
         self.init(
             postId: postId,
             title: title,
+            requesterId: requesterId,
+            delivererId: delivererId,
             location: location,
-            destination: destination,
-            note: note,
             storeName: storeName,
-            status: status,
-            tip: tip)
+            shippingPoint: shippingPoint,
+            itemList: itemList,
+            itemQty: itemQty,
+            tip: tip,
+            note: note,
+            status: status)
     }
     
     public init(
         postId: String? = nil,
         title: String? = nil,
+        requesterId: String? = nil,
+        delivererId: String? = nil,
         location: String? = nil,
-        destination: String? = nil,
-        note: String? = nil,
         storeName: String? = nil,
-        status: String? = nil,
-        tip: Double? = nil)
+        shippingPoint: String? = nil,
+        itemList: [ItemList]? = nil,
+        itemQty: Double? = nil,
+        tip: Double? = nil,
+        note: String? = nil,
+        status: String? = nil)
     {
         self.postId = postId
         self.title = title
+        self.requesterId = requesterId
+        self.delivererId = delivererId
         self.location = location
-        self.destination = destination
-        self.note = note
         self.storeName = storeName
-        self.status = status
+        self.shippingPoint = shippingPoint
+        self.itemList = itemList
+        self.itemQty = itemQty
         self.tip = tip
+        self.note = note
+        self.status = status
     }
 }
 
 extension String
 {
-    static var postId: String { return "postId" }
+    static var postId: String { return "_id" }
     static var title: String { return "title" }
+    static var requesterId: String { return "requesterId" }
+    static var delivererId: String { return "delivererId" }
     static var location: String { return "location" }
-    static var destination: String { return "shippingPoint" }
-    static var note: String { return "note" }
     static var storeName: String { return "storeName" }
-    static var status: String { return "status" }
+    static var shippingPoint: String { return "shippingPoint" }
+    static var itemList: String { return "itemList" }
+    static var itemQty: String { return "itemQty" }
     static var tip: String { return "tip" }
+    static var note: String { return "note" }
+    static var status: String { return "status" }
 }

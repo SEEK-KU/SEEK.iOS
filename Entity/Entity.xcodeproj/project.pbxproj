@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		127B4C032253AC0C0054D4E4 /* Post.ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127B4C022253AC0C0054D4E4 /* Post.ItemList.swift */; };
 		12D58DDD221BCDB1003827BA /* Entity.h in Headers */ = {isa = PBXBuildFile; fileRef = 12D58DDB221BCDB1003827BA /* Entity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12D58DEC221BD349003827BA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D58DE9221BCECF003827BA /* Post.swift */; };
 		12D58DED221BD349003827BA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D58DEA221BCECF003827BA /* User.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		127B4C022253AC0C0054D4E4 /* Post.ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.ItemList.swift; sourceTree = "<group>"; };
 		12D58DD8221BCDB1003827BA /* Entity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Entity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D58DDB221BCDB1003827BA /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		12D58DDC221BCDB1003827BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				12D58DE9221BCECF003827BA /* Post.swift */,
 				12D58E07221BFAA7003827BA /* PostDetail.swift */,
+				127B4C022253AC0C0054D4E4 /* Post.ItemList.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				12D58DED221BD349003827BA /* User.swift in Sources */,
 				12D58DEC221BD349003827BA /* Post.swift in Sources */,
 				12D58DF3221BD5D7003827BA /* DictionaryDecodableType.swift in Sources */,
+				127B4C032253AC0C0054D4E4 /* Post.ItemList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

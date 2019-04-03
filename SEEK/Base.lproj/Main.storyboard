@@ -259,12 +259,13 @@
                         <outlet property="TipsTextField" destination="WKZ-F2-4Ji" id="ddL-mk-rL3"/>
                         <outlet property="closeBarButtonItem" destination="ZFG-65-Oro" id="9dv-zu-Sdk"/>
                         <outlet property="createButton" destination="tnO-YP-lyy" id="9qH-cZ-LCs"/>
-                        <outlet property="destinationDropdown" destination="4qz-zk-YXX" id="yRo-Ij-tOz"/>
                         <outlet property="locationDropdown" destination="CjK-dP-Tfh" id="9Nu-h8-BW9"/>
                         <outlet property="noteTextField" destination="Kez-dT-evc" id="ekQ-p0-fC0"/>
                         <outlet property="postTitleTextField" destination="KBO-82-8D9" id="fWY-cn-QbT"/>
                         <outlet property="scrollView" destination="VCf-Rs-2Sq" id="cFm-dY-Kmg"/>
+                        <outlet property="shippingPointDropdown" destination="4qz-zk-YXX" id="YA0-kU-zhC"/>
                         <outlet property="storeNameTextField" destination="v2f-hl-Nzh" id="gOQ-W5-WyI"/>
+                        <outlet property="tipsTextField" destination="WKZ-F2-4Ji" id="mlG-Pn-4Ps"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ot9-ar-r1z" userLabel="First Responder" sceneMemberID="firstResponder"/>

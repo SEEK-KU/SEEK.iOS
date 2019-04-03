@@ -6,6 +6,7 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
 import Foundation
 import Moya
 import RxSwift
@@ -41,6 +42,16 @@ public extension Reactive where Base: APIGatewayService
             .rx
             .request(
                 .order(orderId: orderId))
+            .mapJSON()
+    }
+    
+    public func createNewPost(order: Post) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .createOrder(order: order))
             .mapJSON()
     }
 }
