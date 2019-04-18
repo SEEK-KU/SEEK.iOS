@@ -18,9 +18,14 @@ class ProfilePresenter: ProfilePresenterType
         return userProfileBehaviorRelay.asObservable()
     }
     private let userProfileBehaviorRelay = BehaviorRelay<Entity.User?>(value: nil)
+    
     // MARK: - Interactor
     
     let profileInteractor = Interactor.Profile()
+    
+    // MARK: - Router
+    
+    let profileRouter = ProfileRouter()
     
     func loadUserProfile() -> Observable<Void>
     {
@@ -32,5 +37,33 @@ class ProfilePresenter: ProfilePresenterType
                     self?.userProfileBehaviorRelay.accept($0)  })
             .map { _ in }
             .asObservable()
+    }
+    
+    func navigateToLogin(
+        from sourceViewController: UIViewController)
+    {
+        profileRouter
+            .navigateToLogin(from: sourceViewController)
+    }
+    
+    func navigateToMyTransactionDetail(
+        from sourceViewController: UIViewController)
+    {
+        profileRouter
+            .navigateToMyTransactionDetail(from: sourceViewController)
+    }
+    
+    func navigateToMyRequestHistory(
+        from sourceViewController: UIViewController)
+    {
+        profileRouter
+            .navigateToMyRequestHistory(from: sourceViewController)
+    }
+    
+    func navigateToMyDeliveryHistory(
+        from sourceViewController: UIViewController)
+    {
+        profileRouter
+            .navigateToMyDeliveryHistory(from: sourceViewController)
     }
 }

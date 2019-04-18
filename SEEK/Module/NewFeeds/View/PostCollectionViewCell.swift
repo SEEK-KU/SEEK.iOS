@@ -32,6 +32,7 @@ class PostCollectionViewCell: UICollectionViewCell
     @IBOutlet weak var destinationLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     
+    
     required public init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
@@ -43,7 +44,12 @@ class PostCollectionViewCell: UICollectionViewCell
     {
         backgroundColor = UIColor.white
         
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 8
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 3
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.clipsToBounds = false
     }
     
     override func prepareForReuse()

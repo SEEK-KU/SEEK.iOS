@@ -10,6 +10,7 @@
 		1257E3712240D2B100CBE0E6 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1257E3702240D2B100CBE0E6 /* Profile.swift */; };
 		12D58DFD221BEB10003827BA /* APIGatewayService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D58DFC221BEB10003827BA /* APIGatewayService.framework */; };
 		12D58DFF221BEB10003827BA /* Entity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D58DFE221BEB10003827BA /* Entity.framework */; };
+		12F670BA22647C2900C8DA5F /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F670B922647C2900C8DA5F /* Authentication.swift */; };
 		12F9CA622218276C002E94B0 /* Interactor.h in Headers */ = {isa = PBXBuildFile; fileRef = 12F9CA602218276C002E94B0 /* Interactor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		12F9CA7022182AE4002E94B0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F9CA6F22182AE4002E94B0 /* Post.swift */; };
 		4D7CE98CF4892A063B439361 /* Pods_Interactor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC936D4A108AEE6A8136E69 /* Pods_Interactor.framework */; };
@@ -20,6 +21,7 @@
 		1257E3702240D2B100CBE0E6 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		12D58DFC221BEB10003827BA /* APIGatewayService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APIGatewayService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D58DFE221BEB10003827BA /* Entity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Entity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12F670B922647C2900C8DA5F /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		12F9CA5D2218276C002E94B0 /* Interactor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Interactor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F9CA602218276C002E94B0 /* Interactor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Interactor.h; sourceTree = "<group>"; };
 		12F9CA612218276C002E94B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,9 +75,11 @@
 		12F9CA5F2218276C002E94B0 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				12F9CA6E22182AD3002E94B0 /* Post */,
 				12F9CA602218276C002E94B0 /* Interactor.h */,
 				12F9CA612218276C002E94B0 /* Info.plist */,
+				12FAC0E12265F711003B6AFE /* Authentication */,
+				12F9CA6E22182AD3002E94B0 /* Post */,
+				12FAC0E22265F722003B6AFE /* Profile */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -84,9 +88,24 @@
 			isa = PBXGroup;
 			children = (
 				12F9CA6F22182AE4002E94B0 /* Post.swift */,
-				1257E3702240D2B100CBE0E6 /* Profile.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		12FAC0E12265F711003B6AFE /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				12F670B922647C2900C8DA5F /* Authentication.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		12FAC0E22265F722003B6AFE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1257E3702240D2B100CBE0E6 /* Profile.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		7DD78C610F13259C678848A5 /* Pods */ = {
@@ -206,6 +225,7 @@
 			files = (
 				12F9CA7022182AE4002E94B0 /* Post.swift in Sources */,
 				1257E3712240D2B100CBE0E6 /* Profile.swift in Sources */,
+				12F670BA22647C2900C8DA5F /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

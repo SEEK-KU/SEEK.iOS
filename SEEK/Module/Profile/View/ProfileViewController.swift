@@ -94,6 +94,41 @@ class ProfileViewController: UIViewController
                     
             })
             .disposed(by: disposeBag)
+        
+        transactionDetailLabel
+            .rx
+            .tap
+            .subscribe(
+                onNext: { [unowned self] in
+                    self.presenter
+                        .navigateToMyTransactionDetail(from: self) })
+            .disposed(by: disposeBag)
+        
+        myOrderLabel
+            .rx
+            .tap
+            .subscribe(
+                onNext: { [unowned self] in
+                    self.presenter
+                        .navigateToMyRequestHistory(from: self) })
+            .disposed(by: disposeBag)
+        
+        myDeliverLabel
+            .rx
+            .tap
+            .subscribe(
+                onNext: { [unowned self] in
+                    self.presenter
+                        .navigateToMyDeliveryHistory(from: self) })
+            .disposed(by: disposeBag)
+        
+        logoutButton
+            .rx
+            .tap
+            .subscribe(
+                onNext: { [unowned self] in
+                    self.presenter.navigateToLogin(from: self) })
+            .disposed(by: disposeBag)
     }
     
     private func viewConfiguration()

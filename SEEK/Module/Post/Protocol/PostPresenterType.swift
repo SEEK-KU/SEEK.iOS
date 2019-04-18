@@ -16,4 +16,7 @@ protocol PostPresenterType: PresenterType
     var requesterObservable: Observable<User?> { get }
     
     func loadPostDetail() -> Observable<Void>
+    func updateOrderStatus()
+    
+    func navigateToOrderPending(from sourceViewController: UIViewController)
 }

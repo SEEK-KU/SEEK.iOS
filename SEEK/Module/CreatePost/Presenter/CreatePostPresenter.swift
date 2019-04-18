@@ -32,16 +32,13 @@ class CreatePostPresenter: CreatePostPresenterType
         location: String,
         storeName: String,
         shippingPoint: String,
+        itemList: [Entity.Post.ItemList],
         itemQty: Double,
         tip: Double,
         note: String)
     {
-//        guard let userId = UserDefaults.standard.object(forKey: "userId") as? String else
-//        {
-//            return
-//        }
         
-        let userId = "5810545947"
+        let userId = "5810545416"
         
         let order = Entity.Post(
             title: title,
@@ -49,6 +46,7 @@ class CreatePostPresenter: CreatePostPresenterType
             location: location,
             storeName: storeName,
             shippingPoint: shippingPoint,
+            itemList: itemList,
             itemQty: itemQty,
             tip: tip,
             note: note)

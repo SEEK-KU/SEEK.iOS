@@ -7,8 +7,10 @@
 //
 
 import ActionSheetPicker_3_0
+import Entity
 import RxCocoa
 import RxSwift
+import Shared
 import SnapKit
 import UIKit
 
@@ -26,8 +28,16 @@ class CreatePostViewController: UIViewController, CreatePostViewType
     @IBOutlet weak var tipsTextField: UITextField!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var closeBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var itemStackView: UIStackView!
     
-    private let items = [
+    private let items: [ItemListView] = [
+        ItemListView(title: "รายการที่ 1"),
+        ItemListView(title: "รายการที่ 2"),
+        ItemListView(title: "รายการที่ 3"),
+        ItemListView(title: "รายการที่ 4"),
+        ItemListView(title: "รายการที่ 5") ]
+    
+    private let locationTags = [
         "โรงอาหารกลาง1(บาร์ใหม่)",
         "โรงอาหารกลาง2(บาร์ใหม่กว่า)",
         "โรงอาหารคณะวิศวกรรมศาสตร์(บาร์วิศวะ)",
@@ -61,6 +71,12 @@ class CreatePostViewController: UIViewController, CreatePostViewType
         locationDropdown.delegate = self
         shippingPointDropdown.delegate = self
         
+        items.forEach { [weak self] in
+            $0.isCreatingMode = true
+            self?.itemStackView.addArrangedSubview($0) }
+        
+        view.setNeedsLayout()
+        
         viewConfiguration()
         bindingData()
     }
@@ -80,12 +96,32 @@ class CreatePostViewController: UIViewController, CreatePostViewType
                     let tip = Double(self.tipsTextField.text ?? "") ?? 0.0
                     let note = self.noteTextField.text ?? ""
                     
+                    var itemList: [Entity.Post.ItemList] = []
+                    self.items
+                        .forEach{
+                            guard let itemName = $0.itemName,
+                                let itemPrice = $0.itemPrice,
+                                let itemQuantity = $0.itemQuantity,
+                                itemName.isEmpty == false,
+                                itemPrice.isEmpty == false,
+                                itemQuantity.isEmpty == false
+                            else
+                            {
+                                return
+                            }
+                            
+                            itemList.append(Post.ItemList(
+                                name: itemName,
+                                price: Double(itemPrice) ?? 0.0,
+                                qty: Int(itemQuantity) ?? 0 )) }
+                    
                     self.presenter?
                         .createNewPost(
                             title: title,
                             location: location,
                             storeName: storeName,
                             shippingPoint: shippingPoint,
+                            itemList: itemList,
                             itemQty: itemQty,
                             tip: tip,
                             note: note) })
@@ -122,15 +158,15 @@ extension CreatePostViewController: UITextFieldDelegate
             
             ActionSheetStringPicker.show(
                 withTitle: "Select location",
-                rows: items,
+                rows: locationTags,
                 initialSelection: 0,
                 doneBlock: { (_, index, value) in
-                    guard 0..<self.items.count ~= index else
+                    guard 0..<self.locationTags.count ~= index else
                     {
                         return
                     }
                     
-                    self.locationDropdown.text = self.items[index]
+                    self.locationDropdown.text = self.locationTags[index]
             },
                 cancel: { _ in },
                 origin: self.locationDropdown)
@@ -144,15 +180,15 @@ extension CreatePostViewController: UITextFieldDelegate
             
             ActionSheetStringPicker.show(
                 withTitle: "Select destination",
-                rows: items,
+                rows: locationTags,
                 initialSelection: 0,
                 doneBlock: { (_, index, value) in
-                    guard 0..<self.items.count ~= index else
+                    guard 0..<self.locationTags.count ~= index else
                     {
                         return
                     }
                     
-                    self.shippingPointDropdown.text = self.items[index]
+                    self.shippingPointDropdown.text = self.locationTags[index]
             },
                 cancel: { _ in },
                 origin: self.shippingPointDropdown)

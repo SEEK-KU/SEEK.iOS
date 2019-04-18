@@ -14,7 +14,6 @@ import UIKit
 class NewFeedsViewController: UIViewController, NewFeedsViewType
 {
     
-    @IBOutlet weak var FilterButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: NewFeedsCollectionView!
     
     public let postsBehaviorRelay = BehaviorRelay<[Post?]>(value: [])
@@ -94,7 +93,6 @@ class NewFeedsViewController: UIViewController, NewFeedsViewType
         {
             guard let postViewController:PostViewController = segue.destination as? PostViewController else { return }
             
-            guard let cell = sender as? PostCollectionViewCell else { return }
             
             guard let indexPath = self.collectionView?.indexPathsForSelectedItems?.first?.item else { return }
             

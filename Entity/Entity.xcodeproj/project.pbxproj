@@ -13,6 +13,8 @@
 		12D58DED221BD349003827BA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D58DEA221BCECF003827BA /* User.swift */; };
 		12D58DF3221BD5D7003827BA /* DictionaryDecodableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D58DF2221BD5D7003827BA /* DictionaryDecodableType.swift */; };
 		12D58E08221BFAA7003827BA /* PostDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D58E07221BFAA7003827BA /* PostDetail.swift */; };
+		12F6709F225DD8D600C8DA5F /* Post.OrderStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F6709E225DD8D600C8DA5F /* Post.OrderStatusType.swift */; };
+		12F670BD22647D4B00C8DA5F /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F670BC22647D4B00C8DA5F /* LoginResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		12D58DEA221BCECF003827BA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		12D58DF2221BD5D7003827BA /* DictionaryDecodableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryDecodableType.swift; path = ../Shared/Protocol/DictionaryDecodableType.swift; sourceTree = "<group>"; };
 		12D58E07221BFAA7003827BA /* PostDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetail.swift; sourceTree = "<group>"; };
+		12F6709E225DD8D600C8DA5F /* Post.OrderStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.OrderStatusType.swift; sourceTree = "<group>"; };
+		12F670BC22647D4B00C8DA5F /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +61,11 @@
 		12D58DDA221BCDB1003827BA /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				12D58E06221BFA91003827BA /* Post */,
-				12D58DEA221BCECF003827BA /* User.swift */,
 				12D58DDB221BCDB1003827BA /* Entity.h */,
 				12D58DDC221BCDB1003827BA /* Info.plist */,
+				12F670BB22647D3300C8DA5F /* Authentication */,
+				12D58E06221BFA91003827BA /* Post */,
+				12FAC0E32265F73D003B6AFE /* User */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -76,11 +81,28 @@
 		12D58E06221BFA91003827BA /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				127B4C022253AC0C0054D4E4 /* Post.ItemList.swift */,
+				12F6709E225DD8D600C8DA5F /* Post.OrderStatusType.swift */,
 				12D58DE9221BCECF003827BA /* Post.swift */,
 				12D58E07221BFAA7003827BA /* PostDetail.swift */,
-				127B4C022253AC0C0054D4E4 /* Post.ItemList.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		12F670BB22647D3300C8DA5F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				12F670BC22647D4B00C8DA5F /* LoginResponse.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		12FAC0E32265F73D003B6AFE /* User */ = {
+			isa = PBXGroup;
+			children = (
+				12D58DEA221BCECF003827BA /* User.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +185,9 @@
 			files = (
 				12D58E08221BFAA7003827BA /* PostDetail.swift in Sources */,
 				12D58DED221BD349003827BA /* User.swift in Sources */,
+				12F670BD22647D4B00C8DA5F /* LoginResponse.swift in Sources */,
 				12D58DEC221BD349003827BA /* Post.swift in Sources */,
+				12F6709F225DD8D600C8DA5F /* Post.OrderStatusType.swift in Sources */,
 				12D58DF3221BD5D7003827BA /* DictionaryDecodableType.swift in Sources */,
 				127B4C032253AC0C0054D4E4 /* Post.ItemList.swift in Sources */,
 			);

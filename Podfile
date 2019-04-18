@@ -13,6 +13,9 @@ abstract_target 'App' do
 
   pod 'RxCocoa',    '~> 4.0'
   pod 'RxSwift',    '~> 4.0'
+  pod 'Moya', '~> 10.0'
+  pod 'Moya/RxSwift', '~> 10.0'
+  pod 'SwiftKeychainWrapper'
 
   target 'SEEK' do
     # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -21,9 +24,8 @@ abstract_target 'App' do
 
     pod 'ActionSheetPicker-3.0'
     pod 'IQKeyboardManager'
-    pod 'Moya', '~> 10.0'
-    pod 'Moya/RxSwift', '~> 10.0'
     pod 'SnapKit', '~> 4.0'
+    
     
   end
 
@@ -51,5 +53,6 @@ target 'Interactor' do
   pod 'Moya', '~> 10.0'
   pod 'Moya/RxSwift', '~> 10.0'
   pod 'RxSwift',    '~> 4.0'
+  pod 'SwiftKeychainWrapper'
 
 end

@@ -6,6 +6,8 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import SnapKit
 import UIKit
 
@@ -25,6 +27,7 @@ public class TitleWithDisclosureView: UIView
     private let iconImageView = UIImageView()
     private let titleLabel = UILabel()
     private let discloserImageView = UIImageView()
+    fileprivate let contentButton = UIButton()
     
     public convenience init(
         title: String = "",
@@ -63,22 +66,25 @@ public class TitleWithDisclosureView: UIView
         addSubview(iconImageView)
         addSubview(titleLabel)
         addSubview(discloserImageView)
+        addSubview(contentButton)
         
-        discloserImageView.image = #imageLiteral(resourceName: "icon-close")
+        discloserImageView.image = #imageLiteral(resourceName: "icon-arrow-right")
+        discloserImageView.contentMode = .scaleAspectFit
         
         addViewConstraints()
-        bindingData()
-    }
-    
-    func bindingData()
-    {
-        
     }
     
     // MARK: Constraints
     
     private func addViewConstraints()
     {
+        contentButton
+            .snp
+            .makeConstraints {
+                $0
+                    .edges
+                    .equalToSuperview() }
+        
         iconImageView
             .snp
             .makeConstraints {
@@ -127,6 +133,11 @@ public class TitleWithDisclosureView: UIView
                     .equalToSuperview()
                 $0
                     .size
-                    .equalTo(24.0) }
+                    .equalTo(12.0) }
     }
+}
+
+extension Reactive where Base: TitleWithDisclosureView
+{
+    public var tap: ControlEvent<Void> { return base.contentButton.rx.tap }
 }

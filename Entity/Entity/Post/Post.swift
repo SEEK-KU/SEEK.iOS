@@ -21,7 +21,7 @@ public struct Post: DictionaryDecodableType, Codable, Hashable
     public let itemQty: Double?
     public let tip: Double?
     public let note: String?
-    public let status: String?
+    public let status: OrderStatusType?
     
     public init?(data: [String : Any]?)
     {
@@ -46,7 +46,7 @@ public struct Post: DictionaryDecodableType, Codable, Hashable
         let itemQty = data[.itemQty] as? Double
         let tip = data[.tip] as? Double
         let note = data[.note] as? String
-        let status = data[.status] as? String
+        let status = (data[.status] as? String).flatMap(OrderStatusType.init)
         
         self.init(
             postId: postId,
@@ -75,7 +75,7 @@ public struct Post: DictionaryDecodableType, Codable, Hashable
         itemQty: Double? = nil,
         tip: Double? = nil,
         note: String? = nil,
-        status: String? = nil)
+        status: OrderStatusType? = nil)
     {
         self.postId = postId
         self.title = title

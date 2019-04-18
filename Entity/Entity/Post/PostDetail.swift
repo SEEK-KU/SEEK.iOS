@@ -10,7 +10,7 @@ import Foundation
 
 public struct PostDetail: DictionaryDecodableType, Codable, Equatable
 {
-    public let post: Post?
+    public let orderInfo: Post?
     public let requester: User?
     
     public init?(data: [String : Any]?)
@@ -25,19 +25,19 @@ public struct PostDetail: DictionaryDecodableType, Codable, Equatable
             return nil
         }
         
-        let post  = (data["orderInfo"] as? [String: Any]).flatMap(Post.init)
+        let orderInfo  = (data["orderInfo"] as? [String: Any]).flatMap(Post.init)
         let requester = (data["requester"] as? [String: Any]).flatMap(User.init)
         
         self.init(
-            post: post,
+            orderInfo: orderInfo,
             requester: requester)
     }
     
     public init(
-        post: Post? = nil,
+        orderInfo: Post? = nil,
         requester: User? = nil)
     {
-        self.post = post
+        self.orderInfo = orderInfo
         self.requester = requester
     }
 }

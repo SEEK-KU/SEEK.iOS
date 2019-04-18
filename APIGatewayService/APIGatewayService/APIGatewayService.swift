@@ -24,7 +24,7 @@ public class APIGatewayService
 
 extension APIGatewayService: ReactiveCompatible { }
 
-public extension Reactive where Base: APIGatewayService
+extension Reactive where Base: APIGatewayService
 {
     public func loadNewFeeds() -> Single<Any>
     {
@@ -45,27 +45,109 @@ public extension Reactive where Base: APIGatewayService
             .mapJSON()
     }
     
-    public func createNewPost(order: Post) -> Single<Any>
+    public func createNewPost(
+        token: String,
+        order: Post) -> Single<Any>
     {
         return base
             .provider
             .rx
             .request(
-                .createOrder(order: order))
+                .createOrder(
+                    token: token,
+                    order: order))
             .mapJSON()
     }
-}
-
-public extension Reactive where Base: APIGatewayService
-{
-    public func loadUserProfile() -> Single<Any>
+    
+    public func updatePost(
+        orderId: String,
+        orderDetail: PostDetail) -> Single<Any>
     {
-        let userId = "5810545947"
         
         return base
             .provider
             .rx
-            .request(.user(userId: userId))
+            .request(
+                .updateOrder(
+                    orderId: orderId,
+                    orderDetail: orderDetail))
+            .mapJSON()
+    }
+    
+    public func updateOrderStatus(
+        orderId: String,
+        orderStatus: Post.OrderStatusType) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .updateOrderStatus(
+                    orderId: orderId,
+                    orderStatus: orderStatus))
+            .mapJSON()
+    }
+}
+
+extension Reactive where Base: APIGatewayService
+{
+    public func loadUserProfile(
+        userToken: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(.user(userToken: userToken))
+            .mapJSON()
+    }
+    
+    public func loadOrderHistory(
+        token: String,
+        historyType: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .orderHistory(
+                    token: token,
+                    historyType: historyType))
+            .mapJSON()
+    }
+}
+
+extension Reactive where Base: APIGatewayService
+{
+    public func login(
+        username: String,
+        password: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .login(userId: username,
+                       password: password))
+            .mapJSON()
+    }
+    
+    public func signUp(
+        token: String,
+        firstname: String,
+        lastname: String,
+        faculty: String,
+        telephone: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .signUp(
+                    token: token,
+                    firstname: firstname,
+                    lastname: lastname,
+                    faculty: faculty,
+                    telephone: telephone))
             .mapJSON()
     }
 }

@@ -15,9 +15,37 @@ extension APIGatewayService
     public enum Target
     {
         case feeds
+        
         case order(orderId: String)
-        case user(userId: String)
-        case createOrder(order: Post)
+        
+        case user(userToken: String)
+        
+        case createOrder(
+            token: String,
+            order: Post)
+        
+        case updateOrder(
+            orderId: String,
+            orderDetail: PostDetail)
+        
+        case updateOrderStatus(
+            orderId: String,
+            orderStatus: Post.OrderStatusType)
+        
+        case login(
+            userId: String,
+            password: String)
+        
+        case signUp(
+            token: String,
+            firstname: String,
+            lastname: String,
+            faculty: String,
+            telephone: String)
+        
+        case orderHistory(
+            token: String,
+            historyType: String)
     }
 }
 
@@ -33,7 +61,7 @@ extension APIGatewayService.Target: TargetType
 //        return URL(string: "http://localhost:3000")!
         
         // MARK: - Prod
-            return URL(string: "http://158.108.34.104:3000")!
+        return URL(string: "http://158.108.34.104:3000")!
     }
     
     public var path: String
@@ -42,19 +70,57 @@ extension APIGatewayService.Target: TargetType
         {
             case .feeds: return "/feed"
             case .order(let orderId): return "/order/\(orderId)"
-            case .user(let userId): return "/user/\(userId)"
+            case .user: return "/user"
             case .createOrder: return "/order"
+            case .updateOrder(let orderId, _): return "/order/\(orderId)"
+            case .updateOrderStatus(let orderId, _): return "/order/\(orderId)"
+            case .login: return "/login"
+            case .signUp: return "/user"
+            case .orderHistory: return "/user/history"
         }
     }
     
     public var method: Moya.Method
     {
-        switch self
+        if case .feeds = self
         {
-            case .feeds,
-                 .order,
-                 .user: return .get
-            case .createOrder: return .post
+            return .get
+        }
+        else if case .order = self
+        {
+            return .get
+        }
+        else if case .user = self
+        {
+            return .get
+        }
+        else if case .createOrder = self
+        {
+            return .post
+        }
+        else if case .updateOrder = self
+        {
+            return .put
+        }
+        else if case .updateOrderStatus = self
+        {
+            return .put
+        }
+        else if case .login = self
+        {
+            return .post
+        }
+        else if case .signUp = self
+        {
+            return .put
+        }
+        else if case .orderHistory = self
+        {
+            return .get
+        }
+        else
+        {
+            fatalError("Invalid Target")
         }
     }
     
@@ -65,18 +131,96 @@ extension APIGatewayService.Target: TargetType
     
     public var task: Task
     {
-        switch self
+        if case .feeds = self
         {
-            case .feeds,
-                 .order,
-                 .user: return .requestPlain
+            return .requestPlain
+        }
+        else if case .order = self
+        {
+            return .requestPlain
+        }
+        else if case .user = self
+        {
+            return .requestPlain
+        }
+        else if case let .createOrder(_, order) = self
+        {
+            return .requestJSONEncodable(order)
+        }
+        else if case let .updateOrder( _, orderDetail) = self
+        {
+            return .requestJSONEncodable(orderDetail)
+        }
+        else if case let .updateOrderStatus( _, orderStatus) = self
+        {
+            var parameters: [String: Any] = [:]
             
-            case .createOrder(let order): return .requestJSONEncodable(order)
+            parameters["orderInfo"] = ["status": orderStatus.rawValue]
+            
+            return .requestParameters(
+                parameters: parameters,
+                encoding: JSONEncoding.default)
+        }
+        else if case let .login(userId, password) = self
+        {
+            var parameter: [String: Any] = [:]
+            
+            parameter["userId"] = userId
+            parameter["password"] = password
+            
+            return .requestParameters(
+                parameters: parameter,
+                encoding: JSONEncoding.default)
+        }
+        else if case let .signUp(
+            _,
+            firstname,
+            lastname,
+            faculty,
+            telephone) = self
+        {
+            var parameter: [String: Any] = [:]
+            
+            parameter["userInfo"] = [
+                "firstname": firstname,
+                "lastname": lastname,
+                "faculty": faculty,
+                "telephone": telephone ]
+            
+            return .requestParameters(
+                parameters: parameter,
+                encoding: JSONEncoding.default)
+        }
+        else if case .orderHistory = self
+        {
+            return .requestPlain
+        }
+        else
+        {
+            fatalError("Invalid Target")
         }
     }
     
     public var headers: [String : String]?
     {
+        if case let .user(userToken) = self
+        {
+            return ["token": userToken]
+        }
+        else if case let .orderHistory(token, historyType) = self
+        {
+            return ["token": token,
+                    "historyType": historyType]
+        }
+        else if case let .signUp(token, _, _, _, _) = self
+        {
+            return ["token": token]
+        }
+        else if case let .createOrder(token, _) = self
+        {
+            return ["token": token]
+        }
+        
         return nil
     }
 }

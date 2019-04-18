@@ -1,7 +1,7 @@
 PODS:
   - ActionSheetPicker-3.0 (2.3.0)
-  - Alamofire (4.8.1)
-  - IQKeyboardManager (6.2.0)
+  - Alamofire (4.8.2)
+  - IQKeyboardManager (6.2.1)
   - Moya (10.0.2):
     - Moya/Core (= 10.0.2)
   - Moya/Core (10.0.2):
@@ -11,12 +11,11 @@ PODS:
     - Moya/Core
     - RxSwift (~> 4.0)
   - Result (3.2.4)
-  - RxAtomic (4.4.1)
-  - RxCocoa (4.4.1):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.4.1):
-    - RxAtomic (~> 4.4)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
   - SnapKit (4.2.0)
+  - SwiftKeychainWrapper (3.2.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -26,6 +25,7 @@ DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
   - SnapKit (~> 4.0)
+  - SwiftKeychainWrapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -34,22 +34,22 @@ SPEC REPOS:
     - IQKeyboardManager
     - Moya
     - Result
-    - RxAtomic
     - RxCocoa
     - RxSwift
     - SnapKit
+    - SwiftKeychainWrapper
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  IQKeyboardManager: 964638372b4a61892cc74fdfa6fd26de8c9464a2
   Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
-  RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
-  RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
 
-PODFILE CHECKSUM: 64f1bc78640429244b81153bbc111376e421a841
+PODFILE CHECKSUM: 15e1a06c83c10f3b6c21d84a357f0f96ef7d3898
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

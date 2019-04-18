@@ -10,6 +10,7 @@ import APIGatewayService
 import Entity
 import Foundation
 import RxSwift
+import SwiftKeychainWrapper
 
 public class Post
 {
@@ -47,10 +48,43 @@ extension Reactive where Base: Post
     
     public func createNewPost(order: Entity.Post) -> Single<Void>
     {
+        guard let userToken = KeychainWrapper.standard.string(forKey: .ssoToken) else
+        {
+            return .just(())
+        }
+        
         return base
             .apiGatewayService
             .rx
-            .createNewPost(order: order)
+            .createNewPost(
+                token: userToken,
+                order: order)
+            .map { _ in }
+    }
+    
+    public func updatePost(
+        orderId: String,
+        orderDetail: Entity.PostDetail) -> Single<Void>
+    {
+        return base
+            .apiGatewayService
+            .rx
+            .updatePost(
+                orderId: orderId,
+                orderDetail: orderDetail)
+            .map { _ in }
+    }
+    
+    public func updatePostStatus(
+        orderId: String,
+        orderStatus: Entity.Post.OrderStatusType) -> Single<Void>
+    {
+        return base
+            .apiGatewayService
+            .rx
+            .updateOrderStatus(
+                orderId: orderId,
+                orderStatus: orderStatus)
             .map { _ in }
     }
 }

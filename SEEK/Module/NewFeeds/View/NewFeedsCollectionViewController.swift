@@ -33,7 +33,7 @@ class NewFeedsCollectionView: UICollectionView
         
         self.collectionViewLayout = collectionViewFlowLayout
         
-        self.backgroundColor = UIColor.lightGray
+        self.backgroundColor = .white
         
         self.alwaysBounceVertical = true
         
@@ -58,7 +58,7 @@ extension NewFeedsCollectionView: UICollectionViewDataSource
             cell.title = post.title ?? ""
             cell.location = post.location ?? ""
             cell.destination = post.shippingPoint ?? ""
-            cell.tip = "\(post.tip ?? 0)"
+            cell.tip = String(format: "%.0f", post.tip ?? 0)
         }
             
         return cell
@@ -69,11 +69,9 @@ extension NewFeedsCollectionView: UICollectionViewDataSource
 
 extension NewFeedsCollectionView: UICollectionViewDelegateFlowLayout
 {
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize(width: collectionView.bounds.width - ( 16.0 * 2 ), height: 160)
+        return CGSize(width: collectionView.bounds.width - ( 16.0 * 2 ), height: 120)
     }
 }
 

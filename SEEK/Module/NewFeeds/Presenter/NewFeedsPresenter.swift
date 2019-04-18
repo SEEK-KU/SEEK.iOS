@@ -10,7 +10,6 @@ import Entity
 import Interactor
 import RxCocoa
 import RxSwift
-import Moya
 import UIKit
 
 class NewFeedsPresenter: NewFeedsPresenterType

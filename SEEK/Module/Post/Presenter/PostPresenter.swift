@@ -10,7 +10,6 @@ import Entity
 import Interactor
 import RxCocoa
 import RxSwift
-import Moya
 import UIKit
 
 class PostPresenter: PostPresenterType
@@ -32,6 +31,10 @@ class PostPresenter: PostPresenterType
     
     let postInteractor = Interactor.Post()
     
+    // MARK: - Router
+    
+    let postRouter = PostRouter()
+    
     // MARK: - Disposed Bag
     
     let disposeBag = DisposeBag()
@@ -49,9 +52,36 @@ class PostPresenter: PostPresenterType
             .viewPost(orderId: postId)
             .do(
                 onSuccess: { [weak self] in
-                    self?.postsBehaviorRelay.accept($0?.post)
+                    self?.postsBehaviorRelay.accept($0?.orderInfo)
                     self?.requesterBehaviorRelay.accept($0?.requester) })
             .map { _ in }
             .asObservable()
+    }
+    
+    func updateOrderStatus()
+    {
+        guard let post = postsBehaviorRelay.value,
+            let postId = post.postId else
+        {
+            return
+        }
+        
+        return postInteractor
+            .rx
+            .updatePostStatus(
+                orderId: postId,
+                orderStatus: .pending)
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
+    
+    func navigateToOrderPending(from sourceViewController: UIViewController)
+    {
+        guard let post = postsBehaviorRelay.value else {
+            return
+        }
+        
+        postRouter.navigateToOrderPending(from: sourceViewController,
+                                          post: post)
     }
 }

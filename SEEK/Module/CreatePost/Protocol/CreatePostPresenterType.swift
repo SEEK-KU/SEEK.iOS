@@ -6,6 +6,7 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
 import UIKit
 
 protocol CreatePostPresenterType
@@ -15,6 +16,7 @@ protocol CreatePostPresenterType
         location: String,
         storeName: String,
         shippingPoint: String,
+        itemList: [Entity.Post.ItemList],
         itemQty: Double,
         tip: Double,
         note: String)

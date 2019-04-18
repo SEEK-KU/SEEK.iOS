@@ -15,4 +15,16 @@ protocol ProfilePresenterType: PresenterType
     var userProfileObservable: Observable<Entity.User?> { get }
     
     func loadUserProfile() -> Observable<Void>
+    
+    func navigateToLogin(
+        from sourceViewController: UIViewController)
+    
+    func navigateToMyTransactionDetail(
+        from sourceViewController: UIViewController)
+    
+    func navigateToMyRequestHistory(
+        from sourceViewController: UIViewController)
+    
+    func navigateToMyDeliveryHistory(
+        from sourceViewController: UIViewController)
 }
