@@ -1,0 +1,8 @@
+app_identifier("com.SEEK.iOS") # The bundle identifier of your app
+apple_id("oat_thanut_@hotmail.com") # Your Apple email address
+
+itc_team_id("118617520") # App Store Connect Team ID
+team_id("F3NL8W8JS6") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
