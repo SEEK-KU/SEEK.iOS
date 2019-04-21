@@ -87,4 +87,17 @@ extension Reactive where Base: Post
                 orderStatus: orderStatus)
             .map { _ in }
     }
+    
+    public func uploadSlip(
+        orderId: String,
+        slipURL: String) -> Single<Void>
+    {
+        return base
+            .apiGatewayService
+            .rx
+            .uploadSlip(
+                orderId: orderId,
+                slipURL: slipURL)
+            .map { _ in }
+    }
 }

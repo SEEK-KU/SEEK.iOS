@@ -46,6 +46,20 @@ extension APIGatewayService
         case orderHistory(
             token: String,
             historyType: String)
+        
+        case updateProfilePicture(
+            token: String,
+            imageURL: String)
+        
+        case loadUserQR(token: String)
+        
+        case uploadUserQR(
+            token: String,
+            imageURL: String)
+        
+        case uploadSlip(
+            orderId: String,
+            slipURL: String)
     }
 }
 
@@ -77,6 +91,10 @@ extension APIGatewayService.Target: TargetType
             case .login: return "/login"
             case .signUp: return "/user"
             case .orderHistory: return "/user/history"
+            case .updateProfilePicture: return "/user"
+            case .loadUserQR: return "/getUserQR"
+            case .uploadUserQR: return "/user"
+            case .uploadSlip: return "/uploadSlip"
         }
     }
     
@@ -117,6 +135,22 @@ extension APIGatewayService.Target: TargetType
         else if case .orderHistory = self
         {
             return .get
+        }
+        else if case .updateProfilePicture = self
+        {
+            return .put
+        }
+        else if case .loadUserQR = self
+        {
+            return .get
+        }
+        else if case .uploadUserQR = self
+        {
+            return .put
+        }
+        else if case .uploadSlip = self
+        {
+            return .put
         }
         else
         {
@@ -195,6 +229,39 @@ extension APIGatewayService.Target: TargetType
         {
             return .requestPlain
         }
+        else if case let .updateProfilePicture(_, imageURL) = self
+        {
+            var parameter: [String: Any] = [:]
+            parameter["userInfo"] = ["img": imageURL]
+            
+            return .requestParameters(
+                parameters: parameter,
+                encoding: JSONEncoding.default)
+        }
+        else if case .loadUserQR = self
+        {
+            return .requestPlain
+        }
+        else if case let .uploadUserQR(_, imageURL) = self
+        {
+            var parameter: [String: Any] = [:]
+            
+            parameter["userInfo"] = ["qrImage": imageURL]
+            
+            return .requestParameters(
+                parameters: parameter,
+                encoding: JSONEncoding.default)
+        }
+        else if case let .uploadSlip(orderId, slipURL) = self
+        {
+            var parameter: [String: Any] = [:]
+            parameter["postId"] = orderId
+            parameter["slip"] = slipURL
+            
+            return .requestParameters(
+                parameters: parameter,
+                encoding: JSONEncoding.default)
+        }
         else
         {
             fatalError("Invalid Target")
@@ -220,7 +287,18 @@ extension APIGatewayService.Target: TargetType
         {
             return ["token": token]
         }
-        
+        else if case let .updateProfilePicture(token, _) = self
+        {
+            return ["token": token]
+        }
+        else if case let .loadUserQR(token) = self
+        {
+            return ["token": token]
+        }
+        else if case let .uploadUserQR(token, _) = self
+        {
+            return ["token": token]
+        }
         return nil
     }
 }

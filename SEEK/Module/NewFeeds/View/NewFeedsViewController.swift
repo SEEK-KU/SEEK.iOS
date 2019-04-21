@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-class NewFeedsViewController: UIViewController, NewFeedsViewType
+class NewFeedsViewController: UIViewController
 {
     
     @IBOutlet weak var collectionView: NewFeedsCollectionView!

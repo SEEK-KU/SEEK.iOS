@@ -6,6 +6,9 @@
 //  Copyright © 2019 oatThanut. All rights reserved.
 //
 
+import Entity
+import FirebaseStorage
+import RxCocoa
 import RxSwift
 import Shared
 import SnapKit
@@ -18,6 +21,7 @@ class ProfileViewController: UIViewController
     @IBOutlet weak var studentIDLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var selectPictureButton: UIButton!
     
     private let facultyDetailLabel = TitleWithDisclosureView(
         title: "วิศวกรรมคอมพิวเตอร์",
@@ -37,12 +41,17 @@ class ProfileViewController: UIViewController
         title: "การส่งของฉัน",
         icon: #imageLiteral(resourceName: "icon-my-deliver") )
     
+    let imagePicker = UIImagePickerController()
+    
+    let userProfileBehaviorRelay = BehaviorRelay<Entity.User?>(value: nil)
+    var storageRef: StorageReference!
+    var currentImageURL: String?
+    
     // MARK: - Disposed bag
     
     let disposeBag = DisposeBag()
     
     // MARK: - Presenter
-    
     let presenter: ProfilePresenterType
     
     required init?(coder aDecoder: NSCoder)
@@ -50,7 +59,6 @@ class ProfileViewController: UIViewController
         self.presenter = ProfilePresenter()
         
         super.init(coder: aDecoder)
-        
         title = "Profile"
     }
     
@@ -59,6 +67,8 @@ class ProfileViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        storageRef = Storage.storage().reference()
+        
         scrollView.addSubview(facultyDetailLabel)
         scrollView.addSubview(phoneNumberLabel)
         scrollView.addSubview(transactionDetailLabel)
@@ -66,6 +76,7 @@ class ProfileViewController: UIViewController
         scrollView.addSubview(myDeliverLabel)
         
         scrollView.alwaysBounceVertical = true
+        
         addViewConstraints()
         viewConfiguration()
         bindingDataWithPresenter()
@@ -85,14 +96,29 @@ class ProfileViewController: UIViewController
     {
         self.presenter
             .userProfileObservable
-            .subscribe(
+            .do(
+                onNext: { [weak self] in
+                    self?.userProfileBehaviorRelay.accept($0) })
+            .do(
                 onNext: { [weak self] in
                     self?.nameLabel.text = "\($0?.firstname ?? "") \($0?.lastname ?? "")"
                     self?.studentIDLabel.text = $0?.userId
                     self?.facultyDetailLabel.title = $0?.faculty ?? ""
                     self?.phoneNumberLabel.title = $0?.telphone ?? ""
-                    
-            })
+                    self?.currentImageURL = $0?.image ?? "" })
+            .subscribe(
+                onNext: { [weak self] _ in
+                    self?.loadFromFirebase() })
+            .disposed(by: disposeBag)
+        
+        selectPictureButton
+            .rx
+            .tap
+            .subscribe(
+                onNext: { [unowned self] _ in
+                    if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                        self.present(self.imagePicker, animated: true, completion: nil)
+                    } })
             .disposed(by: disposeBag)
         
         transactionDetailLabel
@@ -101,7 +127,8 @@ class ProfileViewController: UIViewController
             .subscribe(
                 onNext: { [unowned self] in
                     self.presenter
-                        .navigateToMyTransactionDetail(from: self) })
+                        .navigateToMyTransactionDetail(
+                            from: self) })
             .disposed(by: disposeBag)
         
         myOrderLabel
@@ -133,11 +160,20 @@ class ProfileViewController: UIViewController
     
     private func viewConfiguration()
     {
+        //Image picker setting
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        
         logoutButton.layer.cornerRadius = 3
         logoutButton.layer.shadowRadius = 3
         logoutButton.layer.shadowOpacity = 0.2
         logoutButton.layer.shadowColor = UIColor.black.cgColor
         logoutButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.layer.cornerRadius = profileImageView.bounds.height / 2
+        profileImageView.clipsToBounds = true
     }
     
     // MARK: Constraints
@@ -212,15 +248,98 @@ class ProfileViewController: UIViewController
                     .centerX
                     .equalToSuperview() }
     }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate
+{
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        dismiss(animated: true, completion: nil)
+        
+        guard let currentImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else
+        {
+            return
+        }
+        
+        guard let studentId = self.userProfileBehaviorRelay.value?.userId else
+        {
+            return
+        }
+        
+        uploadImageToFirebase(
+            studentId: studentId,
+            currentImage: currentImage)
     }
-    */
-
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadImageToFirebase(
+        studentId: String,
+        currentImage: UIImage)
+    {
+        guard let data = currentImage.jpegData(compressionQuality: 0.8) else
+        {
+            return
+        }
+        
+        let imgRef = storageRef.child("user-profile/" + studentId + "_" + randomString(20) + ".jpg")
+        
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        
+        imgRef.putData(data, metadata: metaData) { (metadata, error) in
+            guard metadata != nil else
+            {
+                return
+            }
+            
+            imgRef.downloadURL { (url, error) in
+                guard let imageURL = url?.debugDescription else
+                {
+                    return
+                }
+                
+                self.presenter.updateUserImage(imageURL: imageURL) }
+        }
+        profileImageView.image = currentImage
+    }
+    
+    func loadFromFirebase()
+    {
+        guard let url = URL(string: self.currentImageURL ?? "") else
+        {
+            return
+        }
+        
+        if let imageData = try? Data(contentsOf: url) {
+            let image = UIImage(data: imageData)
+            profileImageView.contentMode = .scaleAspectFill
+            self.profileImageView.image = image
+        }
+        else
+        {
+            self.profileImageView.image = #imageLiteral(resourceName: "icon-user")
+            profileImageView.contentMode = .scaleAspectFit
+        }
+    }
+    
+    func randomString(_ length: Int) -> String {
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
+    }
 }

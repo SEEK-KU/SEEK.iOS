@@ -16,6 +16,7 @@ public struct User: DictionaryDecodableType, Codable, Equatable
     public let faculty: String?
     public let telphone: String?
     public let image: String?
+    public let qrImage: String?
     
     public init?(data: [String : Any]?)
     {
@@ -35,6 +36,7 @@ public struct User: DictionaryDecodableType, Codable, Equatable
         let faculty = data[.faculty] as? String
         let telphone = data[.telphone] as? String
         let image = data[.image] as? String
+        let qrImage = data[.qrImage] as? String
         
         self.init(
             userId: userId,
@@ -42,7 +44,8 @@ public struct User: DictionaryDecodableType, Codable, Equatable
             lastname: lastname,
             faculty: faculty,
             telphone: telphone,
-            image: image)
+            image: image,
+            qrImage: qrImage)
     }
     
     public init(
@@ -51,7 +54,8 @@ public struct User: DictionaryDecodableType, Codable, Equatable
         lastname: String? = nil,
         faculty: String? = nil,
         telphone: String? = nil,
-        image: String? = nil)
+        image: String? = nil,
+        qrImage: String? = nil)
     {
         self.userId = userId
         self.firstname = firstname
@@ -59,6 +63,7 @@ public struct User: DictionaryDecodableType, Codable, Equatable
         self.faculty = faculty
         self.telphone = telphone
         self.image = image
+        self.qrImage = qrImage
     }
 }
 
@@ -69,5 +74,6 @@ extension String
     static var lastname: String { return "lastname" }
     static var faculty: String { return "faculty" }
     static var telphone: String { return "telephone" }
-    static var image: String { return "image" }
+    static var image: String { return "img" }
+    static var qrImage: String { return "qrImage" }
 }

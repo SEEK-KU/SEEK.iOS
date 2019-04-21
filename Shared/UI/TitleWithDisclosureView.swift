@@ -118,6 +118,9 @@ public class TitleWithDisclosureView: UIView
                     .trailing
                     .lessThanOrEqualTo(discloserImageView.snp.leading)
                 $0
+                    .height
+                    .equalTo(24)
+                $0
                     .centerY
                     .equalToSuperview() }
         

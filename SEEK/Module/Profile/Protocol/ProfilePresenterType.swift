@@ -16,10 +16,13 @@ protocol ProfilePresenterType: PresenterType
     
     func loadUserProfile() -> Observable<Void>
     
+    func updateUserImage(imageURL: String)
+    
     func navigateToLogin(
         from sourceViewController: UIViewController)
     
     func navigateToMyTransactionDetail(
+//        studentId: String,
         from sourceViewController: UIViewController)
     
     func navigateToMyRequestHistory(

@@ -12,7 +12,7 @@ import RxSwift
 import Shared
 import UIKit
 
-class PostViewController: UIViewController, PostViewType
+class PostViewController: UIViewController
 {
     
     @IBOutlet weak var nameLabel: UILabel!

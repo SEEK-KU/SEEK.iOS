@@ -270,3 +270,6 @@ fastlane/FastlaneRunner
 #
 
 *.xcscmblueprint
+
+# Firebase plist file
+SEEK/GoogleService-Info.plist

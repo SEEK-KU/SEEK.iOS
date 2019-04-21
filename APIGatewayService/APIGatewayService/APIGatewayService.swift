@@ -87,6 +87,20 @@ extension Reactive where Base: APIGatewayService
                     orderStatus: orderStatus))
             .mapJSON()
     }
+    
+    public func uploadSlip(
+        orderId: String,
+        slipURL: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .uploadSlip(
+                    orderId: orderId,
+                    slipURL: slipURL))
+            .mapJSON()
+    }
 }
 
 extension Reactive where Base: APIGatewayService
@@ -98,6 +112,45 @@ extension Reactive where Base: APIGatewayService
             .provider
             .rx
             .request(.user(userToken: userToken))
+            .mapJSON()
+    }
+    
+    public func updateUserImage(
+        userToken: String,
+        imageURL: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .updateProfilePicture(
+                    token: userToken,
+                    imageURL: imageURL))
+            .mapJSON()
+    }
+    
+    public func loadUserQR(userToken: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .loadUserQR(
+                    token: userToken))
+            .mapJSON()
+    }
+    
+    public func uploadUserQR(
+        userToken: String,
+        imageURL: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .uploadUserQR(
+                    token: userToken,
+                    imageURL: imageURL))
             .mapJSON()
     }
     

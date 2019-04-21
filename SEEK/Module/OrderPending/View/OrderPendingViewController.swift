@@ -12,7 +12,7 @@ import RxSwift
 import Shared
 import UIKit
 
-class OrderPendingViewController: UIViewController, OrderPendingViewType
+class OrderPendingViewController: UIViewController
 {
     
     @IBOutlet weak var nameLabel: UILabel!

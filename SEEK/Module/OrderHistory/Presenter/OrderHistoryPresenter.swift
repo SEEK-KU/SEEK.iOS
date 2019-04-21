@@ -19,31 +19,55 @@ class OrderHistoryPresenter: OrderHistoryPresenterType
     var postsObservable: Observable<[Entity.Post?]> { return postsBehaviorRelay.asObservable() }
     private let postsBehaviorRelay = BehaviorRelay<[Entity.Post?]>(value: [])
     
+    public var historyType = "requester"
+    
     // MARK: - Interactor
     
     let interactor = Interactor.Profile()
+    
+    // MARK: - Router
+    
+    let orderHistoryRouter = OrderHistoryRouter()
     
     // MARK: - Disposed Bag
     
     let disposeBag = DisposeBag()
     
-    required init()
+    required init(
+        historyType: String)
     {
-        
+        self.historyType = historyType
     }
     
-    func loadOrderHistory(
-        historyType: String) -> Observable<[Entity.Post?]>
+    func loadOrderHistory() -> Observable<[Entity.Post?]>
     {
         return interactor
             .rx
             .loadOrderHistory(
-                historyType: historyType)
+                historyType: self.historyType)
             .do(
                 onSuccess: { [weak self] in
                     self?.postsBehaviorRelay.accept($0) })
             .asObservable()
     }
     
-    
+    func navigateToOrderProcessing(
+        orderId: String,
+        from sourceViewController: UIViewController)
+    {
+        if historyType == "requester"
+        {
+            orderHistoryRouter
+                .navigateToOrderProcessingAsRequester(
+                    orderId: orderId,
+                    from: sourceViewController)
+        }
+        else if historyType == "deliverer"
+        {
+            orderHistoryRouter
+                .navigateToOrderProcessingAsDeliverer(
+                    orderId: orderId,
+                    from: sourceViewController)
+        }
+    }
 }

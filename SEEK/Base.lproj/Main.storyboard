@@ -221,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ot9-ar-r1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3513" y="-204"/>
+            <point key="canvasLocation" x="3512.8000000000002" y="-204.19790104947529"/>
         </scene>
         <!--New Feeds View Controller-->
         <scene sceneID="ZO7-U8-4vg">
@@ -666,7 +666,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHb-JC-gkF" userLabel="TopPanal">
-                                <rect key="frame" x="0.0" y="64" width="375" height="158"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="189"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-user" translatesAutoresizingMaskIntoConstraints="NO" id="jc2-uI-eH6" userLabel="ProfileImage">
                                         <rect key="frame" x="155.5" y="16" width="64" height="64"/>
@@ -676,31 +676,38 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGj-8J-O4C" userLabel="NameLabel">
-                                        <rect key="frame" x="165.5" y="88" width="44" height="21"/>
+                                        <rect key="frame" x="165.5" y="119" width="44" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Z-Vz-OVw" userLabel="StudentIDLabel">
-                                        <rect key="frame" x="170" y="117" width="35.5" height="17"/>
+                                        <rect key="frame" x="170" y="148" width="35.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3R-ps-Egw">
+                                        <rect key="frame" x="143.5" y="85" width="88" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <state key="normal" title="กดเพื่อแก้ไขรูปภาพ"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Z7Z-Vz-OVw" secondAttribute="bottom" constant="24" id="2Vl-xU-sY5"/>
+                                    <constraint firstItem="A3R-ps-Egw" firstAttribute="centerX" secondItem="EHb-JC-gkF" secondAttribute="centerX" id="2rH-xA-MnF"/>
+                                    <constraint firstItem="A3R-ps-Egw" firstAttribute="top" secondItem="jc2-uI-eH6" secondAttribute="bottom" constant="5" id="7dz-nt-3DS"/>
                                     <constraint firstItem="hGj-8J-O4C" firstAttribute="centerX" secondItem="EHb-JC-gkF" secondAttribute="centerX" id="9qm-Fo-sYo"/>
-                                    <constraint firstItem="hGj-8J-O4C" firstAttribute="top" secondItem="jc2-uI-eH6" secondAttribute="bottom" constant="8" id="ISs-44-a2N"/>
                                     <constraint firstItem="jc2-uI-eH6" firstAttribute="top" secondItem="EHb-JC-gkF" secondAttribute="top" constant="16" id="IgF-Lh-Xlc"/>
+                                    <constraint firstItem="hGj-8J-O4C" firstAttribute="top" secondItem="A3R-ps-Egw" secondAttribute="bottom" constant="8" id="MQy-Cf-WIE"/>
                                     <constraint firstItem="jc2-uI-eH6" firstAttribute="centerX" secondItem="EHb-JC-gkF" secondAttribute="centerX" id="Yhf-jz-X4g"/>
                                     <constraint firstItem="Z7Z-Vz-OVw" firstAttribute="centerX" secondItem="EHb-JC-gkF" secondAttribute="centerX" id="bAn-hj-tCh"/>
                                     <constraint firstItem="Z7Z-Vz-OVw" firstAttribute="top" secondItem="hGj-8J-O4C" secondAttribute="bottom" constant="8" id="l8E-Hv-rxi"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNy-S8-B00">
-                                <rect key="frame" x="0.0" y="222" width="375" height="293"/>
+                                <rect key="frame" x="0.0" y="253" width="375" height="262"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Faz-6E-pba">
                                 <rect key="frame" x="40" y="539" width="295" height="55"/>
@@ -738,6 +745,7 @@
                         <outlet property="nameLabel" destination="hGj-8J-O4C" id="lRV-QC-wMv"/>
                         <outlet property="profileImageView" destination="jc2-uI-eH6" id="CGI-gA-yu4"/>
                         <outlet property="scrollView" destination="fNy-S8-B00" id="PZy-YE-WVk"/>
+                        <outlet property="selectPictureButton" destination="A3R-ps-Egw" id="vsY-gf-rH2"/>
                         <outlet property="studentIDLabel" destination="Z7Z-Vz-OVw" id="PyS-iv-XFg"/>
                         <segue destination="ieq-vZ-5uV" kind="showDetail" identifier="LogOut" id="1PS-Am-EK4"/>
                     </connections>
@@ -1825,9 +1833,239 @@
             </objects>
             <point key="canvasLocation" x="4353" y="922"/>
         </scene>
+        <!--Transaction View Controller-->
+        <scene sceneID="77k-1W-PBq">
+            <objects>
+                <viewController storyboardIdentifier="Transaction" id="uTF-8P-lnq" userLabel="Transaction View Controller" customClass="TransactionViewController" customModule="SEEK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OOX-Ui-jdG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uAN-Wr-QAY">
+                                <rect key="frame" x="41.5" y="131.5" width="292" height="292"/>
+                                <color key="backgroundColor" white="0.80514233729999996" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="292" id="S6P-vk-V32"/>
+                                    <constraint firstAttribute="width" constant="292" id="XRa-Dj-iyf"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfG-xY-QxG">
+                                <rect key="frame" x="127.5" y="451.5" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="idF-1Y-B9G"/>
+                                </constraints>
+                                <state key="normal" title="กดเพื่อแก้ไขรูปภาพ"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ข้อมูลการเงินของฉัน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdH-Xf-iZL">
+                                <rect key="frame" x="113.5" y="80" width="148" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSn-yP-fX6">
+                                <rect key="frame" x="85.5" y="496.5" width="204" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อัพโหลดรูปภาพเรียบร้อย" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YU0-NM-GmK">
+                                        <rect key="frame" x="39" y="6" width="155" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-check" translatesAutoresizingMaskIntoConstraints="NO" id="nx7-YR-Jl1">
+                                        <rect key="frame" x="5" y="3" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="HJD-56-qv4"/>
+                                            <constraint firstAttribute="width" constant="24" id="sap-hN-ggu"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="YU0-NM-GmK" secondAttribute="bottom" constant="6" id="KKx-mc-59k"/>
+                                    <constraint firstItem="nx7-YR-Jl1" firstAttribute="leading" secondItem="VSn-yP-fX6" secondAttribute="leading" constant="5" id="aD8-ha-Z7f"/>
+                                    <constraint firstItem="nx7-YR-Jl1" firstAttribute="centerY" secondItem="VSn-yP-fX6" secondAttribute="centerY" id="aZw-Fr-qlK"/>
+                                    <constraint firstItem="YU0-NM-GmK" firstAttribute="top" secondItem="VSn-yP-fX6" secondAttribute="top" constant="6" id="mBY-Bz-k6N"/>
+                                    <constraint firstAttribute="trailing" secondItem="YU0-NM-GmK" secondAttribute="trailing" constant="10" id="pRE-fl-1SA"/>
+                                    <constraint firstItem="YU0-NM-GmK" firstAttribute="leading" secondItem="nx7-YR-Jl1" secondAttribute="trailing" constant="10" id="xd6-Fd-wnv"/>
+                                    <constraint firstItem="YU0-NM-GmK" firstAttribute="centerY" secondItem="VSn-yP-fX6" secondAttribute="centerY" id="yio-CB-kCA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UfG-xY-QxG" firstAttribute="top" secondItem="uAN-Wr-QAY" secondAttribute="bottom" constant="28" id="97k-Ot-ppA"/>
+                            <constraint firstItem="vdH-Xf-iZL" firstAttribute="top" secondItem="DO4-iQ-WFn" secondAttribute="top" constant="60" id="EbU-PP-BD9"/>
+                            <constraint firstItem="uAN-Wr-QAY" firstAttribute="centerX" secondItem="DO4-iQ-WFn" secondAttribute="centerX" id="cT3-O4-0PK"/>
+                            <constraint firstItem="uAN-Wr-QAY" firstAttribute="top" secondItem="vdH-Xf-iZL" secondAttribute="bottom" constant="30" id="djF-Rr-fAA"/>
+                            <constraint firstItem="VSn-yP-fX6" firstAttribute="top" secondItem="UfG-xY-QxG" secondAttribute="bottom" constant="15" id="jhY-u1-vbx"/>
+                            <constraint firstItem="vdH-Xf-iZL" firstAttribute="centerX" secondItem="DO4-iQ-WFn" secondAttribute="centerX" id="kel-fY-eXb"/>
+                            <constraint firstItem="UfG-xY-QxG" firstAttribute="centerX" secondItem="DO4-iQ-WFn" secondAttribute="centerX" id="nmh-4J-qoI"/>
+                            <constraint firstItem="VSn-yP-fX6" firstAttribute="centerX" secondItem="DO4-iQ-WFn" secondAttribute="centerX" id="qwv-YB-Kw7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DO4-iQ-WFn"/>
+                    </view>
+                    <connections>
+                        <outlet property="editImageButton" destination="UfG-xY-QxG" id="xci-J5-GcI"/>
+                        <outlet property="qrImageView" destination="uAN-Wr-QAY" id="hSK-RK-VvS"/>
+                        <outlet property="uploadStatusView" destination="VSn-yP-fX6" id="h1w-9A-mDl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Obs-Hh-Ynn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4352.8000000000002" y="1657.4212893553224"/>
+        </scene>
+        <!--Payment View Controller-->
+        <scene sceneID="joa-85-Egp">
+            <objects>
+                <viewController storyboardIdentifier="Payment" id="R2N-se-HDh" customClass="PaymentViewController" customModule="SEEK" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ltK-ai-3It">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="830"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJY-om-VRb">
+                                <rect key="frame" x="16" y="0.0" width="343" height="730"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รายละเอียดการโอนเงิน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDs-Av-roL">
+                                        <rect key="frame" x="86" y="40" width="171" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ธนาคารกสิกรไทย" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="roz-Lv-ZrY">
+                                        <rect key="frame" x="117" y="80" width="109" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ชื่อบัญชี SEEK Co., Ltd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-yF-Ygz">
+                                        <rect key="frame" x="98" y="106" width="147" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="qr-seek" translatesAutoresizingMaskIntoConstraints="NO" id="NYg-zp-udG">
+                                        <rect key="frame" x="46.5" y="180" width="250" height="250"/>
+                                        <color key="backgroundColor" white="0.7361697693" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="ccA-SR-WLS"/>
+                                            <constraint firstAttribute="height" constant="250" id="q88-Jn-uiD"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="แจ้งโอนเงิน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmU-X6-Ndd">
+                                        <rect key="frame" x="129" y="460" width="85" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เลขที่บัญชี 072-1242-921" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBN-Je-g0M">
+                                        <rect key="frame" x="89" y="132" width="165" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-3K-JhU">
+                                        <rect key="frame" x="116" y="598" width="111" height="30"/>
+                                        <state key="normal" title="กดเพื่อเพิ่มรูปภาพ"/>
+                                        <connections>
+                                            <action selector="selectPictureFromPhotos:" destination="R2N-se-HDh" eventType="touchUpInside" id="M9D-T7-Yer"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qW0-Zy-7lR">
+                                        <rect key="frame" x="69.5" y="639" width="204" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="อัพโหลดรูปภาพเรียบร้อย" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy8-9X-6gh">
+                                                <rect key="frame" x="39" y="6" width="155" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-check" translatesAutoresizingMaskIntoConstraints="NO" id="Ooe-Q0-xeV">
+                                                <rect key="frame" x="5" y="3" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="GHb-aH-xmn"/>
+                                                    <constraint firstAttribute="height" constant="24" id="dGG-IA-KLI"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Ooe-Q0-xeV" firstAttribute="centerY" secondItem="qW0-Zy-7lR" secondAttribute="centerY" id="ARq-e0-i3I"/>
+                                            <constraint firstItem="uy8-9X-6gh" firstAttribute="top" secondItem="qW0-Zy-7lR" secondAttribute="top" constant="6" id="JcX-pf-gDV"/>
+                                            <constraint firstAttribute="trailing" secondItem="uy8-9X-6gh" secondAttribute="trailing" constant="10" id="QbQ-my-e45"/>
+                                            <constraint firstAttribute="bottom" secondItem="uy8-9X-6gh" secondAttribute="bottom" constant="6" id="Tn3-OB-HqE"/>
+                                            <constraint firstItem="uy8-9X-6gh" firstAttribute="centerY" secondItem="qW0-Zy-7lR" secondAttribute="centerY" id="V8O-fA-Dbd"/>
+                                            <constraint firstItem="Ooe-Q0-xeV" firstAttribute="leading" secondItem="qW0-Zy-7lR" secondAttribute="leading" constant="5" id="eIk-90-2Af"/>
+                                            <constraint firstItem="uy8-9X-6gh" firstAttribute="leading" secondItem="Ooe-Q0-xeV" secondAttribute="trailing" constant="10" id="tEJ-yQ-5w8"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P2g-xF-IGA">
+                                        <rect key="frame" x="131.5" y="504" width="80" height="80"/>
+                                        <color key="backgroundColor" white="0.7361697693" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="PZ8-sC-OYh"/>
+                                            <constraint firstAttribute="height" constant="80" id="gdO-to-xog"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="roz-Lv-ZrY" firstAttribute="top" secondItem="dDs-Av-roL" secondAttribute="bottom" constant="18" id="0mb-xV-eK5"/>
+                                    <constraint firstItem="dDs-Av-roL" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="1cr-a8-2DP"/>
+                                    <constraint firstItem="qW0-Zy-7lR" firstAttribute="top" secondItem="0Ca-3K-JhU" secondAttribute="bottom" constant="11" id="6cq-BI-2vj"/>
+                                    <constraint firstAttribute="bottom" secondItem="qW0-Zy-7lR" secondAttribute="bottom" constant="42" id="6xj-fm-Boj"/>
+                                    <constraint firstItem="NYg-zp-udG" firstAttribute="top" secondItem="dBN-Je-g0M" secondAttribute="bottom" constant="30" id="9g6-BL-EN2"/>
+                                    <constraint firstItem="fmU-X6-Ndd" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="D34-ja-Iq3"/>
+                                    <constraint firstAttribute="trailing" secondItem="NYg-zp-udG" secondAttribute="trailing" constant="46.5" id="DxA-l9-mAp"/>
+                                    <constraint firstItem="1RW-yF-Ygz" firstAttribute="top" secondItem="roz-Lv-ZrY" secondAttribute="bottom" constant="8" id="FJP-n1-kLO"/>
+                                    <constraint firstItem="P2g-xF-IGA" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="Lh8-VX-drO"/>
+                                    <constraint firstItem="0Ca-3K-JhU" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="VY7-wG-sum"/>
+                                    <constraint firstItem="1RW-yF-Ygz" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="Zlv-ys-grL"/>
+                                    <constraint firstItem="fmU-X6-Ndd" firstAttribute="top" secondItem="NYg-zp-udG" secondAttribute="bottom" constant="30" id="axt-Ur-khn"/>
+                                    <constraint firstItem="0Ca-3K-JhU" firstAttribute="top" secondItem="P2g-xF-IGA" secondAttribute="bottom" constant="14" id="csl-Ds-CkT"/>
+                                    <constraint firstItem="dBN-Je-g0M" firstAttribute="top" secondItem="1RW-yF-Ygz" secondAttribute="bottom" constant="8" id="gEE-Te-XbN"/>
+                                    <constraint firstItem="roz-Lv-ZrY" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="ig6-nu-eh8"/>
+                                    <constraint firstItem="dDs-Av-roL" firstAttribute="top" secondItem="iJY-om-VRb" secondAttribute="top" constant="40" id="jmy-Ms-cuZ"/>
+                                    <constraint firstItem="dBN-Je-g0M" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="m1X-tx-brn"/>
+                                    <constraint firstItem="qW0-Zy-7lR" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="p7C-IW-Dbf"/>
+                                    <constraint firstItem="NYg-zp-udG" firstAttribute="centerX" secondItem="iJY-om-VRb" secondAttribute="centerX" id="q2p-yH-AEM"/>
+                                    <constraint firstItem="P2g-xF-IGA" firstAttribute="top" secondItem="fmU-X6-Ndd" secondAttribute="bottom" constant="22" id="tvE-Ng-Lug"/>
+                                    <constraint firstItem="NYg-zp-udG" firstAttribute="leading" secondItem="iJY-om-VRb" secondAttribute="leading" constant="46.5" id="uML-zn-eSP"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OAx-Y1-hwl">
+                                <rect key="frame" x="0.0" y="730" width="375" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iJY-om-VRb" firstAttribute="leading" secondItem="mlB-Dw-1b2" secondAttribute="leading" constant="16" id="1ly-8v-BFJ"/>
+                            <constraint firstItem="mlB-Dw-1b2" firstAttribute="top" secondItem="iJY-om-VRb" secondAttribute="top" constant="20" id="6Ul-pg-aPm"/>
+                            <constraint firstItem="OAx-Y1-hwl" firstAttribute="centerX" secondItem="mlB-Dw-1b2" secondAttribute="centerX" id="7Ra-od-79p"/>
+                            <constraint firstItem="OAx-Y1-hwl" firstAttribute="trailing" secondItem="mlB-Dw-1b2" secondAttribute="trailing" id="XKh-Rv-WEP"/>
+                            <constraint firstItem="mlB-Dw-1b2" firstAttribute="trailing" secondItem="iJY-om-VRb" secondAttribute="trailing" constant="16" id="aID-Pf-qco"/>
+                            <constraint firstItem="OAx-Y1-hwl" firstAttribute="top" secondItem="iJY-om-VRb" secondAttribute="bottom" id="dJa-NB-dgZ"/>
+                            <constraint firstItem="iJY-om-VRb" firstAttribute="centerX" secondItem="mlB-Dw-1b2" secondAttribute="centerX" id="rXu-XY-ZEh"/>
+                            <constraint firstItem="mlB-Dw-1b2" firstAttribute="bottom" secondItem="OAx-Y1-hwl" secondAttribute="bottom" id="tnX-fo-f1G"/>
+                            <constraint firstItem="OAx-Y1-hwl" firstAttribute="leading" secondItem="mlB-Dw-1b2" secondAttribute="leading" id="yPQ-Mt-ctU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mlB-Dw-1b2"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="830"/>
+                    <connections>
+                        <outlet property="qrImageView" destination="NYg-zp-udG" id="WI1-M4-xDV"/>
+                        <outlet property="selectSlipButton" destination="0Ca-3K-JhU" id="LEE-As-n1b"/>
+                        <outlet property="slipImageView" destination="P2g-xF-IGA" id="yrV-3f-jWT"/>
+                        <outlet property="uploadStatusView" destination="qW0-Zy-7lR" id="ipO-zE-uBM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HDy-GL-1ex" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6113" y="995"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon-add-post" width="27" height="27"/>
+        <image name="icon-check" width="42" height="42"/>
         <image name="icon-close" width="24" height="24"/>
         <image name="icon-destination" width="11" height="10"/>
         <image name="icon-feeds" width="27" height="27"/>
@@ -1835,6 +2073,7 @@
         <image name="icon-profile" width="27" height="27"/>
         <image name="icon-user" width="32" height="27"/>
         <image name="logo" width="515" height="494"/>
+        <image name="qr-seek" width="433" height="433"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="N1G-Cd-tVs"/>

@@ -27,6 +27,10 @@ class ProfilePresenter: ProfilePresenterType
     
     let profileRouter = ProfileRouter()
     
+    // MARK: - Disposed Bag
+    
+    let disposeBag = DisposeBag()
+    
     func loadUserProfile() -> Observable<Void>
     {
         return profileInteractor
@@ -39,6 +43,16 @@ class ProfilePresenter: ProfilePresenterType
             .asObservable()
     }
     
+    func updateUserImage(imageURL: String)
+    {
+        return profileInteractor
+            .rx
+            .updateUserImage(
+                imageURL: imageURL)
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
+    
     func navigateToLogin(
         from sourceViewController: UIViewController)
     {
@@ -49,8 +63,15 @@ class ProfilePresenter: ProfilePresenterType
     func navigateToMyTransactionDetail(
         from sourceViewController: UIViewController)
     {
+        guard let id = userProfileBehaviorRelay.value?.userId else
+        {
+            return
+        }
+        
         profileRouter
-            .navigateToMyTransactionDetail(from: sourceViewController)
+            .navigateToMyTransactionDetail(
+                studentId: id,
+                from: sourceViewController)
     }
     
     func navigateToMyRequestHistory(

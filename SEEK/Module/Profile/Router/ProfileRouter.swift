@@ -21,19 +21,33 @@ class ProfileRouter
         sourceViewController.performSegue(withIdentifier: "LogOut", sender: nil)
     }
     
-    func navigateToMyTransactionDetail(from sourceViewController: UIViewController)
+    func navigateToMyTransactionDetail(
+        studentId: String,
+        from sourceViewController: UIViewController)
     {
+        let transactionPresenter = TransactionPresenter(studentId: studentId)
         
+        let transactionViewController = storyBoard
+            .instantiateViewController(withIdentifier: "Transaction") as! TransactionViewController
+        
+        transactionViewController.presenter = transactionPresenter
+    
+        sourceViewController
+            .navigationController?
+            .pushViewController(
+                transactionViewController,
+                animated: true)
     }
     
     func navigateToMyRequestHistory(from sourceViewController: UIViewController)
     {
-        
+        let presenter = OrderHistoryPresenter(historyType: "requester")
         
         let orderHistoryViewController = storyBoard
             .instantiateViewController(withIdentifier: "OrderHistory") as! OrderHistoryViewController
         
         orderHistoryViewController.title = "My Request"
+        orderHistoryViewController.presenter = presenter
         
         sourceViewController
             .navigationController?
@@ -44,6 +58,18 @@ class ProfileRouter
     
     func navigateToMyDeliveryHistory(from sourceViewController: UIViewController)
     {
+        let presenter = OrderHistoryPresenter(historyType: "deliverer")
         
+        let orderHistoryViewController = storyBoard
+            .instantiateViewController(withIdentifier: "OrderHistory") as! OrderHistoryViewController
+        
+        orderHistoryViewController.title = "My Deliver"
+        orderHistoryViewController.presenter = presenter
+        
+        sourceViewController
+            .navigationController?
+            .pushViewController(
+                orderHistoryViewController,
+                animated: true)
     }
 }

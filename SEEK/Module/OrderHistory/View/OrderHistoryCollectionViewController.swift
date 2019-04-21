@@ -69,6 +69,11 @@ extension OrderHistoryCollectionViewController: UICollectionViewDataSource
 
 extension OrderHistoryCollectionViewController: UICollectionViewDelegateFlowLayout
 {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         return CGSize(width: collectionView.bounds.width - ( 16.0 * 2 ), height: 120)

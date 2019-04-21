@@ -18,33 +18,26 @@ class OrderHistoryViewController: UIViewController
     
     public let postsBehaviorRelay = BehaviorRelay<[Post?]>(value: [])
     
-    public let historyType = "requester"
-    
     // MARK: - Disposed Bag
     
     let disposeBag = DisposeBag()
     
     // MARK: - Presenter
     
-    let presenter: OrderHistoryPresenterType
+    var presenter: OrderHistoryPresenterType?
     
     required init?(coder aDecoder: NSCoder)
     {
-        self.presenter = OrderHistoryPresenter()
-        
-        presenter
-            .loadOrderHistory(
-                historyType: historyType)
-            .subscribe()
-            .disposed(by: disposeBag)
-        
         super.init(coder: aDecoder)
-        
-        title = "My Request"
     }
     
     override func viewDidLoad()
     {
+        presenter?
+            .loadOrderHistory()
+            .subscribe()
+            .disposed(by: disposeBag)
+        
         bindingDataWithPresenter()
         refreshControlConfiguration()
     }
@@ -65,7 +58,21 @@ class OrderHistoryViewController: UIViewController
     
     func bindingDataWithPresenter()
     {
-        presenter
+        collectionView
+            .rx
+            .itemSelected
+            .subscribe(
+                onNext: { [unowned self] in
+                    guard let postId = self.postsBehaviorRelay.value[$0.item]?.postId else
+                    {
+                        return
+                    }
+                    
+                    self.presenter?.navigateToOrderProcessing(
+                        orderId: postId,
+                        from: self) })
+        
+        presenter?
             .postsObservable
             .do(onNext: { [unowned self] in self.postsBehaviorRelay.accept($0) })
             .do( onNext: { [unowned self] in self.collectionView.rx.postsBehaviorRelay.accept($0) })
@@ -79,14 +86,18 @@ class OrderHistoryViewController: UIViewController
     {
         let refreshControl = UIRefreshControl()
         
+        guard let presenter = self.presenter else
+        {
+            return
+        }
+        
         refreshControl
             .rx
             .controlEvent(.valueChanged)
-            .flatMap { [unowned self] in
-                self.presenter
-                    .loadOrderHistory(
-                        historyType: self.historyType)
-                    .catchErrorJustReturn([]) }
+            .flatMap { _ in
+                (presenter
+                    .loadOrderHistory()
+                    .catchErrorJustReturn([])) }
             .subscribe(
                 onNext: { _ in refreshControl.endRefreshing() },
                 onError: { _ in refreshControl.endRefreshing() })

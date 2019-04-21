@@ -14,7 +14,7 @@ import Shared
 import SnapKit
 import UIKit
 
-class CreatePostViewController: UIViewController, CreatePostViewType
+class CreatePostViewController: UIViewController
 {
     // MARK: - Subviews
     

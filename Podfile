@@ -25,6 +25,8 @@ abstract_target 'App' do
     pod 'ActionSheetPicker-3.0'
     pod 'IQKeyboardManager'
     pod 'SnapKit', '~> 4.0'
+    pod 'Firebase/Core'
+    pod 'Firebase/Storage'
     
     
   end
