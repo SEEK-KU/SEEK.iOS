@@ -114,9 +114,8 @@ class ProfileViewController: UIViewController
         selectPictureButton
             .rx
             .tap
-            .first()
             .subscribe(
-                onSuccess: { [unowned self] _ in
+                onNext: { [unowned self] _ in
                     if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                         self.present(self.imagePicker, animated: true, completion: nil)
                     } })
@@ -125,9 +124,8 @@ class ProfileViewController: UIViewController
         transactionDetailLabel
             .rx
             .tap
-            .first()
             .subscribe(
-                onSuccess: { [unowned self] _ in
+                onNext: { [unowned self] _ in
                     self.presenter
                         .navigateToMyTransactionDetail(
                             from: self) })
@@ -136,9 +134,8 @@ class ProfileViewController: UIViewController
         myOrderLabel
             .rx
             .tap
-            .first()
             .subscribe(
-                onSuccess: { [unowned self] _ in
+                onNext: { [unowned self] _ in
                     self.presenter
                         .navigateToMyRequestHistory(from: self) })
             .disposed(by: disposeBag)
@@ -146,9 +143,8 @@ class ProfileViewController: UIViewController
         myDeliverLabel
             .rx
             .tap
-            .first()
             .subscribe(
-                onSuccess: { [unowned self] _ in
+                onNext: { [unowned self] _ in
                     self.presenter
                         .navigateToMyDeliveryHistory(from: self) })
             .disposed(by: disposeBag)
@@ -156,9 +152,8 @@ class ProfileViewController: UIViewController
         logoutButton
             .rx
             .tap
-            .first()
             .subscribe(
-                onSuccess: { [unowned self] _ in
+                onNext: { [unowned self] _ in
                     self.presenter.navigateToLogin(from: self) })
             .disposed(by: disposeBag)
     }
