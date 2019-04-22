@@ -104,4 +104,20 @@ class OrderPendingPresenter : OrderPendingPresenterType
             .disposed(by: disposeBag)
     }
     
+    func updateOrderStatus()
+    {
+        guard let post = postsBehaviorRelay.value,
+            let postId = post.postId else
+        {
+            return
+        }
+        
+        return postInteractor
+            .rx
+            .updatePostStatus(
+                orderId: postId,
+                orderStatus: .confirmPrice)
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
 }

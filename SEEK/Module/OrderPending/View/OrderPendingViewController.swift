@@ -92,9 +92,15 @@ class OrderPendingViewController: UIViewController
         grandTotalView
             .rx
             .tap
-            .subscribe(
+            .do(
                 onNext: { [weak self] in
                     self?.presenter?.updatePost() })
+            .do(
+                onNext: { [weak self] in
+                    self?.presenter?.updateOrderStatus() })
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.navigationController?.popToRootViewController(animated: true) })
             .disposed(by: disposeBag)
         
         items

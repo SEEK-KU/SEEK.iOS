@@ -24,4 +24,5 @@ protocol OrderPendingPresenterType: PresenterType
     
     func loadPostDetail(postId: String) -> Observable<Void>
     func updatePost()
+    func updateOrderStatus()
 }
