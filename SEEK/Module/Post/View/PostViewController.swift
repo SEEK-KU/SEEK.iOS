@@ -100,7 +100,7 @@ class PostViewController: UIViewController
             .tap
             .do(
                 onNext: { [weak self] in
-                    self?.presenter?.updateOrderStatus() })
+                    self?.presenter?.takeOrder() })
             .subscribe(
                 onNext: { [unowned self] in
                     self.presenter?.navigateToOrderPending(from: self) })

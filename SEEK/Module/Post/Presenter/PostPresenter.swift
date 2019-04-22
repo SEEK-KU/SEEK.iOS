@@ -58,7 +58,7 @@ class PostPresenter: PostPresenterType
             .asObservable()
     }
     
-    func updateOrderStatus()
+    func takeOrder()
     {
         guard let post = postsBehaviorRelay.value,
             let postId = post.postId else
@@ -68,20 +68,23 @@ class PostPresenter: PostPresenterType
         
         return postInteractor
             .rx
-            .updatePostStatus(
+            .takeOrder(
                 orderId: postId,
-                orderStatus: .pending)
+                orderStatus: .updatePrice)
             .subscribe()
             .disposed(by: disposeBag)
     }
     
     func navigateToOrderPending(from sourceViewController: UIViewController)
     {
-        guard let post = postsBehaviorRelay.value else {
+        guard let post = postsBehaviorRelay.value else
+        {
             return
         }
         
-        postRouter.navigateToOrderPending(from: sourceViewController,
-                                          post: post)
+        postRouter
+            .navigateToOrderPending(
+                from: sourceViewController,
+                post: post)
     }
 }
