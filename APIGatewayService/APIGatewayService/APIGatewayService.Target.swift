@@ -60,6 +60,11 @@ extension APIGatewayService
         case uploadSlip(
             orderId: String,
             slipURL: String)
+        
+        case takeOrder(
+            token: String,
+            orderId: String,
+            orderStatus: Post.OrderStatusType)
     }
 }
 
@@ -87,6 +92,7 @@ extension APIGatewayService.Target: TargetType
             case .user: return "/user"
             case .createOrder: return "/order"
             case .updateOrder(let orderId, _): return "/order/\(orderId)"
+            case .takeOrder(_, let orderId, _): return "/order/\(orderId)"
             case .updateOrderStatus(let orderId, _): return "/order/\(orderId)"
             case .login: return "/login"
             case .signUp: return "/user"
@@ -117,6 +123,10 @@ extension APIGatewayService.Target: TargetType
             return .post
         }
         else if case .updateOrder = self
+        {
+            return .put
+        }
+        else if case .takeOrder =  self
         {
             return .put
         }
@@ -184,6 +194,16 @@ extension APIGatewayService.Target: TargetType
         else if case let .updateOrder( _, orderDetail) = self
         {
             return .requestJSONEncodable(orderDetail)
+        }
+        else if case let .takeOrder(_, _, orderStatus) = self
+        {
+            var parameters: [String: Any] = [:]
+            
+            parameters["orderInfo"] = ["status": orderStatus.rawValue]
+            
+            return .requestParameters(
+                parameters: parameters,
+                encoding: JSONEncoding.default)
         }
         else if case let .updateOrderStatus( _, orderStatus) = self
         {
@@ -298,6 +318,10 @@ extension APIGatewayService.Target: TargetType
         else if case let .uploadUserQR(token, _) = self
         {
             return ["token": token]
+        }
+        else if case let .takeOrder(token, _, _) = self
+        {
+            return ["token": token ]
         }
         return nil
     }

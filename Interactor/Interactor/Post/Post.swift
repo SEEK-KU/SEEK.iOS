@@ -75,6 +75,25 @@ extension Reactive where Base: Post
             .map { _ in }
     }
     
+    public func takeOrder(
+        orderId: String,
+        orderStatus: Entity.Post.OrderStatusType) -> Single<Void>
+    {
+        guard let userToken = KeychainWrapper.standard.string(forKey: .ssoToken) else
+        {
+            return .just(())
+        }
+        
+        return base
+            .apiGatewayService
+            .rx
+            .takeOrder(
+                token: userToken,
+                orderId: orderId,
+                orderStatus: orderStatus)
+            .map { _ in }
+    }
+    
     public func updatePostStatus(
         orderId: String,
         orderStatus: Entity.Post.OrderStatusType) -> Single<Void>

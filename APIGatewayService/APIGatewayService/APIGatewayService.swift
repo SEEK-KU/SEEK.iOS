@@ -74,6 +74,22 @@ extension Reactive where Base: APIGatewayService
             .mapJSON()
     }
     
+    public func takeOrder(
+        token: String,
+        orderId: String,
+        orderStatus: Post.OrderStatusType) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .takeOrder(
+                    token: token,
+                    orderId: orderId,
+                    orderStatus: orderStatus))
+            .mapJSON()
+    }
+    
     public func updateOrderStatus(
         orderId: String,
         orderStatus: Post.OrderStatusType) -> Single<Any>
