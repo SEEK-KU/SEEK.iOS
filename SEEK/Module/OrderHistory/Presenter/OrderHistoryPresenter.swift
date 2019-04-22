@@ -52,6 +52,7 @@ class OrderHistoryPresenter: OrderHistoryPresenterType
     }
     
     func navigateToOrderProcessing(
+        title: String,
         orderId: String,
         from sourceViewController: UIViewController)
     {
@@ -59,6 +60,7 @@ class OrderHistoryPresenter: OrderHistoryPresenterType
         {
             orderHistoryRouter
                 .navigateToOrderProcessingAsRequester(
+                    title: title,
                     orderId: orderId,
                     from: sourceViewController)
         }
@@ -66,6 +68,7 @@ class OrderHistoryPresenter: OrderHistoryPresenterType
         {
             orderHistoryRouter
                 .navigateToOrderProcessingAsDeliverer(
+                    title: title,
                     orderId: orderId,
                     from: sourceViewController)
         }

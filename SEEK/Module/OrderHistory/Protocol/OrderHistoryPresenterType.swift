@@ -19,6 +19,7 @@ protocol OrderHistoryPresenterType: PresenterType
     func loadOrderHistory() -> Observable<[Entity.Post?]>
     
     func navigateToOrderProcessing(
+        title: String,
         orderId: String,
         from sourceViewController: UIViewController)
 }

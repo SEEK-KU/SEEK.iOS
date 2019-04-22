@@ -63,12 +63,14 @@ class OrderHistoryViewController: UIViewController
             .itemSelected
             .subscribe(
                 onNext: { [unowned self] in
-                    guard let postId = self.postsBehaviorRelay.value[$0.item]?.postId else
+                    guard let postId = self.postsBehaviorRelay.value[$0.item]?.postId,
+                        let postTitle = self.postsBehaviorRelay.value[$0.item]?.title else
                     {
                         return
                     }
                     
                     self.presenter?.navigateToOrderProcessing(
+                        title: postTitle,
                         orderId: postId,
                         from: self) })
         

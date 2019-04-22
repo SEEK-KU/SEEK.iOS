@@ -13,15 +13,18 @@ class OrderHistoryRouter
     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
     func navigateToOrderProcessingAsRequester(
+        title: String,
         orderId: String,
         from sourceViewController: UIViewController)
     {
-//        let presenter = OrderProcessingPresenter()
+        let presenter = OrderProcessingPresenter(orderId: orderId)
         
         let orderProcessingViewController = storyBoard
             .instantiateViewController(withIdentifier: "OrderProcessing") as! OrderProcessingViewController
         
-//        orderProcessingViewController.presenter = presenter
+        orderProcessingViewController.presenter = presenter
+        
+        orderProcessingViewController.title = title
         
         sourceViewController
             .navigationController?
@@ -31,15 +34,18 @@ class OrderHistoryRouter
     }
     
     func navigateToOrderProcessingAsDeliverer(
+        title: String,
         orderId: String,
         from sourceViewController: UIViewController)
     {
-        //        let presenter = OrderProcessingPresenter()
+                let presenter = OrderProcessingPresenter(orderId: orderId)
         
         let orderProcessingViewController = storyBoard
             .instantiateViewController(withIdentifier: "OrderProcessing") as! OrderProcessingViewController
         
-        //        orderProcessingViewController.presenter = presenter
+        orderProcessingViewController.presenter = presenter
+        
+        orderProcessingViewController.title = title
         
         sourceViewController
             .navigationController?
