@@ -13,7 +13,8 @@ extension Post
     public enum OrderStatusType: String, Codable, CaseIterable
     {
         case active = "ACTIVE"
-        case pending = "PENDING"
+        case updatePrice = "PENDING_UPDATEPRICE"
+        case confirmPrice = "PENDING_CONFIRMPRICE"
         case accepted = "ACCEPTED"
         case processing = "PROCESSING"
         case shipping = "SHIPPING"
@@ -30,9 +31,13 @@ extension Post
             {
                 self = .active
             }
-            else if rawValue.uppercased() == OrderStatusType.pending.rawValue
+            else if rawValue.uppercased() == OrderStatusType.updatePrice.rawValue
             {
-                self = .pending
+                self = .updatePrice
+            }
+            else if rawValue.uppercased() == OrderStatusType.confirmPrice.rawValue
+            {
+                self = .confirmPrice
             }
             else if rawValue.uppercased() == OrderStatusType.accepted.rawValue
             {

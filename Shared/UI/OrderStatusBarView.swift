@@ -13,7 +13,7 @@ import UIKit
 public class OrderStatusBarView: UIView
 {
     
-    public var orderStatus: Post.OrderStatusType = .accepted {
+    public var orderStatus: Post.OrderStatusType = .confirmPrice {
         didSet { didsetOrderStatus(oldValue) } }
     
     // MARK: - Subviews
@@ -191,7 +191,18 @@ extension OrderStatusBarView
 {
     func didsetOrderStatus(_ oldvalue: Post.OrderStatusType)
     {
-        if orderStatus == .accepted
+        
+        if orderStatus == .confirmPrice
+        {
+            orderConfirmButton.setImage(#imageLiteral(resourceName: "icon-check-disable"), for: .normal)
+            buyingButton.setImage(#imageLiteral(resourceName: "icon-check-disable"), for: .normal)
+            shippingButton.setImage(#imageLiteral(resourceName: "icon-check-disable"), for: .normal)
+            completedButton.setImage(#imageLiteral(resourceName: "icon-check-disable"), for: .normal)
+            toShippingView.backgroundColor = #colorLiteral(red: 0.4638571739, green: 0.4639123082, blue: 0.4638254046, alpha: 1)
+            toBuyingLine.backgroundColor = #colorLiteral(red: 0.4638571739, green: 0.4639123082, blue: 0.4638254046, alpha: 1)
+            toCompletedView.backgroundColor  = #colorLiteral(red: 0.4638571739, green: 0.4639123082, blue: 0.4638254046, alpha: 1)
+        }
+        else if orderStatus == .accepted
         {
             orderConfirmButton.setImage(#imageLiteral(resourceName: "icon-check"), for: .normal)
         }
