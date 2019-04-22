@@ -82,9 +82,9 @@ class ProfileViewController: UIViewController
         bindingDataWithPresenter()
     }
     
-    override func viewWillAppear(_ animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         
         self.presenter
             .loadUserProfile()
