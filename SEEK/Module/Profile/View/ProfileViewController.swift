@@ -84,12 +84,12 @@ class ProfileViewController: UIViewController
     
     override func viewDidAppear(_ animated: Bool)
     {
-        super.viewDidAppear(animated)
-        
         self.presenter
             .loadUserProfile()
             .subscribe()
             .disposed(by: disposeBag)
+        
+        super.viewDidAppear(animated)
     }
     
     private func bindingDataWithPresenter()
@@ -114,8 +114,9 @@ class ProfileViewController: UIViewController
         selectPictureButton
             .rx
             .tap
+            .first()
             .subscribe(
-                onNext: { [unowned self] _ in
+                onSuccess: { [unowned self] _ in
                     if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                         self.present(self.imagePicker, animated: true, completion: nil)
                     } })
@@ -124,8 +125,9 @@ class ProfileViewController: UIViewController
         transactionDetailLabel
             .rx
             .tap
+            .first()
             .subscribe(
-                onNext: { [unowned self] in
+                onSuccess: { [unowned self] _ in
                     self.presenter
                         .navigateToMyTransactionDetail(
                             from: self) })
@@ -134,8 +136,9 @@ class ProfileViewController: UIViewController
         myOrderLabel
             .rx
             .tap
+            .first()
             .subscribe(
-                onNext: { [unowned self] in
+                onSuccess: { [unowned self] _ in
                     self.presenter
                         .navigateToMyRequestHistory(from: self) })
             .disposed(by: disposeBag)
@@ -143,8 +146,9 @@ class ProfileViewController: UIViewController
         myDeliverLabel
             .rx
             .tap
+            .first()
             .subscribe(
-                onNext: { [unowned self] in
+                onSuccess: { [unowned self] _ in
                     self.presenter
                         .navigateToMyDeliveryHistory(from: self) })
             .disposed(by: disposeBag)
@@ -152,8 +156,9 @@ class ProfileViewController: UIViewController
         logoutButton
             .rx
             .tap
+            .first()
             .subscribe(
-                onNext: { [unowned self] in
+                onSuccess: { [unowned self] _ in
                     self.presenter.navigateToLogin(from: self) })
             .disposed(by: disposeBag)
     }
