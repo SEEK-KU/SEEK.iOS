@@ -45,7 +45,7 @@ class PostCollectionViewCell: UICollectionViewCell
         backgroundColor = UIColor.white
         
         self.layer.cornerRadius = 8
-        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 3
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
