@@ -15,6 +15,7 @@ extension Post
         public let name: String?
         public let price: Double?
         public let qty: Int?
+        public let check: Bool?
         
         public init?(data: [String : Any]?)
         {
@@ -31,22 +32,25 @@ extension Post
             let name = data["name"] as? String
             let price = data["price"] as? Double
             let qty = data["qty"] as? Int
-            
+            let check = data["check"] as? Bool
             
             self.init(
                 name: name,
                 price: price,
-                qty: qty)
+                qty: qty,
+                check: check)
         }
         
         public init(
             name: String? = nil,
             price: Double? = nil,
-            qty: Int? = nil)
+            qty: Int? = nil,
+            check: Bool? = false)
         {
             self.name = name
             self.price = price
             self.qty = qty
+            self.check = check
         }
     }
 }
