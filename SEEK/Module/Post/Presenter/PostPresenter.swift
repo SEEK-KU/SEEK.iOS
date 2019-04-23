@@ -16,6 +16,7 @@ class PostPresenter: PostPresenterType
 {
     let postsBehaviorRelay = BehaviorRelay<Entity.Post?>(value: nil)
     let requesterBehaviorRelay = BehaviorRelay<Entity.User?>(value: nil)
+    var userProfileImagePublishSubject = PublishSubject<UIImage?>()
     
     var postsObservable: Observable<Entity.Post?> {
         return postsBehaviorRelay.asObservable()
@@ -45,6 +46,11 @@ class PostPresenter: PostPresenterType
         self.postId = postId
     }
     
+    deinit
+    {
+        userProfileImagePublishSubject.onCompleted()
+    }
+    
     func loadPostDetail() -> Observable<Void>
     {
         return postInteractor
@@ -54,6 +60,9 @@ class PostPresenter: PostPresenterType
                 onSuccess: { [weak self] in
                     self?.postsBehaviorRelay.accept($0?.orderInfo)
                     self?.requesterBehaviorRelay.accept($0?.requester) })
+            .do(
+                onSuccess: { [weak self] _ in
+                    self?.loadProfileImage() })
             .map { _ in }
             .asObservable()
     }
@@ -73,6 +82,19 @@ class PostPresenter: PostPresenterType
                 orderStatus: .updatePrice)
             .subscribe()
             .disposed(by: disposeBag)
+    }
+    
+    func loadProfileImage()
+    {
+        guard let url = URL(string: requesterBehaviorRelay.value?.image ?? "") else
+        {
+            return
+        }
+        
+        if let imageData = try? Data(contentsOf: url) {
+            let image = UIImage(data: imageData)
+            userProfileImagePublishSubject.onNext(image)
+        }
     }
     
     func navigateToOrderPending(from sourceViewController: UIViewController)

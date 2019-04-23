@@ -14,6 +14,7 @@ protocol PostPresenterType: PresenterType
 {
     var postsObservable: Observable<Post?> { get }
     var requesterObservable: Observable<User?> { get }
+    var userProfileImagePublishSubject: PublishSubject<UIImage?> { get }
     
     func loadPostDetail() -> Observable<Void>
     func takeOrder()
