@@ -17,6 +17,7 @@ class OrderProcessingViewController: UIViewController
 {
     
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -26,8 +27,9 @@ class OrderProcessingViewController: UIViewController
     @IBOutlet weak var itemStackView: UIStackView!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    private let orderStatus = OrderStatusBarView()
+    private let orderStatusView = OrderStatusBarView()
     
     private let items: [ItemCheckView] = [
         ItemCheckView(),
@@ -40,6 +42,8 @@ class OrderProcessingViewController: UIViewController
     
     let postsBehaviorRelay = BehaviorRelay<Post?>(value: nil)
     let requesterBehaviorRelay = BehaviorRelay<User?>(value: nil)
+    
+    var isAllowEditing: Bool = false
     
     // MARK: - Presenter
     
@@ -55,12 +59,10 @@ class OrderProcessingViewController: UIViewController
     {
         super.viewDidLoad()
         
-        items.forEach { [weak self] in
-            self?.itemStackView.addArrangedSubview($0) }
-        
-        topView.addSubview(orderStatus)
+        topView.addSubview(orderStatusView)
         bottomView.addSubview(grandTotalView)
         
+        refreshControlConfiguration()
         bindingDataWithPresenter()
         addViewConstraints()
         viewConfiguration()
@@ -68,6 +70,11 @@ class OrderProcessingViewController: UIViewController
     
     func bindingDataWithPresenter()
     {
+        presenter?
+            .loadPostDetail(postId: self.presenter?.orderId)
+            .subscribe()
+            .disposed(by: disposeBag)
+        
         presenter?
             .postsObservable
             .filter { $0 != nil }
@@ -80,12 +87,6 @@ class OrderProcessingViewController: UIViewController
             .disposed(by: disposeBag)
         
         presenter?
-//            .loadPostDetail(postId: postsBehaviorRelay.value?.postId ?? "")
-            .loadPostDetail(postId: "5cadbf878315751a0fbf9f96")
-            .subscribe()
-            .disposed(by: disposeBag)
-        
-        presenter?
             .requesterObservable
             .filter { $0 != nil }
             .do(
@@ -95,15 +96,86 @@ class OrderProcessingViewController: UIViewController
                 onNext: { [weak self] _ in
                     self?.viewConfiguration() })
             .disposed(by: disposeBag)
+        
+        presenter?
+            .userProfileImagePublishSubject
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.profileImageView.image = $0 })
+            .disposed(by: disposeBag)
+        
+        presenter?
+            .isAllowEditingPublishSubject
+            .do(
+                onNext: { [weak self] in
+                    self?.isAllowEditing = $0 })
+            .subscribe(
+                onNext: { [weak self] isAllow in
+                    
+                    self?.items
+                        .forEach({ (item) in
+                            item.isAllowEditing = isAllow }) })
+            .disposed(by: disposeBag)
+
+        presenter?
+            .shouldShowButtomViewPublishSubject
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.grandTotalView.isHidden = !$0
+                    self?.addViewConstraints()
+                    self?.scrollView.setNeedsUpdateConstraints()
+                    self?.grandTotalView.setNeedsUpdateConstraints()
+            })
+            .disposed(by: disposeBag)
+        
+        grandTotalView
+            .rx
+            .tap
+            .do(
+                onNext: { } )
+            .subscribe(
+                onNext: { [unowned self] in
+                    if self.isAllowEditing
+                    {
+                        self.updateItemCheck()
+                        
+                        self.presenter?.pushPaymentViewController(from: self)
+                    }
+                    else
+                    {
+                        self.presenter?.updateOrderProgess()
+                    } })
+            .disposed(by: disposeBag)
     }
     
     private func viewConfiguration()
     {
+        grandTotalView.isHidden = true
+        grandTotalView.layer.shadowColor = UIColor.gray.cgColor
+        grandTotalView.layer.shadowOpacity = 0.2
+        grandTotalView.layer.shadowOffset = CGSize(width: 0, height: -3)
+        grandTotalView.layer.shadowRadius = 3
+        
+        orderStatusView.layer.shadowColor = UIColor.black.cgColor
+        orderStatusView.layer.shadowOpacity = 0.2
+        orderStatusView.layer.shadowRadius = 3
+        orderStatusView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        
         guard let post = postsBehaviorRelay.value,
             let requester = requesterBehaviorRelay.value else
         {
             return
         }
+        
+        guard let orderStatus = post.status else
+        {
+            return
+        }
+        
+        orderStatusView.orderStatus = orderStatus
+        
+        profileImageView.layer.cornerRadius = profileImageView.bounds.height / 2
+        profileImageView.clipsToBounds = true
         
         let requesterName = "\(requester.firstname ?? "") \(requester.lastname ?? "")"
         nameLabel.text = requesterName
@@ -115,6 +187,50 @@ class OrderProcessingViewController: UIViewController
         tipLabel.text = "\(post.tip ?? 0.0)"
         
         updateItemList()
+    }
+    
+    func refreshControlConfiguration()
+    {
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl
+            .rx
+            .controlEvent(.valueChanged)
+            .flatMap { [unowned self] _ in
+                self.presenter?
+                    .loadPostDetail(postId: self.postsBehaviorRelay.value?.postId ?? "")
+                    .catchErrorJustReturn(()) ?? .just(()) }
+            .subscribe(
+                onNext: { _ in refreshControl.endRefreshing() },
+                onError: { _ in refreshControl.endRefreshing() })
+            .disposed(by: disposeBag)
+        
+        scrollView.refreshControl = refreshControl
+    }
+    
+    func updateItemCheck()
+    {
+        guard let post = postsBehaviorRelay.value,
+            let postItem = post.itemList else
+        {
+            return
+        }
+        
+        var newItemList: [Entity.Post.ItemList] = []
+        
+        postItem
+            .enumerated()
+            .forEach { [weak self] (offset, element) in
+                let temp = Entity
+                    .Post
+                    .ItemList(
+                        name: element.name,
+                        price: element.price,
+                        qty: element.qty,
+                        check: self?.items[offset].isSelected)
+                newItemList.append(temp) }
+        
+        presenter?.updateItemList(itemList: newItemList)
     }
     
     func updateItemList()
@@ -130,10 +246,16 @@ class OrderProcessingViewController: UIViewController
             .itemList?
             .enumerated()
             .forEach { [weak self] (offset, element) in
+                
+                self?.itemStackView.addArrangedSubview(items[offset])
+                
                 totalPrice += ((element.price ?? 0.0) * Double(element.qty ?? 0))
                 
+                self?.items[offset].itemName = element.name
                 self?.items[offset].itemPrice = String(format:"%.2f", element.price ?? "")
-                self?.items[offset].itemQuantity = String(format:"%d", element.qty ?? "") }
+                self?.items[offset].itemQuantity = String(format:"%d", element.qty ?? "")
+                self?.items[offset].isSelected = element.check ?? false}
+        
         
         grandTotalView.price = String(format: "%.2f", totalPrice)
     }
@@ -142,9 +264,29 @@ class OrderProcessingViewController: UIViewController
     
     private func addViewConstraints()
     {
-        orderStatus
+        orderStatusView
             .snp
             .makeConstraints {
                 $0.edges.equalToSuperview() }
+        
+        grandTotalView
+            .snp
+            .makeConstraints {
+                $0
+                    .edges
+                    .equalToSuperview() }
+        
+        scrollView
+            .snp
+            .makeConstraints {
+                if grandTotalView.isHidden
+                {
+                    $0.bottom.equalToSuperview()
+                }
+                else
+                {
+                     $0.bottom.equalTo(bottomView.snp.top)
+                }
+        }
     }
 }

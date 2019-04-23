@@ -13,12 +13,22 @@ import UIKit
 
 protocol OrderProcessingPresenterType: PresenterType
 {
+    var orderId: String { get }
+    
     var postsObservable: Observable<Entity.Post?> { get }
     var requesterObservable: Observable<Entity.User?> { get }
     
-    init(
-        postViewModel: Entity.Post?)
+    var isAllowEditingPublishSubject: PublishSubject<Bool> { get }
+    var shouldShowButtomViewPublishSubject: PublishSubject<Bool> { get }
+    var userProfileImagePublishSubject: PublishSubject<UIImage?> { get }
     
-    func loadPostDetail(postId: String) -> Observable<Void>
+    init(
+        viewType: String,
+        orderId: String)
+    
+    func loadPostDetail(postId: String?) -> Observable<Void>
     func updatePost()
+    func updateItemList(itemList: [Entity.Post.ItemList])
+    func updateOrderProgess()
+    func pushPaymentViewController(from sourceViewController: UIViewController)
 }
