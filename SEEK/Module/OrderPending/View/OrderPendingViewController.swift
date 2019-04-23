@@ -53,9 +53,6 @@ class OrderPendingViewController: UIViewController
         
         navigationItem.hidesBackButton = true
         
-        items.forEach { [weak self] in
-            self?.itemListStackView.addArrangedSubview($0) }
-        
         grandTotalView.buttonName = "ยืนยันราคาสินค้า"
         bottomView.addSubview(grandTotalView)
         
@@ -184,6 +181,9 @@ class OrderPendingViewController: UIViewController
             .itemList?
             .enumerated()
             .forEach { [weak self] (offset, element) in
+                
+                self?.itemListStackView.addArrangedSubview(items[offset])
+                
                 totalPrice += ((element.price ?? 0.0) * Double(element.qty ?? 0))
                 
                 self?.items[offset].isAbleToEditPrice = true
