@@ -34,7 +34,7 @@ public class ItemCheckView: UIView
         didSet { didSetViewState(oldValue) }
     }
     
-    private let checkButton = UIButton()
+    fileprivate let checkButton = UIButton()
     private let titleTextField = UITextField()
     private let quantityTextField = UITextField()
     private let priceTextField = UITextField()
@@ -156,4 +156,9 @@ extension ItemCheckView
             checkButton.isUserInteractionEnabled = false
         }
     }
+}
+
+extension Reactive where Base: ItemCheckView
+{
+    public var check: ControlEvent<Void> { return base.checkButton.rx.tap }
 }
