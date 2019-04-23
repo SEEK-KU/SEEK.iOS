@@ -15,6 +15,7 @@ import UIKit
 class OrderPendingViewController: UIViewController
 {
     
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -89,15 +90,22 @@ class OrderPendingViewController: UIViewController
                     self?.viewConfiguration() })
             .disposed(by: disposeBag)
         
+        presenter?
+            .userProfileImagePublishSubject
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.profileImageView.image = $0 })
+            .disposed(by: disposeBag)
+        
         grandTotalView
             .rx
             .tap
             .do(
                 onNext: { [weak self] in
                     self?.presenter?.updatePost() })
-            .do(
-                onNext: { [weak self] in
-                    self?.presenter?.updateOrderStatus() })
+//            .do(
+//                onNext: { [weak self] in
+//                    return self?.presenter?.updateOrderStatus() })
             .subscribe(
                 onNext: { [weak self] in
                     self?.navigationController?.popToRootViewController(animated: true) })
@@ -126,6 +134,9 @@ class OrderPendingViewController: UIViewController
     
     func viewConfiguration()
     {
+        profileImageView.layer.cornerRadius = profileImageView.bounds.height / 2
+        profileImageView.clipsToBounds = true
+        
         grandTotalView.layer.shadowColor = UIColor.gray.cgColor
         grandTotalView.layer.shadowOpacity = 0.2
         grandTotalView.layer.shadowOffset = CGSize(width: 0, height: -3)

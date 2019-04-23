@@ -14,6 +14,7 @@ protocol OrderPendingPresenterType: PresenterType
 {
     var postsObservable: Observable<Entity.Post?> { get }
     var requesterObservable: Observable<Entity.User?> { get }
+    var userProfileImagePublishSubject: PublishSubject<UIImage?> { get }
     
     init(
         postViewModel: Entity.Post?)
@@ -24,5 +25,5 @@ protocol OrderPendingPresenterType: PresenterType
     
     func loadPostDetail(postId: String) -> Observable<Void>
     func updatePost()
-    func updateOrderStatus()
+//    func updateOrderStatus() -> Observable<Void>
 }

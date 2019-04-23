@@ -23,6 +23,7 @@ class OrderPendingPresenter : OrderPendingPresenterType
     var requesterObservable: Observable<Entity.User?> {
         return requesterBehaviorRelay.asObservable() }
     let requesterBehaviorRelay = BehaviorRelay<Entity.User?>(value: nil)
+    var userProfileImagePublishSubject = PublishSubject<UIImage?>()
     
     // MARK: - Interactor
     
@@ -36,6 +37,11 @@ class OrderPendingPresenter : OrderPendingPresenterType
         postViewModel: Entity.Post?)
     {
         self.postsBehaviorRelay.accept(postViewModel)
+    }
+    
+    deinit
+    {
+         userProfileImagePublishSubject.onCompleted()
     }
     
     func updateItemPrice(
@@ -80,13 +86,17 @@ class OrderPendingPresenter : OrderPendingPresenterType
                 onSuccess: { [weak self] in
                     self?.postsBehaviorRelay.accept($0?.orderInfo)
                     self?.requesterBehaviorRelay.accept($0?.requester) })
+            .do(
+                onSuccess: { [weak self] _ in
+                    self?.loadProfileImage() })
             .map { _ in }
             .asObservable()
     }
     
     func updatePost()
     {
-        guard let post = self.postsBehaviorRelay.value else
+        guard let post = self.postsBehaviorRelay.value,
+            let postId = post.postId else
         {
             return
         }
@@ -98,26 +108,28 @@ class OrderPendingPresenter : OrderPendingPresenterType
         return postInteractor
             .rx
             .updatePost(
-                orderId: post.postId ?? "",
+                orderId: postId,
                 orderDetail: postDetail)
+            .flatMap { [unowned self] in
+                return self.postInteractor
+                    .rx
+                    .updatePostStatus(
+                        orderId: postId,
+                        orderStatus: .confirmPrice) }
             .subscribe()
             .disposed(by: disposeBag)
     }
     
-    func updateOrderStatus()
+    func loadProfileImage()
     {
-        guard let post = postsBehaviorRelay.value,
-            let postId = post.postId else
+        guard let url = URL(string: requesterBehaviorRelay.value?.image ?? "") else
         {
             return
         }
         
-        return postInteractor
-            .rx
-            .updatePostStatus(
-                orderId: postId,
-                orderStatus: .confirmPrice)
-            .subscribe()
-            .disposed(by: disposeBag)
+        if let imageData = try? Data(contentsOf: url) {
+            let image = UIImage(data: imageData)
+            userProfileImagePublishSubject.onNext(image)
+        }
     }
 }
