@@ -117,6 +117,31 @@ extension Reactive where Base: APIGatewayService
                     slipURL: slipURL))
             .mapJSON()
     }
+    
+    public func updateOrderProcess(
+        orderId: String,
+        orderStatus: Post.OrderStatusType) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .updateOrderProcess(
+                    orderId: orderId,
+                    orderStatus: orderStatus))
+            .mapJSON()
+    }
+    
+    public func updateOrderItemlist(
+        orderId: String,
+        itemList: [Post.ItemList]) -> Single<Any>
+    {
+        return base.provider.rx.request(
+            .updateOrderItemlist(
+                orderId: orderId,
+                itemList: itemList))
+            .mapJSON()
+    }
 }
 
 extension Reactive where Base: APIGatewayService

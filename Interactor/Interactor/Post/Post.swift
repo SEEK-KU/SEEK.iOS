@@ -119,4 +119,31 @@ extension Reactive where Base: Post
                 slipURL: slipURL)
             .map { _ in }
     }
+    
+    public func updateOrderProcess(
+        orderId: String,
+        orderStatus: Entity.Post.OrderStatusType) -> Single<Entity.Post?>
+    {
+        return base
+            .apiGatewayService
+            .rx
+            .updateOrderProcess(
+                orderId: orderId,
+                orderStatus: orderStatus)
+            .map { $0 as? [String: Any] ?? [:] }
+            .map { Entity.Post.init(data: $0) }
+    }
+    
+    public func updateOrderItemlist(
+        orderId: String,
+        itemList: [Entity.Post.ItemList]) -> Single<Void>
+    {
+        return base
+            .apiGatewayService
+            .rx
+            .updateOrderItemlist(
+                orderId: orderId,
+                itemList: itemList)
+            .map { _ in }
+    }
 }

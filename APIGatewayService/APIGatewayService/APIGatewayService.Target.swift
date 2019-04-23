@@ -65,6 +65,14 @@ extension APIGatewayService
             token: String,
             orderId: String,
             orderStatus: Post.OrderStatusType)
+        
+        case updateOrderProcess(
+            orderId: String,
+            orderStatus: Post.OrderStatusType)
+        
+        case updateOrderItemlist(
+            orderId: String,
+            itemList: [Post.ItemList])
     }
 }
 
@@ -101,6 +109,8 @@ extension APIGatewayService.Target: TargetType
             case .loadUserQR: return "/getUserQR"
             case .uploadUserQR: return "/user"
             case .uploadSlip: return "/uploadSlip"
+            case .updateOrderProcess: return "/order/updateStatus"
+            case .updateOrderItemlist(let orderId, _): return "/order/\(orderId)"
         }
     }
     
@@ -159,6 +169,14 @@ extension APIGatewayService.Target: TargetType
             return .put
         }
         else if case .uploadSlip = self
+        {
+            return .put
+        }
+        else if case .updateOrderProcess = self
+        {
+            return .put
+        }
+        else if case .updateOrderItemlist = self
         {
             return .put
         }
@@ -281,6 +299,34 @@ extension APIGatewayService.Target: TargetType
             return .requestParameters(
                 parameters: parameter,
                 encoding: JSONEncoding.default)
+        }
+        else if case let .updateOrderProcess(orderId, orderStatus) = self
+        {
+            var parameter: [String: Any] = [:]
+            parameter["postId"] = orderId
+            parameter["status"] = orderStatus.rawValue
+            
+            return .requestParameters(
+                parameters: parameter,
+                encoding: JSONEncoding.default)
+        }
+        else if case let .updateOrderItemlist(_, itemList) = self
+        {
+            var parameter: [String: Any] = [:]
+            var items: [[String: Any]] = []
+            itemList
+                .forEach {
+                    items.append([ "name": $0.name ?? "",
+                                   "price": $0.price ?? 0,
+                                   "qty": $0.qty ?? 0,
+                                   "check": $0.check ?? false ] as [String : Any]) }
+            
+            parameter["orderInfo"] =  ["itemList": items]
+            
+            return .requestParameters(
+                parameters: parameter,
+                encoding: JSONEncoding.default)
+            
         }
         else
         {
