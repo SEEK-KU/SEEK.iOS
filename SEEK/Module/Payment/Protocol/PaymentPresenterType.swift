@@ -14,8 +14,10 @@ import UIKit
 protocol PaymentPresenterType: PresenterType
 {
     var orderId: String { get }
+    var totalPrice: String { get }
     
     init(
+        totalPrice: Double,
         orderId: String)
     
     func uploadOrderSlip(

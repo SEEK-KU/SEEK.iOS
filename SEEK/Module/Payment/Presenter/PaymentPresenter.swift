@@ -16,6 +16,7 @@ import UIKit
 class PaymentPresenter: PaymentPresenterType
 {
     var orderId = ""
+    var totalPrice = ""
     
     // MARK: - Interactor
     
@@ -32,9 +33,11 @@ class PaymentPresenter: PaymentPresenterType
     // MARK: - Initializer
     
     required init(
+        totalPrice: Double,
         orderId: String)
     {
         self.orderId = orderId
+        self.totalPrice = "\(totalPrice) บาท"
     }
     
     func uploadOrderSlip(

@@ -21,6 +21,7 @@ class PaymentViewController: UIViewController
     @IBOutlet weak var slipImageView: UIImageView!
     @IBOutlet weak var uploadStatusView: UIView!
     @IBOutlet weak var selectSlipButton: UIButton!
+    @IBOutlet weak var PriceLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     var storageRef: StorageReference!
@@ -47,6 +48,8 @@ class PaymentViewController: UIViewController
         storageRef = Storage.storage().reference()
         
         uploadStatusView.isHidden = true
+        
+        PriceLabel.text = presenter?.totalPrice
         
         viewConfiguration()
         bindingDataWithPresenter()
