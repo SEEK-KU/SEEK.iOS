@@ -21,6 +21,10 @@ public class GrandTotalView: UIView
         get { return priceLabel.text ?? "" }
         set { priceLabel.text = "\(newValue) ฿" } }
     
+    public var buttonName: String {
+        get { return nextButton.titleLabel?.text ?? "" }
+        set { nextButton.setTitle(newValue, for: .normal) } }
+    
     // MARK: - SubView
     
     private let titleLabel = UILabel()
