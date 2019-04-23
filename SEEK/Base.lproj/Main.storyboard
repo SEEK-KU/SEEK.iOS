@@ -629,6 +629,7 @@
                         <outlet property="locationLabel" destination="v1a-eF-fj6" id="aaE-wt-sae"/>
                         <outlet property="nameLabel" destination="YLj-Sy-uij" id="X1L-kc-XvX"/>
                         <outlet property="noteLabel" destination="mV9-xO-GFA" id="1OM-bE-pFz"/>
+                        <outlet property="profileImageView" destination="oRv-oY-lx6" id="t0r-s3-Fp7"/>
                         <outlet property="storeNameLabel" destination="PZ6-i5-u62" id="gwC-xl-6CI"/>
                         <outlet property="timeLabel" destination="IAR-v5-7Di" id="nvf-TX-B6U"/>
                         <outlet property="tipLabel" destination="7Ni-YL-Lx4" id="4Fl-R6-wtk"/>
@@ -1324,6 +1325,7 @@
                         <outlet property="locationLabel" destination="HUh-sG-vs9" id="vqJ-mT-TgQ"/>
                         <outlet property="nameLabel" destination="gGC-Ti-dM1" id="HOP-99-XC9"/>
                         <outlet property="noteLabel" destination="ZB3-aw-RfC" id="toC-lE-K1h"/>
+                        <outlet property="profileImageView" destination="50C-Zz-EpD" id="y2s-R8-a5x"/>
                         <outlet property="storeNameLabel" destination="UhV-Cl-21C" id="wHG-Xn-e4Y"/>
                         <outlet property="timeLabel" destination="ZwT-yQ-VKL" id="d7D-Q2-tAN"/>
                         <outlet property="tipLabel" destination="3IW-LZ-2mt" id="DV3-cO-8Oa"/>
@@ -1342,7 +1344,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLT-Or-V7Z">
-                                <rect key="frame" x="0.0" y="124" width="375" height="782"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="806"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZcP-QI-f3M" userLabel="Orderer Detail">
                                         <rect key="frame" x="24" y="16" width="327" height="103"/>
@@ -1529,7 +1531,7 @@
                                                 <rect key="frame" x="8" y="402" width="319" height="126"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รายการ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bti-1X-vsP">
-                                                        <rect key="frame" x="24" y="0.0" width="48" height="18"/>
+                                                        <rect key="frame" x="32" y="0.0" width="48" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="7Yh-aD-b8c"/>
                                                         </constraints>
@@ -1538,7 +1540,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวน" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THV-ry-XBV">
-                                                        <rect key="frame" x="229" y="0.0" width="39.5" height="18"/>
+                                                        <rect key="frame" x="201.5" y="0.0" width="39.5" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="lFf-f3-cMz"/>
                                                         </constraints>
@@ -1550,7 +1552,7 @@
                                                         <rect key="frame" x="0.0" y="26" width="319" height="100"/>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ราคา" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEz-vM-vn4">
-                                                        <rect key="frame" x="281" y="0.0" width="30" height="18"/>
+                                                        <rect key="frame" x="265" y="0.0" width="30" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="cu5-Is-PCd"/>
                                                         </constraints>
@@ -1561,16 +1563,16 @@
                                                 </subviews>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="NEz-vM-vn4" firstAttribute="leading" secondItem="THV-ry-XBV" secondAttribute="trailing" constant="12.5" id="2mH-WO-LGs"/>
+                                                    <constraint firstItem="NEz-vM-vn4" firstAttribute="leading" secondItem="THV-ry-XBV" secondAttribute="trailing" constant="24" id="2mH-WO-LGs"/>
                                                     <constraint firstAttribute="bottom" secondItem="LxE-Cb-Sl1" secondAttribute="bottom" id="Bet-tB-05p"/>
                                                     <constraint firstItem="THV-ry-XBV" firstAttribute="centerY" secondItem="Bti-1X-vsP" secondAttribute="centerY" id="Ctz-nw-2V6"/>
                                                     <constraint firstItem="Bti-1X-vsP" firstAttribute="top" secondItem="MPs-qm-jhU" secondAttribute="top" id="QrJ-NO-tJk"/>
-                                                    <constraint firstItem="Bti-1X-vsP" firstAttribute="leading" secondItem="MPs-qm-jhU" secondAttribute="leading" constant="24" id="RNF-Q0-26Q"/>
+                                                    <constraint firstItem="Bti-1X-vsP" firstAttribute="leading" secondItem="MPs-qm-jhU" secondAttribute="leading" constant="32" id="RNF-Q0-26Q"/>
                                                     <constraint firstItem="LxE-Cb-Sl1" firstAttribute="leading" secondItem="MPs-qm-jhU" secondAttribute="leading" id="V4e-JX-RwT"/>
                                                     <constraint firstItem="NEz-vM-vn4" firstAttribute="centerY" secondItem="THV-ry-XBV" secondAttribute="centerY" id="e5O-Dt-Ryc"/>
                                                     <constraint firstAttribute="trailing" secondItem="LxE-Cb-Sl1" secondAttribute="trailing" id="ecr-zp-FRM"/>
                                                     <constraint firstItem="LxE-Cb-Sl1" firstAttribute="top" secondItem="Bti-1X-vsP" secondAttribute="bottom" constant="8" id="jLF-EQ-hvD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="NEz-vM-vn4" secondAttribute="trailing" constant="8" id="xNO-TT-fhG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="NEz-vM-vn4" secondAttribute="trailing" constant="24" id="xNO-TT-fhG"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1665,9 +1667,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="BLT-Or-V7Z" firstAttribute="top" secondItem="SSy-bn-XCD" secondAttribute="bottom" constant="24" id="4ub-8Q-GJ7"/>
+                            <constraint firstItem="BLT-Or-V7Z" firstAttribute="top" secondItem="SSy-bn-XCD" secondAttribute="bottom" id="4ub-8Q-GJ7"/>
                             <constraint firstItem="SSy-bn-XCD" firstAttribute="trailing" secondItem="WAc-ot-jor" secondAttribute="trailing" id="F1B-AU-cQe"/>
-                            <constraint firstItem="2RQ-SN-TLD" firstAttribute="top" secondItem="BLT-Or-V7Z" secondAttribute="bottom" id="JWz-ZV-W8t"/>
                             <constraint firstItem="BLT-Or-V7Z" firstAttribute="trailing" secondItem="WAc-ot-jor" secondAttribute="trailing" id="LtI-cS-xV6"/>
                             <constraint firstItem="2RQ-SN-TLD" firstAttribute="trailing" secondItem="WAc-ot-jor" secondAttribute="trailing" id="OBz-4Z-Mcd"/>
                             <constraint firstItem="2RQ-SN-TLD" firstAttribute="leading" secondItem="WAc-ot-jor" secondAttribute="leading" id="ajC-uw-6cx"/>
@@ -1687,6 +1688,8 @@
                         <outlet property="locationLabel" destination="Axj-Ap-88l" id="bq6-qR-cdU"/>
                         <outlet property="nameLabel" destination="prx-HI-nZx" id="eDd-EY-Qm3"/>
                         <outlet property="noteLabel" destination="vwg-ij-ofE" id="lhY-nl-AGS"/>
+                        <outlet property="profileImageView" destination="f81-Aw-wjA" id="RLf-mv-2av"/>
+                        <outlet property="scrollView" destination="BLT-Or-V7Z" id="2Wd-rr-TP7"/>
                         <outlet property="storeNameLabel" destination="j8D-0W-3D8" id="yN6-fj-bCE"/>
                         <outlet property="timeLabel" destination="KxG-Im-2ve" id="Hgq-B7-qFP"/>
                         <outlet property="tipLabel" destination="wNb-l1-97g" id="THl-zq-YmJ"/>
