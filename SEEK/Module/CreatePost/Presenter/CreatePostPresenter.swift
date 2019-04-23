@@ -38,11 +38,8 @@ class CreatePostPresenter: CreatePostPresenterType
         note: String)
     {
         
-        let userId = "5810545416"
-        
         let order = Entity.Post(
             title: title,
-            requesterId: userId,
             location: location,
             storeName: storeName,
             shippingPoint: shippingPoint,
