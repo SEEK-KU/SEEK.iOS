@@ -51,9 +51,12 @@ class OrderPendingViewController: UIViewController
     {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        
         items.forEach { [weak self] in
             self?.itemListStackView.addArrangedSubview($0) }
         
+        grandTotalView.buttonName = "ยืนยันราคาสินค้า"
         bottomView.addSubview(grandTotalView)
         
         bindingDataWithPresenter()
@@ -95,6 +98,17 @@ class OrderPendingViewController: UIViewController
             .subscribe(
                 onNext: { [weak self] in
                     self?.profileImageView.image = $0 })
+            .disposed(by: disposeBag)
+        
+        cancelButton
+            .rx
+            .tap
+            .do(
+                onNext: { [weak self] in
+                    self?.presenter?.cancleOrder() })
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.navigationController?.popToRootViewController(animated: true) })
             .disposed(by: disposeBag)
         
         grandTotalView

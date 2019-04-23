@@ -120,6 +120,23 @@ class OrderPendingPresenter : OrderPendingPresenterType
             .disposed(by: disposeBag)
     }
     
+    func cancleOrder()
+    {
+        guard let post = self.postsBehaviorRelay.value,
+            let postId = post.postId else
+        {
+            return
+        }
+        
+        return postInteractor
+            .rx
+            .updatePostStatus(
+                orderId: postId,
+                orderStatus: .active)
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
+    
     func loadProfileImage()
     {
         guard let url = URL(string: requesterBehaviorRelay.value?.image ?? "") else
