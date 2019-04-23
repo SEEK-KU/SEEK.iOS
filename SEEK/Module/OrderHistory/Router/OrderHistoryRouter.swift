@@ -17,7 +17,9 @@ class OrderHistoryRouter
         orderId: String,
         from sourceViewController: UIViewController)
     {
-        let presenter = OrderProcessingPresenter(orderId: orderId)
+        let presenter = OrderProcessingPresenter(
+            viewType: "requester",
+            orderId: orderId)
         
         let orderProcessingViewController = storyBoard
             .instantiateViewController(withIdentifier: "OrderProcessing") as! OrderProcessingViewController
@@ -38,7 +40,9 @@ class OrderHistoryRouter
         orderId: String,
         from sourceViewController: UIViewController)
     {
-                let presenter = OrderProcessingPresenter(orderId: orderId)
+        let presenter = OrderProcessingPresenter(
+            viewType: "deliverer",
+            orderId: orderId)
         
         let orderProcessingViewController = storyBoard
             .instantiateViewController(withIdentifier: "OrderProcessing") as! OrderProcessingViewController
