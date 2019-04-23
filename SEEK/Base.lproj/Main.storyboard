@@ -1967,9 +1967,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ca-3K-JhU">
                                         <rect key="frame" x="116" y="598" width="111" height="30"/>
                                         <state key="normal" title="กดเพื่อเพิ่มรูปภาพ"/>
-                                        <connections>
-                                            <action selector="selectPictureFromPhotos:" destination="R2N-se-HDh" eventType="touchUpInside" id="M9D-T7-Yer"/>
-                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qW0-Zy-7lR">
                                         <rect key="frame" x="69.5" y="639" width="204" height="30"/>

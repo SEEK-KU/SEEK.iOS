@@ -17,20 +17,13 @@ class PaymentViewController: UIViewController
 {
     public var orderId: String!
 
-    let imagePicker = UIImagePickerController()
     @IBOutlet weak var qrImageView: UIImageView!
     @IBOutlet weak var slipImageView: UIImageView!
     @IBOutlet weak var uploadStatusView: UIView!
     @IBOutlet weak var selectSlipButton: UIButton!
     
-    @IBAction func selectPictureFromPhotos(_ sender: UIButton) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
+    let imagePicker = UIImagePickerController()
     var storageRef: StorageReference!
-    var currentImageURL: String!
     
     // MARK: - Disposed bag
     
@@ -57,12 +50,6 @@ class PaymentViewController: UIViewController
         
         viewConfiguration()
         bindingDataWithPresenter()
-    }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        
     }
     
     private func bindingDataWithPresenter()
@@ -144,7 +131,8 @@ extension PaymentViewController: UIImagePickerControllerDelegate, UINavigationCo
                 self.presenter?
                     .uploadOrderSlip(
                         orderId: orderId,
-                        imageURL: imageURL) }
+                        imageURL: imageURL)
+                self.dismiss(animated: true, completion: nil)}
         }
         slipImageView.image = currentImage
         uploadStatusView.isHidden = false

@@ -46,6 +46,12 @@ class PaymentPresenter: PaymentPresenterType
             .uploadSlip(
                 orderId: orderId,
                 slipURL: imageURL)
+            .flatMap { [unowned self] _ in
+                return self.postInteractor
+                    .rx
+                    .updatePostStatus(
+                        orderId: orderId,
+                        orderStatus: .accepted) }
             .subscribe()
             .disposed(by: disposeBag)
     }
