@@ -146,4 +146,14 @@ extension Reactive where Base: Post
                 itemList: itemList)
             .map { _ in }
     }
+    
+    public func deleteOrder(orderId: String) -> Single<Void>
+    {
+        return base
+            .apiGatewayService
+            .rx
+            .deleteOrder(
+                orderId: orderId)
+            .map { _ in }
+    }
 }

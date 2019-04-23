@@ -142,6 +142,16 @@ extension Reactive where Base: APIGatewayService
                 itemList: itemList))
             .mapJSON()
     }
+    
+    public func deleteOrder(orderId: String) -> Single<Any>
+    {
+        return base
+            .provider
+            .rx
+            .request(
+                .deleteOrder(orderId: orderId))
+            .mapJSON()
+    }
 }
 
 extension Reactive where Base: APIGatewayService

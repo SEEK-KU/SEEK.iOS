@@ -73,6 +73,8 @@ extension APIGatewayService
         case updateOrderItemlist(
             orderId: String,
             itemList: [Post.ItemList])
+        
+        case deleteOrder(orderId: String)
     }
 }
 
@@ -111,6 +113,7 @@ extension APIGatewayService.Target: TargetType
             case .uploadSlip: return "/uploadSlip"
             case .updateOrderProcess: return "/order/updateStatus"
             case .updateOrderItemlist(let orderId, _): return "/order/\(orderId)"
+            case .deleteOrder(let orderId): return "/order/\(orderId)"
         }
     }
     
@@ -179,6 +182,10 @@ extension APIGatewayService.Target: TargetType
         else if case .updateOrderItemlist = self
         {
             return .put
+        }
+        else if case .deleteOrder = self
+        {
+            return .delete
         }
         else
         {
@@ -327,6 +334,10 @@ extension APIGatewayService.Target: TargetType
                 parameters: parameter,
                 encoding: JSONEncoding.default)
             
+        }
+        else if case .deleteOrder = self
+        {
+            return .requestPlain
         }
         else
         {
