@@ -109,11 +109,13 @@ open class ItemListView: UIView
         itemPriceLabel.setContentHuggingPriority(.required, for: .horizontal)
         itemPriceTextField.borderStyle = .roundedRect
         itemPriceTextField.placeholder = "บาท"
+        itemPriceTextField.keyboardType = .decimalPad
         
         itemQuantityLabel.text = "จำนวน"
         itemQuantityTextField.borderStyle = .roundedRect
         itemQuantityTextField.placeholder = "ชิ้น"
         itemQuantityTextField.isEnabled = false
+        itemQuantityTextField.keyboardType = .numberPad
     }
     
     // MARK: Constraints
