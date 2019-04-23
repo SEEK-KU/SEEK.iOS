@@ -29,6 +29,12 @@ protocol OrderProcessingPresenterType: PresenterType
     func loadPostDetail(postId: String?) -> Observable<Void>
     func updatePost()
     func updateItemList(itemList: [Entity.Post.ItemList])
+    func updateItemListCheck(
+        newItemCheck: Bool,
+        itemIndex: Int)
     func updateOrderProgess()
-    func pushPaymentViewController(from sourceViewController: UIViewController)
+    func cancleOrder()
+    func pushPaymentViewController(
+        totalPrice: Double,
+        from sourceViewController: UIViewController)
 }

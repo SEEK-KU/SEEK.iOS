@@ -116,6 +116,42 @@ class OrderProcessingPresenter: OrderProcessingPresenterType
         }
     }
     
+    func updateItemListCheck(
+        newItemCheck: Bool,
+        itemIndex: Int)
+    {
+        let item = self.postsBehaviorRelay.value?.itemList?[itemIndex]
+        var itemList = self.postsBehaviorRelay.value?.itemList
+        let newItem = Post.ItemList(
+            name: item?.name,
+            price: item?.price,
+            qty: item?.qty,
+            check: newItemCheck)
+        itemList?[itemIndex] = newItem
+        
+        guard let post = self.postsBehaviorRelay.value else
+        {
+            return
+        }
+        
+        let newPost = Post(
+            postId: post.postId,
+            title: post.title,
+            requesterId: post.requesterId,
+            delivererId: post.delivererId,
+            location: post.location,
+            storeName: post.storeName,
+            shippingPoint: post.shippingPoint,
+            itemList: itemList,
+            itemQty: post.itemQty,
+            tip: post.tip,
+            note: post.note,
+            status: post.status)
+        
+        self.postsBehaviorRelay.accept(newPost)
+        self.viewStateConfiguration()
+    }
+    
     func updateOrderProgess()
     {
         guard let orderId = postsBehaviorRelay.value?.postId,
@@ -145,14 +181,18 @@ class OrderProcessingPresenter: OrderProcessingPresenterType
         }
     }
     
-    func pushPaymentViewController(from sourceViewController: UIViewController)
+    func pushPaymentViewController(
+        totalPrice: Double,
+        from sourceViewController: UIViewController)
     {
         guard let orderId = postsBehaviorRelay.value?.postId else
         {
             return
         }
         
-        let paymentPresenter = PaymentPresenter(orderId: orderId)
+        let paymentPresenter = PaymentPresenter(
+            totalPrice: totalPrice,
+            orderId: orderId)
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -176,6 +216,22 @@ class OrderProcessingPresenter: OrderProcessingPresenterType
             userProfileImagePublishSubject.onNext(image)
         }
     }
+    
+    func cancleOrder()
+    {
+        guard let post = self.postsBehaviorRelay.value,
+            let orderId = post.postId else
+        {
+            return
+        }
+        
+        return postInteractor
+            .rx
+            .deleteOrder(
+                orderId: orderId)
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
 }
 
 extension OrderProcessingPresenter
@@ -193,7 +249,6 @@ extension OrderProcessingPresenter
             if viewType == .requester
             {
                 // allow editing
-                // show next
                 isAllowEditingPublishSubject.onNext(true)
                 shouldShowButtomViewPublishSubject.onNext(true)
             }
@@ -202,7 +257,6 @@ extension OrderProcessingPresenter
                 isAllowEditingPublishSubject.onNext(false)
                 shouldShowButtomViewPublishSubject.onNext(false)
                 // viewOnly
-                print(">> deliver is viewing")
             }
         }
         else if orderStatus == .accepted

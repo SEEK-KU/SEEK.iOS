@@ -26,6 +26,7 @@ class OrderProcessingViewController: UIViewController
     @IBOutlet weak var storeNameLabel: UILabel!
     @IBOutlet weak var itemStackView: UIStackView!
     @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var cancleButton: UIButton!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -111,6 +112,10 @@ class OrderProcessingViewController: UIViewController
                     self?.isAllowEditing = $0 })
             .subscribe(
                 onNext: { [weak self] isAllow in
+                    if !isAllow
+                    {
+                        self?.cancleButton.isHidden = true
+                    }
                     
                     self?.items
                         .forEach({ (item) in
@@ -123,9 +128,32 @@ class OrderProcessingViewController: UIViewController
                 onNext: { [weak self] in
                     self?.grandTotalView.isHidden = !$0
                     self?.addViewConstraints()
+                    #warning("Fix constraint")
                     self?.scrollView.setNeedsUpdateConstraints()
                     self?.grandTotalView.setNeedsUpdateConstraints()
-            })
+                    self?.updateViewConstraints() })
+            .disposed(by: disposeBag)
+        
+        items
+            .enumerated()
+            .forEach { (offset, item) in
+                item
+                    .rx
+                    .check
+                    .subscribe(
+                        onNext: { [weak self] _ in
+                            self?.presenter?
+                                .updateItemListCheck(
+                                    newItemCheck: item.isSelected,
+                                    itemIndex: offset) })
+                    .disposed(by: disposeBag) }
+        
+        cancleButton
+            .rx
+            .tap
+            .subscribe(
+                onNext: { [weak self] _ in
+                    self?.presenter?.cancleOrder() })
             .disposed(by: disposeBag)
         
         grandTotalView
@@ -139,7 +167,24 @@ class OrderProcessingViewController: UIViewController
                     {
                         self.updateItemCheck()
                         
-                        self.presenter?.pushPaymentViewController(from: self)
+                        guard let itemList = self.postsBehaviorRelay.value?.itemList else
+                        {
+                            return
+                        }
+                        
+                        var totalPrice = 0.0
+                        self.items
+                            .enumerated()
+                            .forEach { (offset, item) in
+                            if item.isSelected
+                            {
+                                totalPrice += ((itemList[offset].price ?? 0.0) * Double(itemList[offset].qty ?? 0))
+                            } }
+                        
+                        self.presenter?
+                            .pushPaymentViewController(
+                                totalPrice: totalPrice,
+                                from: self)
                     }
                     else
                     {
@@ -249,7 +294,10 @@ class OrderProcessingViewController: UIViewController
                 
                 self?.itemStackView.addArrangedSubview(items[offset])
                 
-                totalPrice += ((element.price ?? 0.0) * Double(element.qty ?? 0))
+                if element.check ?? false
+                {
+                    totalPrice += ((element.price ?? 0.0) * Double(element.qty ?? 0))
+                }
                 
                 self?.items[offset].itemName = element.name
                 self?.items[offset].itemPrice = String(format:"%.2f", element.price ?? "")
