@@ -395,15 +395,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t75-wd-SPR">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-telephone" translatesAutoresizingMaskIntoConstraints="NO" id="t75-wd-SPR">
                                                 <rect key="frame" x="63" y="75.5" width="10" height="10"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="10" id="6rY-CB-Zgh"/>
                                                     <constraint firstAttribute="height" constant="10" id="y3Q-Ui-kU8"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เวลา" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAR-v5-7Di">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAR-v5-7Di">
                                                 <rect key="frame" x="81" y="77" width="238" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="6DJ-h7-xBv"/>
@@ -1054,15 +1053,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P28-db-DvK">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-telephone" translatesAutoresizingMaskIntoConstraints="NO" id="P28-db-DvK">
                                                 <rect key="frame" x="63" y="75.5" width="10" height="10"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="2Fb-sH-vj9"/>
                                                     <constraint firstAttribute="width" constant="10" id="l2h-VI-kgU"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เวลา" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwT-yQ-VKL">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwT-yQ-VKL">
                                                 <rect key="frame" x="81" y="77" width="238" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="0go-qR-Z2r"/>
@@ -1371,15 +1369,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="muY-gW-Klc">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-telephone" translatesAutoresizingMaskIntoConstraints="NO" id="muY-gW-Klc">
                                                 <rect key="frame" x="63" y="75.5" width="10" height="10"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="10" id="Cc2-Gb-4aa"/>
                                                     <constraint firstAttribute="height" constant="10" id="QXI-Yu-A8J"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เวลา" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxG-Im-2ve">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxG-Im-2ve">
                                                 <rect key="frame" x="81" y="77" width="238" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="UfY-7j-Cus"/>
@@ -2109,6 +2106,7 @@
         <image name="icon-feeds" width="27" height="27"/>
         <image name="icon-location" width="11" height="13"/>
         <image name="icon-profile" width="27" height="27"/>
+        <image name="icon-telephone" width="27" height="27"/>
         <image name="icon-user" width="32" height="27"/>
         <image name="logo" width="515" height="494"/>
         <image name="qr-seek" width="433" height="433"/>

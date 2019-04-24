@@ -158,6 +158,7 @@ class OrderPendingViewController: UIViewController
         
         let requesterName = "\(requester.firstname ?? "") \(requester.lastname ?? "")"
         nameLabel.text = requesterName
+        timeLabel.text = requester.telphone
         
         locationLabel.text = post.location
         destinationLabel.text = post.shippingPoint
