@@ -127,10 +127,11 @@ class OrderProcessingViewController: UIViewController
             .subscribe(
                 onNext: { [weak self] in
                     self?.grandTotalView.isHidden = !$0
-                    self?.addViewConstraints()
+                    self?.bottomView.isHidden = !$0
                     #warning("Fix constraint")
-                    self?.scrollView.setNeedsUpdateConstraints()
-                    self?.grandTotalView.setNeedsUpdateConstraints()
+                    self?.removeButtomViewConstraints()
+                    self?.scrollView.setNeedsLayout()
+                    self?.grandTotalView.setNeedsLayout()
                     self?.updateViewConstraints() })
             .disposed(by: disposeBag)
         
@@ -314,6 +315,22 @@ class OrderProcessingViewController: UIViewController
         
         
         grandTotalView.price = String(format: "%.2f", totalPrice)
+    }
+    
+    func removeButtomViewConstraints()
+    {
+        scrollView
+            .snp
+            .remakeConstraints {
+                if grandTotalView.isHidden
+                {
+                    $0.bottom.equalToSuperview()
+                }
+                else
+                {
+                    $0.bottom.equalTo(grandTotalView.snp.top)
+                }
+        }
     }
     
     // MARK: Constraints
