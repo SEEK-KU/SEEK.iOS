@@ -27,6 +27,7 @@ class OrderProcessingPresenter: OrderProcessingPresenterType
     var isAllowEditingPublishSubject = PublishSubject<Bool>()
     var shouldShowButtomViewPublishSubject = PublishSubject<Bool>()
     var userProfileImagePublishSubject = PublishSubject<UIImage?>()
+    var nexButtonTextPublishSubject = PublishSubject<String>()
     
     // MARK: - Interactor
     
@@ -52,6 +53,7 @@ class OrderProcessingPresenter: OrderProcessingPresenterType
         isAllowEditingPublishSubject.onCompleted()
         shouldShowButtomViewPublishSubject.onCompleted()
         userProfileImagePublishSubject.onCompleted()
+        nexButtonTextPublishSubject.onCompleted()
     }
     
     func loadPostDetail(postId: String?) -> Observable<Void>
@@ -272,6 +274,7 @@ extension OrderProcessingPresenter
                 // show next
                 isAllowEditingPublishSubject.onNext(false)
                 shouldShowButtomViewPublishSubject.onNext(true)
+                nexButtonTextPublishSubject.onNext("เริ่มต้นซื้อสินค้า")
             }
         }
         else if orderStatus == .processing
@@ -286,6 +289,7 @@ extension OrderProcessingPresenter
             {
                 isAllowEditingPublishSubject.onNext(false)
                 shouldShowButtomViewPublishSubject.onNext(true)
+                nexButtonTextPublishSubject.onNext("เริ่มต้นจัดส่ง")
                 // show next
             }
         }
@@ -296,6 +300,7 @@ extension OrderProcessingPresenter
                 // viewOnly
                 isAllowEditingPublishSubject.onNext(false)
                 shouldShowButtomViewPublishSubject.onNext(true)
+                nexButtonTextPublishSubject.onNext("ยืนยันได้รับสินค้า")
             }
             else
             {

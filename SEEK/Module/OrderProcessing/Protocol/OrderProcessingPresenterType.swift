@@ -21,6 +21,7 @@ protocol OrderProcessingPresenterType: PresenterType
     var isAllowEditingPublishSubject: PublishSubject<Bool> { get }
     var shouldShowButtomViewPublishSubject: PublishSubject<Bool> { get }
     var userProfileImagePublishSubject: PublishSubject<UIImage?> { get }
+    var nexButtonTextPublishSubject: PublishSubject<String> { get }
     
     init(
         viewType: String,

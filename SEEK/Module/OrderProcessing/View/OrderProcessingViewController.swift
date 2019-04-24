@@ -134,6 +134,13 @@ class OrderProcessingViewController: UIViewController
                     self?.updateViewConstraints() })
             .disposed(by: disposeBag)
         
+        presenter?
+            .nexButtonTextPublishSubject
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.grandTotalView.buttonTitle = $0 })
+            .disposed(by: disposeBag)
+        
         items
             .enumerated()
             .forEach { (offset, item) in
